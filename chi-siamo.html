@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Siamo | Centro Diagnostico Latorre</title>
+    <meta name="description" content="Scopri la storia, la missione e il team medico del Centro Diagnostico Latorre di Rosarno (RC). Un centro diagnostico moderno al servizio della salute.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- STORIA --- */
+        .storia-section {
+            padding: 90px 5%;
+            background: var(--white);
+        }
+        .storia-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .storia-text h2 { color: var(--primary-blue); font-size: 2.2rem; margin-bottom: 20px; line-height: 1.25; }
+        .storia-text h2 span { color: var(--accent-cyan); }
+        .storia-text p { color: var(--text-light); font-size: 0.97rem; margin-bottom: 16px; line-height: 1.8; }
+        .storia-text .highlight-list { margin: 20px 0; }
+        .storia-text .highlight-list li {
+            display: flex; align-items: center; gap: 12px;
+            color: var(--text-dark); font-size: 0.95rem; margin-bottom: 12px;
+        }
+        .storia-text .highlight-list i { color: var(--accent-cyan); font-size: 1.1rem; min-width: 20px; }
+        .storia-image { position: relative; }
+        .storia-image img {
+            width: 100%; border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+        }
+        .storia-badge {
+            position: absolute;
+            bottom: -24px; left: -24px;
+            background: var(--accent-cyan);
+            color: var(--white);
+            padding: 22px 28px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,156,223,0.35);
+        }
+        .storia-badge strong { display: block; font-size: 2.4rem; line-height: 1; }
+        .storia-badge span { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.9; }
+
+        /* --- VALORI --- */
+        .valori-section {
+            padding: 80px 5%;
+            background: var(--light-gray);
+        }
+        .valori-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 28px;
+        }
+        .valore-card {
+            background: var(--white);
+            padding: 36px 28px;
+            border-radius: 14px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .valore-card:hover { transform: translateY(-6px); box-shadow: 0 16px 35px rgba(0,0,0,0.09); }
+        .valore-icon {
+            width: 65px; height: 65px;
+            background: linear-gradient(135deg, var(--accent-cyan), #0076b0);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--white); font-size: 1.6rem;
+        }
+        .valore-card h3 { color: var(--primary-blue); font-size: 1.1rem; margin-bottom: 10px; }
+        .valore-card p { color: var(--text-light); font-size: 0.9rem; }
+
+        /* --- TEAM --- */
+        .team-section {
+            padding: 90px 5%;
+            background: var(--white);
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+        }
+        .team-card {
+            text-align: center;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            transition: transform 0.3s;
+            background: var(--white);
+        }
+        .team-card:hover { transform: translateY(-6px); }
+        .team-photo {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            background: var(--light-gray);
+        }
+        .team-photo-placeholder {
+            width: 100%; height: 230px;
+            background: linear-gradient(135deg, #e8eef4, #d0dde8);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 4rem; color: #b0bec8;
+        }
+        .team-info { padding: 22px 18px 24px; }
+        .team-info h3 { color: var(--primary-blue); font-size: 1.05rem; margin-bottom: 5px; }
+        .team-speciality {
+            display: inline-block;
+            background: rgba(0,156,223,0.1);
+            color: var(--accent-cyan);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+        .team-info p { color: var(--text-light); font-size: 0.85rem; }
+
+        @media (max-width: 900px) {
+            .storia-grid { grid-template-columns: 1fr; gap: 40px; }
+            .storia-badge { position: static; margin-top: 20px; display: inline-block; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+    <div class="contact-info">
+        <span><i class="fas fa-clock"></i> Lun–Ven 08:00–20:00 &nbsp;|&nbsp; Sab 08:00–13:00</span>
+    </div>
+    <div class="contact-info">
+        <span><i class="fas fa-phone-alt"></i> 0966.XXXXXX</span>
+        <a href="/cdn-cgi/l/email-protection#bad3d4dcd5fad9ded6dbced5c8c8df94d3ce"><i class="fas fa-envelope"></i> <span class="__cf_email__" data-cfemail="2940474f46694a4d45485d465b5b4c07405d">[email&#160;protected]</span></a>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header>
+    <div class="navbar">
+        <a href="index.html" class="logo">
+            <img src="logo.jpg" alt="Centro Diagnostico Latorre">
+        </a>
+        <ul class="nav-menu">
+            <li><a href="index.html"       class="nav-link">Home</a></li>
+            <li><a href="chi-siamo.html"   class="nav-link active">Chi Siamo</a></li>
+            <li><a href="index.html#servizi" class="nav-link">Diagnostica</a></li>
+            <li><a href="convenzioni.html" class="nav-link">Convenzioni</a></li>
+            <li><a href="faq.html"         class="nav-link">F.A.Q.</a></li>
+            <li><a href="contatti.html"    class="nav-link">Contatti</a></li>
+            <li><a href="contatti.html"    class="btn-prenota">Prenota Ora</a></li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+    </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="background-image: url('https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1950&q=80');">
+    <div class="page-hero-content">
+        <h1>Chi Siamo</h1>
+        <p>Dal 2025 al fianco dei nostri pazienti, con competenza, tecnologia e umanità.</p>
+    </div>
+</section>
+
+<!-- STORIA -->
+<section class="storia-section">
+    <div class="storia-grid">
+        <div class="storia-text">
+            <h2>La nostra <span>storia</span></h2>
+            <p>Il Centro Diagnostico Latorre nasce nel 2025 dalla visione del suo fondatore: creare a Rosarno e nel comprensorio della Piana di Gioia Tauro una struttura sanitaria di eccellenza, capace di coniugare la più avanzata tecnologia con un approccio umano e centrato sul paziente.</p>
+            <p>Fin dall'apertura abbiamo investito in strumentazione diagnostica di ultima generazione e nella selezione di un team medico multidisciplinare qualificato, per offrire una risposta completa alle esigenze di salute della comunità.</p>
+            <p>Oggi il CDL è un punto di riferimento per la diagnostica per immagini e la specialistica ambulatoriale nel territorio, convenzionato con i principali fondi sanitari integrativi e assicurazioni private.</p>
+            <ul class="highlight-list">
+                <li><i class="fas fa-check-circle"></i> Convenzionati con i principali fondi sanitari integrativi</li>
+                <li><i class="fas fa-check-circle"></i> Referto firmato digitalmente e consultabile online</li>
+                <li><i class="fas fa-check-circle"></i> Attrezzature certificate e costantemente aggiornate</li>
+                <li><i class="fas fa-check-circle"></i> Team medico con formazione universitaria e specialistica</li>
+            </ul>
+        </div>
+        <div class="storia-image">
+            <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=800&q=80" alt="Struttura CDL">
+            <div class="storia-badge">
+                <strong>CDL</strong>
+                <span>Dal 2025</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+    <div class="stat-item">
+        <span class="stat-number" data-target="10" data-suffix="+">0</span>
+        <span class="stat-label">Specialisti</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-number" data-target="2025">0</span>
+        <span class="stat-label">Fondato nel</span>
+    </div>
+</div>
+
+<!-- VALORI -->
+<section class="valori-section">
+    <div class="section-header">
+        <h2>I Nostri Valori</h2>
+        <div class="divider"></div>
+    </div>
+    <div class="valori-grid">
+        <div class="valore-card">
+            <div class="valore-icon"><i class="fas fa-heart"></i></div>
+            <h3>Centralità del Paziente</h3>
+            <p>Ogni paziente è unico. Ascoltiamo, accompagniamo e rispettiamo ogni percorso di cura con attenzione personalizzata.</p>
+        </div>
+        <div class="valore-card">
+            <div class="valore-icon"><i class="fas fa-microscope"></i></div>
+            <h3>Eccellenza Clinica</h3>
+            <p>Investiamo in tecnologia e formazione continua per garantire diagnosi precise e trattamenti all'avanguardia.</p>
+        </div>
+        <div class="valore-card">
+            <div class="valore-icon"><i class="fas fa-users"></i></div>
+            <h3>Lavoro di Squadra</h3>
+            <p>Un approccio multidisciplinare dove medici, tecnici e personale amministrativo collaborano per il bene del paziente.</p>
+        </div>
+        <div class="valore-card">
+            <div class="valore-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>Trasparenza</h3>
+            <p>Comunichiamo in modo chiaro su costi, tempi e procedure, senza sorprese. La fiducia si costruisce con l'onestà.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TEAM MEDICO -->
+<section class="team-section" id="team">
+    <div class="section-header">
+        <h2>Il Nostro Staff Medico</h2>
+        <div class="divider"></div>
+        <p style="margin-top:14px;">Professionisti con esperienza pluriennale, costantemente aggiornati sulle ultime linee guida.</p>
+    </div>
+    <div class="team-grid">
+        <div class="team-card">
+            <div class="team-photo-placeholder"><i class="fas fa-user-md"></i></div>
+            <div class="team-info">
+                <h3>Dott. Mario Latorre</h3>
+                <span class="team-speciality">Radiologo</span>
+                <p>Specialista in Radiologia Diagnostica. Direttore sanitario e fondatore del centro.</p>
+            </div>
+        </div>
+        <div class="team-card">
+            <div class="team-photo-placeholder"><i class="fas fa-user-md"></i></div>
+            <div class="team-info">
+                <h3>Dott.ssa Anna Russo</h3>
+                <span class="team-speciality">Cardiologa</span>
+                <p>Specialista in Cardiologia con esperienza in diagnostica ecocardiografica e Holter.</p>
+            </div>
+        </div>
+        <div class="team-card">
+            <div class="team-photo-placeholder"><i class="fas fa-user-md"></i></div>
+            <div class="team-info">
+                <h3>Dott. Luca Ferrara</h3>
+                <span class="team-speciality">Ortopedico</span>
+                <p>Specialista in Ortopedia e Traumatologia. Esperto in patologie del rachide e delle articolazioni.</p>
+            </div>
+        </div>
+        <div class="team-card">
+            <div class="team-photo-placeholder"><i class="fas fa-user-md"></i></div>
+            <div class="team-info">
+                <h3>Dott.ssa Sara Marino</h3>
+                <span class="team-speciality">Ginecologa</span>
+                <p>Specialista in Ginecologia e Ostetricia. Ecografia ostetrica e ginecologica di III livello.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <h2>Vieni a Trovarci</h2>
+    <p>Siamo a tua disposizione per qualsiasi informazione o per prenotare la tua visita.</p>
+    <a href="contatti.html" class="btn-white"><i class="fas fa-calendar-check"></i>&nbsp; Prenota un Appuntamento</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-grid">
+        <div>
+            <h4>CDL Latorre</h4>
+            <p style="margin-top:12px; line-height:1.9; font-size:0.9rem;">Il Centro Diagnostico Latorre offre prestazioni sanitarie di alta qualità con tecnologie all'avanguardia, al servizio del paziente dal 2025.</p>
+        </div>
+        <div>
+            <h4>Link Rapidi</h4>
+            <ul>
+                <li><a href="chi-siamo.html"><i class="fas fa-chevron-right"></i> Chi Siamo</a></li>
+                <li><a href="index.html#servizi"><i class="fas fa-chevron-right"></i> Prestazioni</a></li>
+                <li><a href="chi-siamo.html#team"><i class="fas fa-chevron-right"></i> Staff Medico</a></li>
+                <li><a href="convenzioni.html"><i class="fas fa-chevron-right"></i> Convenzioni</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contatti</h4>
+            <ul>
+                <li><i class="fas fa-map-marker-alt"></i> Via Pietro Colletta 4 – Rosarno (RC) 89025</li>
+                <li><i class="fas fa-phone"></i> 0966.XXXXXX</li>
+                <li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#adc4c3cbc2edcec9c1ccd9c2dfdfc883c4d9"><span class="__cf_email__" data-cfemail="d6bfb8b0b996b5b2bab7a2b9a4a4b3f8bfa2">[email&#160;protected]</span></a></li>
+                <li><i class="fas fa-clock"></i> Lun–Ven 08:00–20:00</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Centro Diagnostico Latorre. Tutti i diritti riservati. &nbsp;|&nbsp; P.IVA 00000000000
+    </div>
+</footer>
+
+<a href="https://wa.me/393XXXXXXXXX?text=Salve,%20vorrei%20informazioni%20sulle%20prenotazioni" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+<div id="cookie-banner" class="cookie-banner">
+    <p>Questo sito utilizza cookie tecnici e di terze parti per migliorare l'esperienza utente.</p>
+    <button onclick="acceptCookies()" class="btn-cookie">Ho capito</button>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://unpkg.com/scrollreveal@4/dist/scrollreveal.min.js"></script>
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu   = document.querySelector(".nav-menu");
+    hamburger.addEventListener("click", () => { hamburger.classList.toggle("active"); navMenu.classList.toggle("active"); });
+    document.querySelectorAll(".nav-link, .btn-prenota").forEach(n => n.addEventListener("click", () => { hamburger.classList.remove("active"); navMenu.classList.remove("active"); }));
+
+    function acceptCookies() { document.getElementById('cookie-banner').style.display='none'; try{localStorage.setItem('cookieAccepted','1');}catch(e){} }
+    try { if(localStorage.getItem('cookieAccepted')) document.getElementById('cookie-banner').style.display='none'; } catch(e){}
+
+    ScrollReveal().reveal('.page-hero-content', { delay: 200, distance: '50px', origin: 'bottom' });
+    ScrollReveal().reveal('.storia-text',  { delay: 200, distance: '40px', origin: 'left' });
+    ScrollReveal().reveal('.storia-image', { delay: 300, distance: '40px', origin: 'right' });
+    ScrollReveal().reveal('.stats-strip .stat-item', { interval: 120, distance: '30px', origin: 'bottom' });
+    ScrollReveal().reveal('.valore-card',  { interval: 120, distance: '30px', origin: 'bottom' });
+    ScrollReveal().reveal('.team-card',    { interval: 150, distance: '30px', origin: 'bottom' });
+
+    function animateCounters() {
+        document.querySelectorAll('.stat-number[data-target]').forEach(el => {
+            const target = +el.getAttribute('data-target');
+            const start = performance.now();
+            function update(now) {
+                const p = Math.min((now - start) / 1800, 1);
+                const e = 1 - Math.pow(1 - p, 3);
+                el.textContent = Math.floor(e * target).toLocaleString('it-IT');
+                if (p < 1) requestAnimationFrame(update);
+                else

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domande Frequenti (FAQ) | Centro Diagnostico Latorre</title>
+    <meta name="description" content="Risposte alle domande frequenti su prenotazioni, preparazione esami, referti, costi e molto altro del Centro Diagnostico Latorre.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        .faq-section {
+            padding: 80px 5%;
+            background: var(--light-gray);
+        }
+        .faq-container {
+            max-width: 880px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 50px 52px;
+            border-radius: 18px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.06);
+        }
+        .faq-category-title {
+            color: var(--primary-blue);
+            font-size: 1.35rem;
+            margin: 42px 0 22px;
+            display: flex; align-items: center; gap: 14px;
+        }
+        .faq-category-title:first-child { margin-top: 0; }
+        .faq-cat-icon {
+            color: var(--accent-cyan);
+            background: rgba(0,156,223,0.1);
+            padding: 10px; border-radius: 50%;
+            font-size: 1.1rem; min-width: 42px; height: 42px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .faq-item {
+            margin-bottom: 12px;
+            border: 1.5px solid #eef0f3;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+        .faq-item[open] {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+            border-color: transparent;
+            border-left: 4px solid var(--accent-cyan);
+        }
+        .faq-item summary {
+            padding: 18px 50px 18px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+            list-style: none;
+            color: var(--primary-blue);
+            font-size: 1rem;
+            transition: background 0.2s;
+            line-height: 1.4;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary:hover { background: #f8fbfd; color: var(--accent-cyan); }
+        .faq-item[open] summary { color: var(--accent-cyan); border-bottom: 1px solid #f0f4f7; background: #f8fbfd; }
+        .faq-item summary::after {
+            content: '+';
+            position: absolute; right: 18px; top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem; color: #c0cad5;
+            transition: transform 0.3s, color 0.3s;
+            line-height: 1;
+        }
+        .faq-item[open] summary::after { content: '–'; color: var(--accent-cyan); }
+        .faq-content {
+            padding: 20px 24px 22px;
+            color: #555;
+            line-height: 1.75;
+            font-size: 0.93rem;
+            animation: fadeSlide 0.35s ease;
+        }
+        .faq-content ul { margin: 10px 0 0 18px; }
+        .faq-content ul li { margin-bottom: 6px; list-style: disc; }
+        .faq-content strong { color: var(--primary-blue); }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .faq-cta {
+            text-align: center; margin-top: 40px;
+            padding: 28px; background: #f0f6fb;
+            border-radius: 12px;
+        }
+        .faq-cta p { color: var(--text-dark); margin-bottom: 16px; font-size: 0.97rem; }
+
+        @media (max-width: 768px) {
+            .faq-container { padding: 28px 22px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+    <div class="contact-info">
+        <span><i class="fas fa-clock"></i> Lun–Ven 08:00–20:00 &nbsp;|&nbsp; Sab 08:00–13:00</span>
+    </div>
+    <div class="contact-info">
+        <span><i class="fas fa-phone-alt"></i> 0966.XXXXXX</span>
+        <a href="/cdn-cgi/l/email-protection#ef86818980af8c8b838e9b809d9d8ac1869b"><i class="fas fa-envelope"></i> <span class="__cf_email__" data-cfemail="a8c1c6cec7e8cbccc4c9dcc7dadacd86c1dc">[email&#160;protected]</span></a>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header>
+    <div class="navbar">
+        <a href="index.html" class="logo">
+            <img src="logo.jpg" alt="Centro Diagnostico Latorre">
+        </a>
+        <ul class="nav-menu">
+            <li><a href="index.html"         class="nav-link">Home</a></li>
+            <li><a href="chi-siamo.html"     class="nav-link">Chi Siamo</a></li>
+            <li><a href="index.html#servizi" class="nav-link">Diagnostica</a></li>
+            <li><a href="convenzioni.html"   class="nav-link">Convenzioni</a></li>
+            <li><a href="faq.html"           class="nav-link active">F.A.Q.</a></li>
+            <li><a href="contatti.html"      class="nav-link">Contatti</a></li>
+            <li><a href="contatti.html"      class="btn-prenota">Prenota Ora</a></li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+    </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=1950&q=80');">
+    <div class="page-hero-content">
+        <h1>Domande Frequenti</h1>
+        <p>Risposte chiare e immediate ai tuoi dubbi su esami, preparazioni e procedure.</p>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+    <div class="faq-container">
+
+        <!-- PRENOTAZIONI -->
+        <h3 class="faq-category-title faq-anim">
+            <span class="faq-cat-icon"><i class="fas fa-calendar-check"></i></span>
+            Prenotazioni e Accesso
+        </h3>
+
+        <details class="faq-item faq-anim">
+            <summary>Come posso prenotare un esame?</summary>
+            <div class="faq-content">
+                <p>Puoi prenotare in più modi:</p>
+                <ul>
+                    <li>Telefonicamente al <strong>0966.XXXXXX</strong> (Lun–Ven 08:00–18:00, Sab 08:00–12:00)</li>
+                    <li>Via <strong>WhatsApp</strong> tramite il tasto verde in basso a destra</li>
+                    <li>Compilando il <strong>form online</strong> nella pagina Contatti</li>
+                    <li>Recandoti direttamente in <strong>accettazione</strong> durante gli orari di apertura</li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="faq-item faq-anim">
+            <summary>È necessaria la prescrizione medica?</summary>
+            <div class="faq-content">
+                <p>Dipende dal tipo di accesso:</p>
+                <ul>
+                    <li><strong>Accesso privato:</strong> non è obbligatoria, ma è consigliata per orientare meglio la diagnosi.</li>
+                    <li><strong>Convenzione diretta con fondo/assicurazione:</strong> quasi sempre richiesta dalla centrale operativa del fondo.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="faq-item faq-anim">
+            <summary>Posso portare un accompagnatore durante l'esame?</summary>
+            <div class="faq-content">
+                <p>Sì, è possibile per la maggior parte degli esami. In sala diagnostica l'accompagnatore attende fuori durante l'acquisizione, ma può essere presente prima e dopo. Per i minori è sempre necessaria la presenza di un genitore o tutore.</p>
+            </div>
+        </details>
+
+        <details class="faq-item faq-anim">
+            <summary>Quali sono i tempi di attesa per un appuntamento?</summary>
+            <div class="faq-content">
+                <p>I tempi variano a seconda dell'esame e della disponibilità. In media:</p>
+                <ul>
+                    <li>Ecografie e visite specialistiche: <strong>2–5 giorni lavorativi</strong></li>
+                    <li>MOC e mammografia: <strong>1–3 giorni lavorativi</strong></li>
+                    <li>RX: <strong>1–2 giorni lavorativi</strong></li>
+                </ul>
+                <p>In caso di urgenza, contattaci direttamente per verificare disponibilità immediate.</p>
+            </div>
+        </details>
+
+        <!-- PREPARAZIONE -->
+        <h3 class="faq-category-title faq-anim" style="margin-top:44px;">
+            <span class="faq-cat-icon"><i class="fas fa-procedures"></i></span>
+            Preparazione agli Esami
+        </h3>
+
+        <details class="faq-item faq-anim">
+            <summary>Preparazione per Ecografia Addome Completo</summary>
+            <div class="faq-content">
+                <ul>
+                    <li><strong>Digiuno</strong> da cibi solidi da almeno 6 ore prima.</li>
+                    <li>Evitare bevande gassate, latte e latticini dal giorno precedente.</li>
+                    <li>Bere <strong>1 litro d'acqua naturale</strong> circa un'ora prima e trattenere le urine.</li>
+                    <li>Non fumare nelle 3 ore precedenti l'esame.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="faq-item faq-anim">
+            <summary>Preparazione per MOC (Densitometria Ossea)</summary>
+            <div class="faq-content">
+                <p>L'esame non richiede preparazione specifica. È sufficiente:</p>
+                <ul>
+                    <li>Non assumere integratori di calcio nelle <strong>24 ore precedenti</strong> l'esame.</li>
+                    <li>Indossare abiti comodi, senza oggetti metallici nella zona lombare e all'anca.</li>
+                    <li>Informare il tecnico in caso di <strong>gravidanza o sospetta gravidanza</strong>.</li>
+                    <li>Portare eventuali MOC precedenti per il confronto dei valori.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="faq-item faq-anim">
+            <summary>Preparazione per Mammografia e Tomosintesi</summary>
+            <div class="faq-content">
+                <ul>
+                    <li>Non applicare deodorante, talco, creme o profumi sulla zona ascellare e sul seno il giorno dell'esame.</li>
+                    <li>Portare con sé eventuali <strong>mammografie precedenti</strong> per il confronto.</li>
+                    <li>L'esame è consigliato nella prima metà del ciclo mestruale (giorni 7–14) per ridurre il fastidio.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="faq-item faq-anim">
+            <summary>Preparazione per TAC (TC) con e senza contrasto</summary>
+            <div class="faq-content">
+                <ul>
+                    <li><strong>Senza mdc:</strong> nessuna preparazione in genere. Possibile digiuno di 2–3 ore per esami addominali.</li>
+                    <li><strong>Con mdc (mezzo di contrasto):</strong> digiuno da almeno <strong>4–6 ore</strong>. Portare esami del sangue recenti (creatinina, eGFR). Informare il medico di eventuali allergie a iodio o farmaci.</li>
+                    <li>Segnalare gravidanza o possibile gravidanza.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="faq-item faq-anim">
+            <summary>Preparazione per Rx Torace e Rx Scheletro</summary>
+            <div class="faq-content">
+                <p>Non è richiesta alcuna preparazione specifica. È sufficiente:</p>
+                <ul>
+                    <li>Togliere indumenti metallici, gioielli e capi con bottoni nella zona da esaminare.</li>
+                    <li>Informare il tecnico in caso di <strong>gravidanza o sospetta gravidanza</strong>.</li>
+                </ul>
+            </div>
+        </details>
+
+        <!-- REFERTI E COSTI -->
+        <h3 class="faq-category-title faq-anim" style="margin-top:44px;">
+            <span class="faq-cat-icon"><i class="fas fa-file-invoice-dollar"></i></span>
+            Referti, Immagini e Costi
+        </h3>
+
+        <details class="faq-item faq-anim">
+            <summary>Quando sono pronti i referti?</summary>
+            <div class="faq-content">
+                <p>La maggior parte dei referti è disponibile <strong>in giornata</strong> o entro 24 ore. Per alcune indagini più complesse (RM multiparametrica, angio-TC) i tempi possono estendersi a 24–48 ore. Al momento della prenotazione verrà comunicato il tempo stimato.</p>
+            </div>
+        </details>
+
+        <details class="faq-item faq-anim">
+            <summary>Come posso ritirare il referto e le immagini?</summary>
+            <div class="faq-content">
+                <ul>
+                    <li><strong>Online:</strong> tramite l'Area Pazienti con credenziali fornite all'accettazione (referto + immagini in DICOM).</li>
+                    <li><strong>In struttura:</strong> presso l'accettazione, anche tramite delegato con documento d'identità.</li>
+                    <li>Le immagini vengono consegnate su <strong>CD/DVD</strong> o via download digitale sicuro.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="faq-item faq-anim">
+            <summary>Quanto costano gli esami? È possibile pagare in contanti?</summary>
+            <div class="faq-content">
+                <p>I prezzi variano in base al tipo di esame e alla modalità di accesso (privato o convenzionato). Accettiamo:</p>
+                <ul>
+                    <li>Contanti, Bancomat e Carta di credito.</li>
+                    <li>Rimborso diretto per fondi convenzionati (vedi pagina Convenzioni).</li>
+                </ul>
+                <p>Per un preventivo specifico contattaci o consulta la pagina delle Convenzioni.</p>
+            </div>
+        </details>
+
+        <!-- STRUTTURA -->
+        <h3 class="faq-category-title faq-anim" style="margin-top:44px;">
+            <span class="faq-cat-icon"><i class="fas fa-hospital"></i></span>
+            Struttura e Accessibilità
+        </h3>
+
+        <details class="faq-item faq-anim">
+            <summary>Come raggiungere la struttura?</summary>
+            <div class="faq-content">
+                <p>Il Centro Diagnostico Latorre si trova in <strong>Via Pietro Colletta 4, Rosarno (RC) 89025</strong>. La struttura è raggiungibile in auto dalla SS 18 e dalla SS 106. Per informazioni più dettagliate su come raggiungerci, consulta la mappa nella pagina <a href="contatti.html" style="color:var(--accent-cyan)">Contatti</a>.</p>
+            </div>
+        </details>
+
+        <details class="faq-item faq-anim">
+            <summary>La struttura è accessibile ai disabili?</summary>
+            <div class="faq-content">
+                <p>Sì, la struttura è completamente accessibile: ingresso senza barriere architettoniche, ascensore, bagni attrezzati e barella disponibile per pazienti non deambulanti. Per esigenze particolari si prega di segnalarlo al momento della prenotazione.</p>
+            </div>
+        </details>
+
+        <!-- CTA FINALE -->
+        <div class="faq-cta faq-anim">
+            <p><i class="fas fa-comment-dots" style="color:var(--accent-cyan); margin-right:8px;"></i>Non hai trovato la risposta che cercavi? Contattaci direttamente!</p>
+            <a href="contatti.html" class="btn-prenota" style="display:inline-flex; align-items:center; gap:10px; margin-right:12px;">
+                <i class="fas fa-envelope"></i> Scrivici
+            </a>
+            <a href="https://wa.me/393XXXXXXXXX" class="btn-prenota" style="background:#25d366; border-color:#25d366; display:inline-flex; align-items:center; gap:10px;">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-grid">
+        <div>
+            <h4>CDL Latorre</h4>
+            <p style="margin-top:12px; line-height:1.9; font-size:0.9rem;">Il Centro Diagnostico Latorre offre prestazioni sanitarie di alta qualità con tecnologie all'avanguardia, al servizio del paziente dal 2025.</p>
+        </div>
+        <div>
+            <h4>Link Rapidi</h4>
+            <ul>
+                <li><a href="chi-siamo.html"><i class="fas fa-chevron-right"></i> Chi Siamo</a></li>
+                <li><a href="index.html#servizi"><i class="fas fa-chevron-right"></i> Prestazioni</a></li>
+                <li><a href="chi-siamo.html#team"><i class="fas fa-chevron-right"></i> Staff Medico</a></li>
+                <li><a href="convenzioni.html"><i class="fas fa-chevron-right"></i> Convenzioni</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contatti</h4>
+            <ul>
+                <li><i class="fas fa-map-marker-alt"></i> Via Pietro Colletta 4 – Rosarno (RC) 89025</li>
+                <li><i class="fas fa-phone"></i> 0966.XXXXXX</li>
+                <li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#741d1a121b3417101815001b0606115a1d00"><span class="__cf_email__" data-cfemail="5831363e37183b3c34392c372a2a3d76312c">[email&#160;protected]</span></a></li>
+                <li><i class="fas fa-clock"></i> Lun–Ven 08:00–20:00</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Centro Diagnostico Latorre. Tutti i diritti riservati. &nbsp;|&nbsp; P.IVA 00000000000
+    </div>
+</footer>
+
+<a href="https://wa.me/393XXXXXXXXX?text=Salve,%20vorrei%20informazioni%20sulle%20prenotazioni" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+<div id="cookie-banner" class="cookie-banner">
+    <p>Questo sito utilizza cookie tecnici e di terze parti per migliorare l'esperienza utente.</p>
+    <button onclick="acceptCookies()" class="btn-cookie">Ho capito</button>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://unpkg.com/scrollreveal@4/dist/scrollreveal.min.js"></script>
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu   = document.querySelector(".nav-menu");
+    hamburger.addEventListener("click", () => { hamburger.classList.toggle("active"); navMenu.classList.toggle("active"); });
+    document.querySelectorAll(".nav-link, .btn-prenota").forEach(n => n.addEventListener("click", () => { hamburger.classList.remove("active"); navMenu.classList.remove("active"); }));
+
+    function acceptCookies() { document.getElementById('cookie-banner').style.display='none'; try{localStorage.setItem('cookieAccepted','1');}catch(e){} }
+    tr

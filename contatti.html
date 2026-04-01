@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatti e Prenotazioni | Centro Diagnostico Latorre</title>
+    <meta name="description" content="Contatta il Centro Diagnostico Latorre per prenotare un esame o richiedere informazioni. Telefono, email, WhatsApp e form online.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* CONTATTI SECTION */
+        .contatti-section {
+            padding: 80px 5%;
+            background: var(--light-gray);
+        }
+        .contatti-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 40px;
+            max-width: 1150px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        /* INFO CARDS */
+        .info-cards { display: flex; flex-direction: column; gap: 18px; }
+        .info-card-sm {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 22px 24px;
+            display: flex; align-items: center; gap: 18px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .info-card-sm:hover { transform: translateX(4px); }
+        .info-card-icon {
+            width: 52px; height: 52px; min-width: 52px;
+            background: linear-gradient(135deg, var(--accent-cyan), #0076b0);
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--white); font-size: 1.3rem;
+        }
+        .info-card-sm h4 { color: var(--primary-blue); font-size: 0.9rem; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .info-card-sm p  { color: var(--text-dark); font-size: 0.95rem; font-weight: 500; }
+        .info-card-sm a  { color: var(--text-dark); }
+        .info-card-sm a:hover { color: var(--accent-cyan); }
+
+        /* ORARI */
+        .orari-card {
+            background: var(--primary-blue);
+            border-radius: 14px;
+            padding: 26px 28px;
+            color: var(--white);
+            box-shadow: 0 8px 25px rgba(31,42,68,0.2);
+        }
+        .orari-card h4 {
+            font-size: 1rem; margin-bottom: 16px;
+            text-transform: uppercase; letter-spacing: 1px;
+            color: var(--accent-cyan);
+        }
+        .orari-row {
+            display: flex; justify-content: space-between;
+            padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+        .orari-row:last-child { border-bottom: none; }
+        .orari-row .day { opacity: 0.8; }
+        .orari-row .time { font-weight: 600; color: var(--accent-cyan); }
+        .orari-row .closed { color: #e74c3c; font-weight: 600; }
+
+        /* FORM */
+        .form-card {
+            background: var(--white);
+            border-radius: 18px;
+            padding: 44px 42px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.07);
+        }
+        .form-card h3 {
+            color: var(--primary-blue); font-size: 1.6rem;
+            margin-bottom: 8px;
+        }
+        .form-card .form-subtitle {
+            color: var(--text-light); font-size: 0.92rem;
+            margin-bottom: 30px;
+        }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+        .form-group { margin-bottom: 18px; }
+        .form-group label {
+            display: block; font-size: 0.82rem; font-weight: 700;
+            color: var(--primary-blue); margin-bottom: 7px;
+            text-transform: uppercase; letter-spacing: 0.4px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid #dde3ea;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.93rem;
+            color: var(--text-dark);
+            background: #fafbfc;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            outline: none;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 3px rgba(0,156,223,0.12);
+            background: var(--white);
+        }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .form-group select { appearance: none; cursor: pointer; }
+        .privacy-check {
+            display: flex; align-items: flex-start; gap: 10px;
+            font-size: 0.85rem; color: var(--text-light);
+            margin-bottom: 22px; line-height: 1.5;
+        }
+        .privacy-check input[type="checkbox"] {
+            width: 18px; height: 18px; min-width: 18px;
+            margin-top: 1px; accent-color: var(--accent-cyan); cursor: pointer;
+        }
+        .privacy-check a { color: var(--accent-cyan); }
+        .btn-submit {
+            width: 100%;
+            background: var(--accent-cyan);
+            color: var(--white);
+            border: none; cursor: pointer;
+            padding: 15px;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .btn-submit:hover { background: #0076b0; transform: translateY(-1px); }
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            color: var(--primary-blue);
+        }
+        .form-success i { font-size: 3rem; color: #27ae60; margin-bottom: 16px; display: block; }
+        .form-note {
+            text-align: center; font-size: 0.8rem;
+            color: #aaa; margin-top: 12px;
+        }
+
+        @media (max-width: 950px) {
+            .contatti-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .form-card { padding: 30px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+    <div class="contact-info">
+        <span><i class="fas fa-clock"></i> Lun–Ven 08:00–20:00 &nbsp;|&nbsp; Sab 08:00–13:00</span>
+    </div>
+    <div class="contact-info">
+        <span><i class="fas fa-phone-alt"></i> 0966.XXXXXX</span>
+        <a href="/cdn-cgi/l/email-protection#5e373038311e3d3a323f2a312c2c3b70372a"><i class="fas fa-envelope"></i> <span class="__cf_email__" data-cfemail="630a0d050c2300070f02170c1111064d0a17">[email&#160;protected]</span></a>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header>
+    <div class="navbar">
+        <a href="index.html" class="logo">
+            <img src="logo.jpg" alt="Centro Diagnostico Latorre">
+        </a>
+        <ul class="nav-menu">
+            <li><a href="index.html"         class="nav-link">Home</a></li>
+            <li><a href="chi-siamo.html"     class="nav-link">Chi Siamo</a></li>
+            <li><a href="index.html#servizi" class="nav-link">Diagnostica</a></li>
+            <li><a href="convenzioni.html"   class="nav-link">Convenzioni</a></li>
+            <li><a href="faq.html"           class="nav-link">F.A.Q.</a></li>
+            <li><a href="contatti.html"      class="nav-link active">Contatti</a></li>
+            <li><a href="contatti.html"      class="btn-prenota">Prenota Ora</a></li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+    </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="background-image: url('https://images.unsplash.com/photo-1551190822-a9333d879b1f?auto=format&fit=crop&w=1950&q=80');">
+    <div class="page-hero-content">
+        <h1>Contatti e Prenotazioni</h1>
+        <p>Siamo qui per risponderti. Scegli il canale che preferisci.</p>
+    </div>
+</section>
+
+<!-- CONTATTI -->
+<section class="contatti-section">
+    <div class="contatti-grid">
+
+        <!-- COLONNA SINISTRA: info + orari -->
+        <div>
+            <h2 style="color:var(--primary-blue); font-size:1.5rem; margin-bottom:22px;">Dove Siamo</h2>
+            <div class="info-cards">
+                <div class="info-card-sm">
+                    <div class="info-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <h4>Indirizzo</h4>
+                        <p>Via Pietro Colletta 4 – Rosarno (RC) 89025</p>
+                    </div>
+                </div>
+                <div class="info-card-sm">
+                    <div class="info-card-icon"><i class="fas fa-phone-alt"></i></div>
+                    <div>
+                        <h4>Telefono</h4>
+                        <p><a href="tel:090XXXXXXX">0966.XXXXXX</a></p>
+                    </div>
+                </div>
+                <div class="info-card-sm">
+                    <div class="info-card-icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <h4>Email</h4>
+                        <p><a href="/cdn-cgi/l/email-protection#e68f888089a685828a879289949483c88f92"><span class="__cf_email__" data-cfemail="8ce5e2eae3ccefe8e0edf8e3fefee9a2e5f8">[email&#160;protected]</span></a></p>
+                    </div>
+                </div>
+                <div class="info-card-sm">
+                    <div class="info-card-icon" style="background:#25d366;"><i class="fab fa-whatsapp"></i></div>
+                    <div>
+                        <h4>WhatsApp</h4>
+                        <p><a href="https://wa.me/393XXXXXXXXX" target="_blank">+39 3XX XXXXXXX</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ORARI -->
+            <div class="orari-card" style="margin-top:22px;">
+                <h4><i class="fas fa-clock" style="margin-right:8px;"></i>Orari di Apertura</h4>
+                <div class="orari-row"><span class="day">Lunedì – Venerdì</span><span class="time">08:00 – 20:00</span></div>
+                <div class="orari-row"><span class="day">Sabato</span><span class="time">08:00 – 13:00</span></div>
+                <div class="orari-row"><span class="day">Domenica</span><span class="closed">Chiuso</span></div>
+            </div>
+        </div>
+
+        <!-- COLONNA DESTRA: form -->
+        <div class="form-card contact-anim">
+            <h3>Prenota o Informa</h3>
+            <p class="form-subtitle">Compila il modulo: ti ricontatteremo entro poche ore.</p>
+
+            <div id="contact-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nome">Nome *</label>
+                        <input type="text" id="nome" placeholder="Mario">
+                    </div>
+                    <div class="form-group">
+                        <label for="cognome">Cognome *</label>
+                        <input type="text" id="cognome" placeholder="Rossi">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telefono">Telefono *</label>
+                        <input type="tel" id="telefono" placeholder="090 000 0000">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="mario.rossi@email.it">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="esame">Tipo di Esame / Prestazione</label>
+                    <select id="esame">
+                        <option value="">— Seleziona —</option>
+                        <optgroup label="Diagnostica">
+                            <option>Radiologia (RX)</option>
+                            <option>MOC (Densitometria Ossea)</option>
+                            <option>Ecografia</option>
+                            <option>TAC / TC</option>
+                            <option>Mammografia / Tomosintesi</option>
+                        </optgroup>
+                        <optgroup label="Specialistica">
+                            <option>Cardiologia</option>
+                            <option>Ginecologia</option>
+                            <option>Ortopedia</option>
+                            <option>Endocrinologia</option>
+                            <option>Reumatologia</option>
+                            <option>Neurologia</option>
+                            <option>Dermatologia</option>
+                            <option>Gastroenterologia</option>
+                            <option>Urologia</option>
+                            <option>Oculistica</option>
+                            <option>ORL</option>
+                            <option>Pneumologia</option>
+                            <option>Altro / Non so</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="messaggio">Messaggio / Note</label>
+                    <textarea id="messaggio" placeholder="Descrivi brevemente la tua richiesta o indica eventuali urgenze..."></textarea>
+                </div>
+                <div class="privacy-check">
+                    <input type="checkbox" id="privacy">
+                    <label for="privacy">Ho letto e accetto la <a href="#">Privacy Policy</a>. Acconsento al trattamento dei miei dati personali per rispondere alla mia richiesta.</label>
+                </div>
+                <button class="btn-submit" onclick="submitForm()">
+                    <i class="fas fa-paper-plane"></i>&nbsp; Invia Richiesta
+                </button>
+                <p class="form-note">* Campi obbligatori — risponderemo entro poche ore lavorative</p>
+            </div>
+
+            <!-- SUCCESSO -->
+            <div class="form-success" id="form-success">
+                <i class="fas fa-check-circle"></i>
+                <h3 style="color:var(--primary-blue); margin-bottom:10px;">Richiesta inviata!</h3>
+                <p style="color:var(--text-light);">Grazie per averci contattato. Ti risponderemo al più presto al numero o all'email indicati.</p>
+                <br>
+                <a href="index.html" class="btn-prenota">Torna alla Home</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- MAPPA -->
+<section class="map-section">
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3146.1!2d15.9810!3d38.4843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sVia+Pietro+Colletta+4%2C+89025+Rosarno+RC!5e0!3m2!1sit!2sit!4v1700000000000!5m2!1sit!2sit"
+        allowfullscreen loading="lazy" title="Mappa Centro Diagnostico Latorre">
+    </iframe>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-grid">
+        <div>
+            <h4>CDL Latorre</h4>
+            <p style="margin-top:12px; line-height:1.9; font-size:0.9rem;">Il Centro Diagnostico Latorre offre prestazioni sanitarie di alta qualità con tecnologie all'avanguardia, al servizio del paziente dal 2025.</p>
+        </div>
+        <div>
+            <h4>Link Rapidi</h4>
+            <ul>
+                <li><a href="chi-siamo.html"><i class="fas fa-chevron-right"></i> Chi Siamo</a></li>
+                <li><a href="index.html#servizi"><i class="fas fa-chevron-right"></i> Prestazioni</a></li>
+                <li><a href="chi-siamo.html#team"><i class="fas fa-chevron-right"></i> Staff Medico</a></li>
+                <li><a href="convenzioni.html"><i class="fas fa-chevron-right"></i> Convenzioni</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contatti</h4>
+            <ul>
+                <li><i class="fas fa-map-marker-alt"></i> Via Pietro Colletta 4 – Rosarno (RC) 89025</li>
+                <li><i class="fas fa-phone"></i> 0966.XXXXXX</li>
+                <li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#d2bbbcb4bd92b1b6beb3a6bda0a0b7fcbba6"><span class="__cf_email__" data-cfemail="93fafdf5fcd3f0f7fff2e7fce1e1f6bdfae7">[email&#160;protected]</span></a></li>
+                <li><i class="fas fa-clock"></i> Lun–Ven 08:00–20:00</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Centro Diagnostico Latorre. Tutti i diritti riservati. &nbsp;|&nbsp; P.IVA 00000000000
+    </div>
+</footer>
+
+<a href="https://wa.me/393XXXXXXXXX?text=Salve,%20vorrei%20informazioni%20sulle%20prenotazioni" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+<div id="cookie-banner" class="cookie-banner">
+    <p>Questo sito utilizza cookie tecnici e di terze parti per migliorare l'esperienza utente.</p>
+    <button onclick="acceptCookies()" class="btn-cookie">Ho capito</button>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://unpkg.com/scrollreveal@4/dist/scrollreveal.min.js"></script>
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu   = document.querySelector(".nav-menu");
+    hamburger.addEventListener("click", () => { hamburger.classList.toggle("active"); navMenu.classList.toggle("active"); });
+    document.querySelectorAll(".nav-link, .btn-prenota").forEach(n => n.addEventListener("click", () => { hamburger.classList.remove("active"); navMenu.classList.remove("active"); }));
+
+    function acceptCookies() { document.getElementById('cookie-banner').style.display='none'; try{localStorage.setItem('cookieAccepted','1');}catch(e){} }
+    try { if(localStorage.getItem('cookieAccepted')) document.getElementById('cookie-banner').style.display='none'; } catch(e){}
+
+    // Form submit (demo)
+    function submitForm() {
+        const nome     = document.getElementById('nome').value.trim();
+        const cognome  = document.getElementById('cognome').value.trim();
+        const telefono = document.getElementById('telefono').value.trim();
+        const privacy  = document.getElementById('privacy').checked;
+        if (!nome || !cognome || !telefono) { alert('Compila i campi obbligatori (Nome, Cognome, Telefono).'); return; }
+        if (!privacy) { alert('Devi accettare la Privacy Policy per procedere.'); return; }
+        document.getElementById('contact-form').style.display = 'none'

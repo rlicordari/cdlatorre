@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro Diagnostico Latorre | Diagnostica e Specialistica Ambulatoriale</title>
+    <meta name="description" content="Centro Diagnostico Latorre a Rosarno (RC): radiologia digitale, ecografia, MOC, senologia e oltre 10 branche specialistiche. Prenota subito.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- HERO HOMEPAGE --- */
+        .hero {
+            background: linear-gradient(rgba(31,42,68,0.72), rgba(31,42,68,0.62)),
+                        url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 88vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+        .hero-content h1 {
+            font-size: 3.6rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.18;
+        }
+        .hero-content h1 span { color: var(--accent-cyan); }
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 35px;
+            max-width: 680px;
+            margin-left: auto; margin-right: auto;
+            opacity: 0.92;
+        }
+        .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn-hero-outline {
+            background: transparent;
+            color: var(--white);
+            padding: 13px 32px;
+            border-radius: 50px;
+            border: 2px solid rgba(255,255,255,0.7);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .btn-hero-outline:hover { background: rgba(255,255,255,0.15); border-color: var(--white); color: var(--white); }
+
+        /* --- PERCHÉ SCEGLIERCI --- */
+        .why-section {
+            padding: 80px 5%;
+            background: var(--white);
+        }
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 24px;
+            margin-top: 0;
+        }
+        .why-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            padding: 28px 22px;
+            border-radius: 12px;
+            background: var(--light-gray);
+            transition: box-shadow 0.3s;
+        }
+        .why-card:hover { box-shadow: 0 8px 28px rgba(0,156,223,0.12); }
+        .why-icon {
+            width: 50px; height: 50px; min-width: 50px;
+            background: var(--accent-cyan);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--white); font-size: 1.3rem;
+        }
+        .why-card h4 { color: var(--primary-blue); font-size: 1rem; margin-bottom: 6px; }
+        .why-card p { color: var(--text-light); font-size: 0.88rem; }
+    </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+    <div class="contact-info">
+        <span><i class="fas fa-clock"></i> Lun–Ven 08:00–20:00 &nbsp;|&nbsp; Sab 08:00–13:00</span>
+    </div>
+    <div class="contact-info">
+        <span><i class="fas fa-phone-alt"></i> 0966.XXXXXX</span>
+        <a href="/cdn-cgi/l/email-protection#741d1a121b3417101815001b0606115a1d00"><i class="fas fa-envelope"></i> <span class="__cf_email__" data-cfemail="e0898e868fa083848c81948f929285ce8994">[email&#160;protected]</span></a>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header>
+    <div class="navbar">
+        <a href="index.html" class="logo">
+            <img src="logo.jpg" alt="Centro Diagnostico Latorre">
+        </a>
+        <ul class="nav-menu">
+            <li><a href="index.html"       class="nav-link active">Home</a></li>
+            <li><a href="chi-siamo.html"   class="nav-link">Chi Siamo</a></li>
+            <li><a href="index.html#servizi" class="nav-link">Diagnostica</a></li>
+            <li><a href="convenzioni.html" class="nav-link">Convenzioni</a></li>
+            <li><a href="faq.html"         class="nav-link">F.A.Q.</a></li>
+            <li><a href="contatti.html"    class="nav-link">Contatti</a></li>
+            <li><a href="contatti.html"    class="btn-prenota">Prenota Ora</a></li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Tecnologia e Salute<br><span>al tuo servizio</span></h1>
+        <p>Il Centro Diagnostico Latorre è il punto di riferimento per la diagnostica per immagini e le cure specialistiche nel territorio.</p>
+        <div class="hero-buttons">
+            <a href="contatti.html" class="btn-prenota" style="padding: 14px 36px; font-size: 0.97rem;">
+                <i class="fas fa-calendar-check"></i>&nbsp; Prenota un Esame
+            </a>
+            <a href="#servizi" class="btn-hero-outline">
+                <i class="fas fa-stethoscope"></i>&nbsp; I Nostri Servizi
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+    <div class="stat-item">
+        <span class="stat-number" data-target="10" data-suffix="+">0</span>
+        <span class="stat-label">Specialisti</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-number" data-target="2025">0</span>
+        <span class="stat-label">Fondato nel</span>
+    </div>
+</div>
+
+<!-- SERVIZI -->
+<section class="services-section" id="servizi">
+    <div class="section-header">
+        <h2>Le Nostre Eccellenze</h2>
+        <div class="divider"></div>
+        <p style="margin-top:14px;">Un'offerta completa di diagnostica per immagini e specialistica ambulatoriale.</p>
+    </div>
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="icon-box"><i class="fas fa-x-ray"></i></div>
+            <h3>Radiologia Digitale</h3>
+            <p>Tecnologia a bassa dose per RX tradizionali, ortopantomografie e telecranio con referto immediato.</p>
+        </div>
+        <div class="service-card">
+            <div class="icon-box"><i class="fas fa-bone"></i></div>
+            <h3>MOC (Densitometria)</h3>
+            <p>Mineralometria Ossea Computerizzata per la diagnosi e il monitoraggio dell'osteoporosi.</p>
+        </div>
+        <div class="service-card">
+            <div class="icon-box"><i class="fas fa-baby"></i></div>
+            <h3>Ecografia</h3>
+            <p>Ecografie internistiche, muscolo-tendinee, ginecologiche e ostetriche di ultima generazione.</p>
+        </div>
+        <div class="service-card">
+            <div class="icon-box"><i class="fas fa-heartbeat"></i></div>
+            <h3>Cardiologia</h3>
+            <p>Visite specialistiche, ECG, ecocardiogramma, Holter cardiaco e pressorio nelle 24 ore.</p>
+        </div>
+        <div class="service-card">
+            <div class="icon-box"><i class="fas fa-ribbon"></i></div>
+            <h3>Senologia</h3>
+            <p>Mammografia con tomosintesi 3D per la prevenzione e la salute della donna, con ecografia mammaria.</p>
+        </div>
+        <div class="service-card">
+            <div class="icon-box"><i class="fas fa-user-md"></i></div>
+            <h3>Specialistica Ambulatoriale</h3>
+            <p>Ortopedia, Endocrinologia, Reumatologia, Neurologia, Ginecologia, Dermatologia, Gastroenterologia, Urologia, Oculistica, ORL, Pneumologia e altro.</p>
+        </div>
+    </div>
+</section>
+
+<!-- PERCHÉ SCEGLIERCI -->
+<section class="why-section">
+    <div class="section-header">
+        <h2>Perché Scegliere CDL</h2>
+        <div class="divider"></div>
+    </div>
+    <div class="why-grid">
+        <div class="why-card">
+            <div class="why-icon"><i class="fas fa-clock"></i></div>
+            <div>
+                <h4>Tempi Rapidi</h4>
+                <p>Referto disponibile in giornata per la maggior parte degli esami diagnostici.</p>
+            </div>
+        </div>
+        <div class="why-card">
+            <div class="why-icon"><i class="fas fa-hand-holding-medical"></i></div>
+            <div>
+                <h4>Fondi Convenzionati</h4>
+                <p>Convenzionati con i principali fondi sanitari integrativi e assicurazioni private.</p>
+            </div>
+        </div>
+        <div class="why-card">
+            <div class="why-icon"><i class="fas fa-laptop-medical"></i></div>
+            <div>
+                <h4>Referti Online</h4>
+                <p>Accedi ai tuoi referti e immagini direttamente dall'area pazienti, senza recarti in struttura.</p>
+            </div>
+        </div>
+        <div class="why-card">
+            <div class="why-icon"><i class="fas fa-microscope"></i></div>
+            <div>
+                <h4>Tecnologia Avanzata</h4>
+                <p>Strumentazione di ultima generazione per diagnosi precise e affidabili in ogni branca specialistica.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA REFERTI ONLINE -->
+<section class="cta-section">
+    <h2>Referti Online</h2>
+    <p>Accedi al portale sicuro per visualizzare e scaricare i tuoi esami senza recarti in struttura.</p>
+    <a href="#" class="btn-white"><i class="fas fa-lock"></i>&nbsp; Area Pazienti</a>
+</section>
+
+<!-- MAPPA -->
+<section class="map-section">
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3146.1!2d15.9810!3d38.4843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sVia+Pietro+Colletta+4%2C+89025+Rosarno+RC!5e0!3m2!1sit!2sit!4v1700000000000!5m2!1sit!2sit"
+        allowfullscreen loading="lazy" title="Mappa Centro Diagnostico Latorre">
+    </iframe>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-grid">
+        <div>
+            <h4>CDL Latorre</h4>
+            <p style="margin-top:12px; line-height:1.9; font-size:0.9rem;">Il Centro Diagnostico Latorre offre prestazioni sanitarie di alta qualità con tecnologie all'avanguardia, al servizio del paziente dal 2025.</p>
+        </div>
+        <div>
+            <h4>Link Rapidi</h4>
+            <ul>
+                <li><a href="chi-siamo.html"><i class="fas fa-chevron-right"></i> Chi Siamo</a></li>
+                <li><a href="index.html#servizi"><i class="fas fa-chevron-right"></i> Prestazioni</a></li>
+                <li><a href="chi-siamo.html#team"><i class="fas fa-chevron-right"></i> Staff Medico</a></li>
+                <li><a href="convenzioni.html"><i class="fas fa-chevron-right"></i> Convenzioni</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contatti</h4>
+            <ul>
+                <li><i class="fas fa-map-marker-alt"></i> Via Pietro Colletta 4 – Rosarno (RC) 89025</li>
+                <li><i class="fas fa-phone"></i> 0966.XXXXXX</li>
+                <li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#91f8fff7fed1f2f5fdf0e5fee3e3f4bff8e5"><span class="__cf_email__" data-cfemail="afc6c1c9c0efcccbc3cedbc0ddddca81c6db">[email&#160;protected]</span></a></li>
+                <li><i class="fas fa-clock"></i> Lun–Ven 08:00–20:00</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Centro Diagnostico Latorre. Tutti i diritti riservati. &nbsp;|&nbsp; P.IVA 00000000000
+    </div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/393XXXXXXXXX?text=Salve,%20vorrei%20informazioni%20sulle%20prenotazioni" class="whatsapp-float" target="_blank" aria-label="Contattaci su WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner" class="cookie-banner">
+    <p>Questo sito utilizza cookie tecnici e di terze parti (Google Maps) per migliorare l'esperienza utente.</p>
+    <button onclick="acceptCookies()" class="btn-cookie">Ho capito</button>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://unpkg.com/scrollreveal@4/dist/scrollreveal.min.js"></script>
+<script>
+    // Hamburger
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu   = document.querySelector(".nav-menu");
+    hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+    });
+    document.querySelectorAll(".nav-link, .btn-prenota").forEach(n =>
+        n.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+        })
+    );
+
+    // Cookie banner
+    function acceptCookies() {
+        document.getElementById('cookie-banner').style.display = 'none';
+        try { localStorage.setItem('cookieAccepted', '1'); } catch(e){}
+    }
+    try { if (localStorage.getItem('cookieAccepted')) document.getElementById('cookie-banner').style.display = 'none'; } catch(e){}
+
+    // ScrollReveal
+    ScrollReveal().reveal('.hero-content',  { delay: 200, distance: '50px', origin: 'bottom' });
+    ScrollReveal().reveal('.stats-strip .stat-item', { interval: 120, distance: '30px', origin: 'bottom' });
+    ScrollReveal().reveal('.section-header', { delay: 150, distance: '30px', origin: 'top' });
+    ScrollReveal().reveal('.service-card',  { interval: 120, distance: '40px', origin: 'bottom' });
+    ScrollReveal().reveal('.why-card',      { interval: 100, distance: '30px', origin: 'left' });
+    ScrollReveal().reveal('.cta-section',   { delay: 150, scale: 0.95 });
+
+    // Counter animazione numeri
+    function animateCounters() {
+        document.querySelectorAll('.stat-number[data-target]').forEach(el => {
+            const target = +el.getAttribute('data-target');
+            const duration = 1800;
+            const start = performance.now();
+            function update(now) {
+                const progress = Math.min((now - start) / duration, 1);
+                const ease = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.floor(ease * target).toLocaleString('it-IT');
+                if (progress < 1) requestAnimationFrame(update);
+                else el.textContent = target.toLocaleString('it-IT');
+            }
+            requestAni
