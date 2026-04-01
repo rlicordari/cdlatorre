@@ -301,10 +301,10 @@
 
     // Cookie banner
     function acceptCookies() {
-        document.getElementById('cookie-banner').style.display = 'none';
+        document.getElementById('cookie-banner').style.setProperty('display','none','important');
         try { localStorage.setItem('cookieAccepted', '1'); } catch(e){}
     }
-    try { if (localStorage.getItem('cookieAccepted')) document.getElementById('cookie-banner').style.display = 'none'; } catch(e){}
+    try { if (localStorage.getItem('cookieAccepted')) document.getElementById('cookie-banner').style.setProperty('display','none','important'); } catch(e){}
 
     // ScrollReveal
     ScrollReveal().reveal('.hero-content',  { delay: 200, distance: '50px', origin: 'bottom' });
