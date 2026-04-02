@@ -255,6 +255,7 @@ footer ul li i { margin-right: 8px; color: var(--accent-cyan); width: 16px; }
 .whatsapp-float:hover { background-color: #128C7E; transform: scale(1.12); color: #fff; }
 
 /* --- 12. COOKIE BANNER --- */
+.cookie-banner.nascosto { display: none !important; }
 .cookie-banner {
     position: fixed; bottom: 0; left: 0; width: 100%;
     background: rgba(21, 27, 43, 0.97);
