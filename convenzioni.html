@@ -302,10 +302,6 @@
 <a href="https://wa.me/393XXXXXXXXX?text=Salve,%20vorrei%20informazioni%20sulle%20prenotazioni" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i>
 </a>
-<div id="cookie-banner" class="cookie-banner">
-    <p>Questo sito utilizza cookie tecnici e di terze parti per migliorare l'esperienza utente.</p>
-    <button onclick="acceptCookies()" class="btn-cookie">Ho capito</button>
-</div>
 
 <script src="https://unpkg.com/scrollreveal@4/dist/scrollreveal.min.js"></script>
 <script>
@@ -313,8 +309,5 @@
     const navMenu   = document.querySelector(".nav-menu");
     hamburger.addEventListener("click", () => { hamburger.classList.toggle("active"); navMenu.classList.toggle("active"); });
     document.querySelectorAll(".nav-link, .btn-prenota").forEach(n => n.addEventListener("click", () => { hamburger.classList.remove("active"); navMenu.classList.remove("active"); }));
-
-    function acceptCookies() { var b=document.getElementById('cookie-banner');if(b)b.remove();try{localStorage.setItem('cookieAccepted','1');}catch(e){} }
-    try{if(localStorage.getItem('cookieAccepted')){var b=document.getElementById('cookie-banner');if(b)b.remove();}}catch(e){}
 
     ScrollReveal().reveal('.page-her

@@ -188,7 +188,7 @@
 <!-- SERVIZI -->
 <section class="services-section" id="servizi">
     <div class="section-header">
-        <h2>Le Nostre Eccellenze</h2>
+        <h2>I Nostri Servizi</h2>
         <div class="divider"></div>
         <p style="margin-top:14px;">Un'offerta completa di diagnostica per immagini e specialistica ambulatoriale.</p>
     </div>
@@ -209,19 +209,14 @@
             <p>Ecografie internistiche, muscolo-tendinee, ginecologiche e ostetriche di ultima generazione.</p>
         </div>
         <div class="service-card">
+            <div class="icon-box"><i class="fas fa-stethoscope"></i></div>
+            <h3>Visite Specialistiche</h3>
+            <p>Cardiologia, Ortopedia, Neurologia, Endocrinologia, Reumatologia, Dermatologia, Senologia, Medicina Estetica e molte altre branche specialistiche.</p>
+        </div>
+        <div class="service-card">
             <div class="icon-box"><i class="fas fa-heartbeat"></i></div>
-            <h3>Cardiologia</h3>
-            <p>Visite specialistiche, ECG, ecocardiogramma, Holter cardiaco e pressorio nelle 24 ore.</p>
-        </div>
-        <div class="service-card">
-            <div class="icon-box"><i class="fas fa-ribbon"></i></div>
-            <h3>Senologia</h3>
-            <p>Mammografia con tomosintesi 3D per la prevenzione e la salute della donna, con ecografia mammaria.</p>
-        </div>
-        <div class="service-card">
-            <div class="icon-box"><i class="fas fa-user-md"></i></div>
-            <h3>Specialistica Ambulatoriale</h3>
-            <p>Ortopedia, Endocrinologia, Reumatologia, Neurologia, Ginecologia, Dermatologia, Gastroenterologia, Urologia, Oculistica, ORL, Pneumologia e altro.</p>
+            <h3>Check-Up e Prevenzione</h3>
+            <p>Pacchetti personalizzati di screening e prevenzione per monitorare la salute e individuare precocemente eventuali patologie.</p>
         </div>
     </div>
 </section>
@@ -334,11 +329,6 @@
     <i class="fab fa-whatsapp"></i>
 </a>
 
-<!-- COOKIE BANNER -->
-<div id="cookie-banner" class="cookie-banner">
-    <p>Questo sito utilizza cookie tecnici e di terze parti (Google Maps) per migliorare l'esperienza utente.</p>
-    <button onclick="acceptCookies()" class="btn-cookie">Ho capito</button>
-</div>
 
 <script src="https://unpkg.com/scrollreveal@4/dist/scrollreveal.min.js"></script>
 <script>
@@ -355,14 +345,6 @@
             navMenu.classList.remove("active");
         })
     );
-
-    // Cookie banner
-    function acceptCookies() {
-        var b = document.getElementById('cookie-banner');
-        if (b) b.remove();
-        try { localStorage.setItem('cookieAccepted', '1'); } catch(e){}
-    }
-    try { if (localStorage.getItem('cookieAccepted')) { var b = document.getElementById('cookie-banner'); if (b) b.remove(); } } catch(e){}
 
     // ScrollReveal
     ScrollReveal().reveal('.hero-content',  { delay: 200, distance: '50px', origin: 'bottom' });
