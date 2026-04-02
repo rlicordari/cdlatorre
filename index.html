@@ -358,10 +358,11 @@
 
     // Cookie banner
     function acceptCookies() {
-        document.getElementById('cookie-banner').classList.add('nascosto');
+        var b = document.getElementById('cookie-banner');
+        if (b) b.remove();
         try { localStorage.setItem('cookieAccepted', '1'); } catch(e){}
     }
-    try { if (localStorage.getItem('cookieAccepted')) document.getElementById('cookie-banner').classList.add('nascosto'); } catch(e){}
+    try { if (localStorage.getItem('cookieAccepted')) { var b = document.getElementById('cookie-banner'); if (b) b.remove(); } } catch(e){}
 
     // ScrollReveal
     ScrollReveal().reveal('.hero-content',  { delay: 200, distance: '50px', origin: 'bottom' });
