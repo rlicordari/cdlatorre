@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* COME ACCEDERE */
         .info-card {
             background: var(--white);
             padding: 38px 40px;
@@ -25,93 +24,31 @@
         .info-card h3 { color: var(--primary-blue); font-size: 1.45rem; margin-bottom: 12px; }
         .info-card p { color: var(--text-light); margin-bottom: 14px; }
         .info-steps { margin-top: 16px; }
-        .info-steps li {
-            display: flex; align-items: flex-start; gap: 12px;
-            color: var(--text-dark); font-size: 0.93rem;
-            margin-bottom: 12px; line-height: 1.6;
-        }
-        .info-steps li .step-num {
-            min-width: 28px; height: 28px;
-            background: var(--accent-cyan); color: var(--white);
-            border-radius: 50%; font-weight: 700; font-size: 0.85rem;
-            display: flex; align-items: center; justify-content: center;
-        }
+        .info-steps li { display: flex; align-items: flex-start; gap: 12px; color: var(--text-dark); font-size: 0.93rem; margin-bottom: 12px; line-height: 1.6; }
+        .info-steps li .step-num { min-width: 28px; height: 28px; background: var(--accent-cyan); color: var(--white); border-radius: 50%; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }
 
-        /* PARTNER GRID */
         .partners-section { padding: 80px 5%; }
         .partners-container { max-width: 1050px; margin: 0 auto; }
         .partner-category { margin-bottom: 50px; }
-        .partner-category-title {
-            color: var(--primary-blue); font-size: 1.15rem;
-            margin-bottom: 22px; display: flex; align-items: center; gap: 10px;
-        }
-        .partner-category-title::after {
-            content: ''; flex: 1; height: 1px;
-            background: #e0e0e0; margin-left: 10px;
-        }
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
-        .partner-box {
-            background: var(--white);
-            border: 1.5px solid #e8eef4;
-            padding: 26px 18px;
-            text-align: center;
-            border-radius: 12px;
-            transition: all 0.35s ease;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.03);
-            cursor: default;
-        }
-        .partner-box:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 18px 35px rgba(0,0,0,0.09);
-            border-color: var(--accent-cyan);
-        }
-        .partner-logo-placeholder {
-            width: 110px; height: 50px;
-            background: linear-gradient(135deg, #e8eef5, #dae3ed);
-            border-radius: 8px;
-            margin: 0 auto 14px;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 700; font-size: 0.9rem;
-            color: var(--primary-blue); letter-spacing: 0.5px;
-            transition: 0.35s;
-        }
-        .partner-box:hover .partner-logo-placeholder {
-            background: linear-gradient(135deg, rgba(0,156,223,0.15), rgba(0,118,176,0.1));
-            color: var(--accent-cyan);
-        }
-        .partner-badge {
-            font-size: 0.75rem; color: var(--accent-cyan);
-            font-weight: 700; text-transform: uppercase;
-            letter-spacing: 1px; margin: 0;
-        }
+        .partner-category-title { color: var(--primary-blue); font-size: 1.15rem; margin-bottom: 22px; display: flex; align-items: center; gap: 10px; }
+        .partner-category-title::after { content: ''; flex: 1; height: 1px; background: #e0e0e0; margin-left: 10px; }
+        .partners-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+        .partner-box { background: var(--white); border: 1.5px solid #e8eef4; padding: 26px 18px; text-align: center; border-radius: 12px; transition: all 0.35s ease; box-shadow: 0 3px 12px rgba(0,0,0,0.03); cursor: default; }
+        .partner-box:hover { transform: translateY(-6px); box-shadow: 0 18px 35px rgba(0,0,0,0.09); border-color: var(--accent-cyan); }
+        .partner-logo-placeholder { width: 110px; height: 50px; background: linear-gradient(135deg, #e8eef5, #dae3ed); border-radius: 8px; margin: 0 auto 14px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; color: var(--primary-blue); letter-spacing: 0.5px; transition: 0.35s; }
+        .partner-box:hover .partner-logo-placeholder { background: linear-gradient(135deg, rgba(0,156,223,0.15), rgba(0,118,176,0.1)); color: var(--accent-cyan); }
+        .partner-badge { font-size: 0.75rem; color: var(--accent-cyan); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 0; }
         .badge-indiretta { color: #f39c12; }
-        .badge-ssn { color: #27ae60; }
 
-        /* LEGENDA */
-        .legenda {
-            display: flex; gap: 24px; flex-wrap: wrap;
-            margin-bottom: 36px;
-        }
+        .legenda { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 36px; }
         .legenda-item { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; color: var(--text-light); }
         .legenda-dot { width: 10px; height: 10px; border-radius: 50%; }
 
-        /* CTA FINALE */
-        .conv-cta {
-            text-align: center; margin-top: 50px;
-            padding: 36px 28px;
-            background: #eef6fb;
-            border-radius: 14px;
-            border: 1px solid #cce4f3;
-        }
+        .conv-cta { text-align: center; margin-top: 50px; padding: 36px 28px; background: #eef6fb; border-radius: 14px; border: 1px solid #cce4f3; }
         .conv-cta p { font-size: 1.05rem; margin-bottom: 20px; color: var(--text-dark); }
 
         @media (max-width: 768px) {
             .info-card { flex-direction: column; }
-            .info-card .info-icon { margin-bottom: 10px; }
         }
     </style>
 </head>
@@ -132,12 +69,20 @@
 <header>
     <div class="navbar">
         <a href="index.html" class="logo">
-            <img src="logo.png" alt="Centro Diagnostico Latorre">
+            <img src="logo%20intero.jpg" alt="Centro Diagnostico Latorre">
         </a>
         <ul class="nav-menu">
             <li><a href="index.html"         class="nav-link">Home</a></li>
             <li><a href="chi-siamo.html"     class="nav-link">Chi Siamo</a></li>
-            <li><a href="index.html#servizi" class="nav-link">Diagnostica</a></li>
+            <li class="nav-dropdown">
+                <a href="#" class="nav-link nav-dropdown-toggle">Servizi <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:3px;vertical-align:middle;"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="radiologia.html">Radiologia Digitale</a></li>
+                    <li><a href="moc.html">MOC</a></li>
+                    <li><a href="ecografia.html">Ecografia</a></li>
+                    <li><a href="visite-specialistiche.html">Visite Specialistiche</a></li>
+                </ul>
+            </li>
             <li><a href="convenzioni.html"   class="nav-link active">Convenzioni</a></li>
             <li><a href="faq.html"           class="nav-link">F.A.Q.</a></li>
             <li><a href="contatti.html"      class="nav-link">Contatti</a></li>
@@ -161,101 +106,53 @@
 <section class="partners-section" style="background: #fcfcfc;">
     <div class="partners-container">
 
-        <!-- COME ACCEDERE -->
         <div class="info-card">
             <div class="info-icon"><i class="fas fa-file-medical-alt"></i></div>
             <div style="flex:1">
                 <h3>Come accedere alle convenzioni</h3>
                 <p>Per usufruire delle tariffe agevolate o del rimborso diretto, segui questi passaggi e ricorda di presentare tutta la documentazione necessaria all'accettazione.</p>
                 <ul class="info-steps">
-                    <li>
-                        <span class="step-num">1</span>
-                        <span>Verifica che la tua polizza o fondo sia tra i nostri convenzionati nell'elenco sottostante.</span>
-                    </li>
-                    <li>
-                        <span class="step-num">2</span>
-                        <span>Per le convenzioni <strong>dirette</strong>, contattaci prima della prenotazione per richiedere l'autorizzazione alla centrale operativa del tuo fondo.</span>
-                    </li>
-                    <li>
-                        <span class="step-num">3</span>
-                        <span>Porta con te il <strong>tesserino sanitario</strong> o numero di polizza attivo e la <strong>prescrizione medica</strong> con indicazione della patologia.</span>
-                    </li>
-                    <li>
-                        <span class="step-num">4</span>
-                        <span>Per le convenzioni <strong>indirette</strong>, salda in struttura e presenta la ricevuta alla tua assicurazione per il rimborso.</span>
-                    </li>
+                    <li><span class="step-num">1</span><span>Verifica che la tua polizza o fondo sia tra i nostri convenzionati nell'elenco sottostante.</span></li>
+                    <li><span class="step-num">2</span><span>Per le convenzioni <strong>dirette</strong>, contattaci prima della prenotazione per richiedere l'autorizzazione alla centrale operativa del tuo fondo.</span></li>
+                    <li><span class="step-num">3</span><span>Porta con te il <strong>tesserino sanitario</strong> o numero di polizza attivo e la <strong>prescrizione medica</strong> con indicazione della patologia.</span></li>
+                    <li><span class="step-num">4</span><span>Per le convenzioni <strong>indirette</strong>, salda in struttura e presenta la ricevuta alla tua assicurazione per il rimborso.</span></li>
                 </ul>
             </div>
         </div>
 
-        <!-- TITOLO PARTNER -->
         <h2 class="section-header" style="color: var(--primary-blue); font-size: 2rem; margin-bottom: 16px;">I Nostri Partner</h2>
         <div class="divider" style="margin-bottom: 30px;"></div>
 
-        <!-- LEGENDA -->
         <div class="legenda">
             <div class="legenda-item"><div class="legenda-dot" style="background:#009CDF;"></div> Convenzione Diretta</div>
             <div class="legenda-item"><div class="legenda-dot" style="background:#f39c12;"></div> Convenzione Indiretta</div>
         </div>
 
-        <!-- FONDI SANITARI INTEGRATIVI -->
         <div class="partner-category">
             <h3 class="partner-category-title"><i class="fas fa-hand-holding-medical" style="color:var(--accent-cyan)"></i> Fondi Sanitari Integrativi</h3>
             <div class="partners-grid">
-                <div class="partner-box">
-                    <div class="partner-logo-placeholder">Unisalute</div>
-                    <p class="partner-badge">Diretta</p>
-                </div>
-                <div class="partner-box">
-                    <div class="partner-logo-placeholder">FASI</div>
-                    <p class="partner-badge">Diretta</p>
-                </div>
-                <div class="partner-box">
-                    <div class="partner-logo-placeholder">Fasdac</div>
-                    <p class="partner-badge">Diretta</p>
-                </div>
-                <div class="partner-box">
-                    <div class="partner-logo-placeholder">Previmedical</div>
-                    <p class="partner-badge">Diretta</p>
-                </div>
-                <div class="partner-box">
-                    <div class="partner-logo-placeholder">Metasalute</div>
-                    <p class="partner-badge badge-indiretta">Indiretta</p>
-                </div>
-                <div class="partner-box">
-                    <div class="partner-logo-placeholder">Welfare</div>
-                    <p class="partner-badge badge-indiretta">Indiretta</p>
-                </div>
+                <div class="partner-box"><div class="partner-logo-placeholder">Unisalute</div><p class="partner-badge">Diretta</p></div>
+                <div class="partner-box"><div class="partner-logo-placeholder">FASI</div><p class="partner-badge">Diretta</p></div>
+                <div class="partner-box"><div class="partner-logo-placeholder">Fasdac</div><p class="partner-badge">Diretta</p></div>
+                <div class="partner-box"><div class="partner-logo-placeholder">Previmedical</div><p class="partner-badge">Diretta</p></div>
+                <div class="partner-box"><div class="partner-logo-placeholder">Metasalute</div><p class="partner-badge badge-indiretta">Indiretta</p></div>
+                <div class="partner-box"><div class="partner-logo-placeholder">Welfare</div><p class="partner-badge badge-indiretta">Indiretta</p></div>
             </div>
         </div>
 
-        <!-- ASSICURAZIONI -->
         <div class="partner-category">
             <h3 class="partner-category-title"><i class="fas fa-shield-alt" style="color:var(--accent-cyan)"></i> Compagnie Assicurative</h3>
             <div class="partners-grid">
-                <div class="partner-box">
-                    <div class="partner-logo-placeholder">Generali</div>
-                    <p class="partner-badge badge-indiretta">Indiretta</p>
-                </div>
-                <div class="partner-box">
-                    <div class="partner-logo-placeholder">Allianz</div>
-                    <p class="partner-badge badge-indiretta">Indiretta</p>
-                </div>
-                <div class="partner-box">
-                    <div class="partner-logo-placeholder">AXA</div>
-                    <p class="partner-badge badge-indiretta">Indiretta</p>
-                </div>
-                <div class="partner-box">
-                    <div class="partner-logo-placeholder">Zurich</div>
-                    <p class="partner-badge badge-indiretta">Indiretta</p>
-                </div>
+                <div class="partner-box"><div class="partner-logo-placeholder">Generali</div><p class="partner-badge badge-indiretta">Indiretta</p></div>
+                <div class="partner-box"><div class="partner-logo-placeholder">Allianz</div><p class="partner-badge badge-indiretta">Indiretta</p></div>
+                <div class="partner-box"><div class="partner-logo-placeholder">AXA</div><p class="partner-badge badge-indiretta">Indiretta</p></div>
+                <div class="partner-box"><div class="partner-logo-placeholder">Zurich</div><p class="partner-badge badge-indiretta">Indiretta</p></div>
             </div>
         </div>
 
-        <!-- CTA FINALE -->
         <div class="conv-cta">
             <p><i class="far fa-question-circle" style="color:var(--accent-cyan); margin-right:8px;"></i>Non trovi la tua assicurazione nell'elenco? Contattaci, potremmo essere ugualmente convenzionati.</p>
-            <a href="https://wa.me/393XXXXXXXXX?text=Salve,%20vorrei%20verificare%20la%20convenzione%20con%20la%20mia%20assicurazione" class="btn-prenota" style="background:#25d366; border-color:#25d366; display:inline-flex; align-items:center; gap:10px;">
+            <a href="https://wa.me/390966378308?text=Salve,%20vorrei%20verificare%20la%20convenzione%20con%20la%20mia%20assicurazione" class="btn-prenota" style="background:#25d366; border-color:#25d366; display:inline-flex; align-items:center; gap:10px;">
                 <i class="fab fa-whatsapp"></i> Verifica su WhatsApp
             </a>
             &nbsp;&nbsp;
@@ -271,23 +168,24 @@
 <footer>
     <div class="footer-grid">
         <div>
-            <h4>Centro Diagnostico Latorre</h4>
+            <h4>CENTRO DIAGNOSTICO LATORRE S.R.L.</h4>
             <p style="margin-top:12px; line-height:1.9; font-size:0.9rem;">Il Centro Diagnostico Latorre offre prestazioni sanitarie di alta qualità con tecnologie all'avanguardia, al servizio del paziente dal 2025.</p>
         </div>
         <div>
             <h4>Link Rapidi</h4>
             <ul>
                 <li><a href="chi-siamo.html"><i class="fas fa-chevron-right"></i> Chi Siamo</a></li>
-                <li><a href="index.html#servizi"><i class="fas fa-chevron-right"></i> Prestazioni</a></li>
-                <li><a href="chi-siamo.html#team"><i class="fas fa-chevron-right"></i> Staff Medico</a></li>
+                <li><a href="radiologia.html"><i class="fas fa-chevron-right"></i> Radiologia Digitale</a></li>
+                <li><a href="moc.html"><i class="fas fa-chevron-right"></i> MOC</a></li>
+                <li><a href="ecografia.html"><i class="fas fa-chevron-right"></i> Ecografia</a></li>
+                <li><a href="visite-specialistiche.html"><i class="fas fa-chevron-right"></i> Visite Specialistiche</a></li>
                 <li><a href="convenzioni.html"><i class="fas fa-chevron-right"></i> Convenzioni</a></li>
-                <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
             </ul>
         </div>
         <div>
             <h4>Contatti</h4>
             <ul>
-                <li><i class="fas fa-map-marker-alt"></i> Via Pietro Colletta 4 – Rosarno (RC) 89025</li>
+                <li><i class="fas fa-map-marker-alt"></i> Via Pietro Colletta 2 – Rosarno (RC) 89025</li>
                 <li><i class="fas fa-phone"></i> 0966 378308</li>
                 <li><i class="fas fa-envelope"></i> <a href="mailto:info@centrodiagnosticolatorre.it">info@centrodiagnosticolatorre.it</a></li>
                 <li><i class="fas fa-clock"></i> Lun–Ven 08:00–20:00</li>
@@ -295,11 +193,11 @@
         </div>
     </div>
     <div class="footer-bottom">
-        &copy; 2026 Centro Diagnostico Latorre. Tutti i diritti riservati. &nbsp;|&nbsp; P.IVA 00000000000
+        &copy; 2026 Centro Diagnostico Latorre S.r.l. Tutti i diritti riservati. &nbsp;|&nbsp; P.IVA 03251610808
     </div>
 </footer>
 
-<a href="https://wa.me/393XXXXXXXXX?text=Salve,%20vorrei%20informazioni%20sulle%20prenotazioni" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+<a href="https://wa.me/390966378308?text=Salve,%20vorrei%20informazioni%20sulle%20prenotazioni" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i>
 </a>
 
@@ -308,6 +206,22 @@
     const hamburger = document.querySelector(".hamburger");
     const navMenu   = document.querySelector(".nav-menu");
     hamburger.addEventListener("click", () => { hamburger.classList.toggle("active"); navMenu.classList.toggle("active"); });
-    document.querySelectorAll(".nav-link, .btn-prenota").forEach(n => n.addEventListener("click", () => { hamburger.classList.remove("active"); navMenu.classList.remove("active"); }));
+    document.querySelectorAll(".nav-link:not(.nav-dropdown-toggle), .btn-prenota").forEach(n =>
+        n.addEventListener("click", () => { hamburger.classList.remove("active"); navMenu.classList.remove("active"); })
+    );
+    document.querySelectorAll('.dropdown-menu a').forEach(n =>
+        n.addEventListener("click", () => { hamburger.classList.remove("active"); navMenu.classList.remove("active"); })
+    );
+    document.querySelectorAll('.nav-dropdown-toggle').forEach(toggle => {
+        toggle.addEventListener('click', e => {
+            if (window.innerWidth <= 900) { e.preventDefault(); toggle.nextElementSibling.classList.toggle('open'); }
+        });
+    });
 
-    ScrollReveal().reveal('.page-her
+    ScrollReveal().reveal('.page-hero-content', { delay: 200, distance: '50px', origin: 'bottom' });
+    ScrollReveal().reveal('.info-card',    { delay: 200, distance: '30px', origin: 'bottom' });
+    ScrollReveal().reveal('.partner-box',  { interval: 80,  distance: '20px', origin: 'bottom' });
+    ScrollReveal().reveal('.conv-cta',     { delay: 150, distance: '30px', origin: 'bottom' });
+</script>
+</body>
+</html>

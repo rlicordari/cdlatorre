@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visite Specialistiche | Centro Diagnostico Latorre</title>
+    <meta name="description" content="Visite specialistiche al Centro Diagnostico Latorre di Rosarno (RC): cardiologia, ortopedia, neurologia, dermatologia, endocrinologia e molto altro. Prenota al 0966 378308.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        .intro-section {
+            padding: 80px 5%;
+            background: var(--white);
+            text-align: center;
+        }
+        .intro-section p {
+            max-width: 720px;
+            margin: 0 auto;
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .specialita-section {
+            padding: 80px 5%;
+            background: var(--light-gray);
+        }
+        .specialita-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .specialita-card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 32px 24px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--accent-cyan);
+        }
+        .specialita-card:hover { transform: translateY(-6px); box-shadow: 0 18px 35px rgba(0,0,0,0.09); }
+        .spec-icon {
+            width: 64px; height: 64px;
+            background: linear-gradient(135deg, var(--accent-cyan), #0076b0);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 18px;
+            color: var(--white); font-size: 1.6rem;
+        }
+        .specialita-card h3 { color: var(--primary-blue); font-size: 1.05rem; margin-bottom: 10px; }
+        .specialita-card p  { color: var(--text-light); font-size: 0.87rem; line-height: 1.6; }
+
+        .info-box {
+            max-width: 900px;
+            margin: 60px auto 0;
+            background: var(--primary-blue);
+            border-radius: 16px;
+            padding: 40px 48px;
+            color: var(--white);
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        .info-box i { font-size: 2.8rem; color: var(--accent-cyan); min-width: 50px; }
+        .info-box h4 { font-size: 1.2rem; margin-bottom: 10px; }
+        .info-box p  { font-size: 0.92rem; opacity: 0.88; line-height: 1.7; }
+
+        @media (max-width: 768px) {
+            .info-box { flex-direction: column; padding: 28px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+    <div class="contact-info">
+        <span><i class="fas fa-clock"></i> Lun–Ven 08:00–20:00 &nbsp;|&nbsp; Sab 08:00–13:00</span>
+    </div>
+    <div class="contact-info">
+        <span><i class="fas fa-phone-alt"></i> 0966 378308</span>
+        <a href="mailto:info@centrodiagnosticolatorre.it"><i class="fas fa-envelope"></i> info@centrodiagnosticolatorre.it</a>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header>
+    <div class="navbar">
+        <a href="index.html" class="logo">
+            <img src="logo%20intero.jpg" alt="Centro Diagnostico Latorre">
+        </a>
+        <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="chi-siamo.html" class="nav-link">Chi Siamo</a></li>
+            <li class="nav-dropdown">
+                <a href="#" class="nav-link nav-dropdown-toggle active">Servizi <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:3px;vertical-align:middle;"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="radiologia.html">Radiologia Digitale</a></li>
+                    <li><a href="moc.html">MOC</a></li>
+                    <li><a href="ecografia.html">Ecografia</a></li>
+                    <li><a href="visite-specialistiche.html">Visite Specialistiche</a></li>
+                </ul>
+            </li>
+            <li><a href="convenzioni.html" class="nav-link">Convenzioni</a></li>
+            <li><a href="faq.html" class="nav-link">F.A.Q.</a></li>
+            <li><a href="contatti.html" class="nav-link">Contatti</a></li>
+            <li><a href="contatti.html" class="btn-prenota">Prenota Ora</a></li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+    </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="background-image: url('Immagini/ingresso.jpg');">
+    <div class="page-hero-content">
+        <h1>Visite Specialistiche</h1>
+        <p>Oltre 18 specialisti al tuo servizio in un unico centro.</p>
+    </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro-section">
+    <div class="section-header">
+        <h2>Il Nostro Poliambulatorio</h2>
+        <div class="divider"></div>
+    </div>
+    <p>Il Centro Diagnostico Latorre è un poliambulatorio specialistico che riunisce in un unico luogo le principali branche della medicina moderna. I nostri specialisti, selezionati per la loro esperienza e formazione, lavorano in sinergia con il reparto diagnostico per garantire un percorso di cura completo e coordinato, senza code e senza sprechi di tempo.</p>
+</section>
+
+<!-- SPECIALITÀ -->
+<section class="specialita-section">
+    <div class="section-header">
+        <h2>Le Nostre Specialità</h2>
+        <div class="divider"></div>
+    </div>
+    <div class="specialita-grid">
+        <div class="specialita-card">
+            <div class="spec-icon"><i class="fas fa-heart"></i></div>
+            <h3>Cardiologia</h3>
+            <p>Visita cardiologica, elettrocardiogramma, ecocardiogramma, Holter cardiaco e pressorio.</p>
+        </div>
+        <div class="specialita-card">
+            <div class="spec-icon"><i class="fas fa-bone"></i></div>
+            <h3>Ortopedia</h3>
+            <p>Patologie del sistema muscolo-scheletrico, rachide, articolazioni e traumatologia.</p>
+        </div>
+        <div class="specialita-card">
+            <div class="spec-icon"><i class="fas fa-brain"></i></div>
+            <h3>Neurologia</h3>
+            <p>Diagnosi e cura di cefalee, vertigini, disturbi del movimento e patologie del sistema nervoso.</p>
+        </div>
+        <div class="specialita-card">
+            <div class="spec-icon"><i class="fas fa-flask"></i></div>
+            <h3>Endocrinologia</h3>
+            <p>Disturbi della tiroide, diabete, patologie surrenali e dell'asse ipotalamo-ipofisario.</p>
+        </div>
+        <div class="specialita-card">
+            <div class="spec-icon"><i class="fas fa-ribbon"></i></div>
+            <h3>Senologia</h3>
+            <p>Prevenzione, diagnosi e follow-up delle patologie della mammella, integrata alla diagnostica per immagini.</p>
+        </div>
+        <div class="specialita-card">
+            <div class="spec-icon"><i class="fas fa-hand-dots"></i></div>
+            <h3>Dermatologia</h3>
+            <p>Diagnosi e trattamento di patologie cutanee, dermatoscopia dei nei e mappatura dei melanociti.</p>
+        </div>
+        <div class="specialita-card">
+            <div class="spec-icon"><i class="fas fa-person-cane"></i></div>
+            <h3>Reumatologia</h3>
+            <p>Artrite reumatoide, lupus, connettiviti, fibromialgia e patologie infiammatorie articolari.</p>
+        </div>
+        <div class="specialita-card">
+            <div class="spec-icon"><i class="fas fa-venus"></i></div>
+            <h3>Ginecologia</h3>
+            <p>Visita ginecologica, Pap test, colposcopia, ecografia ostetrica e follow-up in gravidanza.</p>
+        </div>
+        <div class="specialita-card">
+            <div class="spec-icon"><i class="fas fa-eye"></i></div>
+            <h3>Oculistica</h3>
+            <p>Esame del visus, tonometria, fundus oculi e valutazione del segmento anteriore e posteriore.</p>
+        </div>
+        <div class="specialita-card">
+            <div class="spec-icon"><i class="fas fa-lungs"></i></div>
+            <h3>Pneumologia</h3>
+            <p>Patologie respiratorie croniche e acute, asma, BPCO, spirometria e gestione delle allergie respiratorie.</p>
+        </div>
+        <div class="specialita-card">
+            <div class="spec-icon"><i class="fas fa-droplet"></i></div>
+            <h3>Urologia</h3>
+            <p>Patologie delle vie urinarie, ipertrofia prostatica, calcolosi renale e disfunzioni sessuali maschili.</p>
+        </div>
+        <div class="specialita-card">
+            <div class="spec-icon"><i class="fas fa-spa"></i></div>
+            <h3>Medicina Estetica</h3>
+            <p>Trattamenti estetici medici per il ringiovanimento cutaneo, trattamento delle rughe e rimodellamento corporeo.</p>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <i class="fas fa-info-circle"></i>
+        <div>
+            <h4>Hai bisogno di una specialità non elencata?</h4>
+            <p>Il nostro team è in continua crescita. Contattaci al <strong>0966 378308</strong> o via WhatsApp per verificare la disponibilità di ulteriori specializzazioni o per orientarti verso il professionista più adatto alle tue esigenze.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <h2>Prenota la tua Visita Specialistica</h2>
+    <p>Tempi di attesa ridotti, specialisti di eccellenza, un'unica struttura moderna.</p>
+    <a href="contatti.html" class="btn-white"><i class="fas fa-calendar-check"></i>&nbsp; Prenota Ora</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-grid">
+        <div>
+            <h4>CENTRO DIAGNOSTICO LATORRE S.R.L.</h4>
+            <p style="margin-top:12px; line-height:1.9; font-size:0.9rem;">Il Centro Diagnostico Latorre offre prestazioni sanitarie di alta qualità con tecnologie all'avanguardia, al servizio del paziente dal 2025.</p>
+        </div>
+        <div>
+            <h4>Link Rapidi</h4>
+            <ul>
+                <li><a href="chi-siamo.html"><i class="fas fa-chevron-right"></i> Chi Siamo</a></li>
+                <li><a href="radiologia.html"><i class="fas fa-chevron-right"></i> Radiologia Digitale</a></li>
+                <li><a href="moc.html"><i class="fas fa-chevron-right"></i> MOC</a></li>
+                <li><a href="ecografia.html"><i class="fas fa-chevron-right"></i> Ecografia</a></li>
+                <li><a href="visite-specialistiche.html"><i class="fas fa-chevron-right"></i> Visite Specialistiche</a></li>
+                <li><a href="convenzioni.html"><i class="fas fa-chevron-right"></i> Convenzioni</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contatti</h4>
+            <ul>
+                <li><i class="fas fa-map-marker-alt"></i> Via Pietro Colletta 2 – Rosarno (RC) 89025</li>
+                <li><i class="fas fa-phone"></i> 0966 378308</li>
+                <li><i class="fas fa-envelope"></i> <a href="mailto:info@centrodiagnosticolatorre.it">info@centrodiagnosticolatorre.it</a></li>
+                <li><i class="fas fa-clock"></i> Lun–Ven 08:00–20:00</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Centro Diagnostico Latorre S.r.l. Tutti i diritti riservati. &nbsp;|&nbsp; P.IVA 03251610808
+    </div>
+</footer>
+
+<a href="https://wa.me/390966378308?text=Salve,%20vorrei%20informazioni%20sulle%20prenotazioni" class="whatsapp-float" target="_blank" aria-label="Contattaci su WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script src="https://unpkg.com/scrollreveal@4/dist/scrollreveal.min.js"></script>
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu   = document.querySelector(".nav-menu");
+    hamburger.addEventListener("click", () => { hamburger.classList.toggle("active"); navMenu.classList.toggle("active"); });
+    document.querySelectorAll(".nav-link:not(.nav-dropdown-toggle), .btn-prenota").forEach(n =>
+        n.addEventListener("click", () => { hamburger.classList.remove("active"); navMenu.classList.remove("active"); })
+    );
+    document.querySelectorAll('.dropdown-menu a').forEach(n =>
+        n.addEventListener("click", () => { hamburger.classList.remove("active"); navMenu.classList.remove("active"); })
+    );
+    document.querySelectorAll('.nav-dropdown-toggle').forEach(toggle => {
+        toggle.addEventListener('click', e => {
+            if (window.innerWidth <= 900) { e.preventDefault(); toggle.nextElementSibling.classList.toggle('open'); }
+        });
+    });
+
+    ScrollReveal().reveal('.page-hero-content', { delay: 200, distance: '50px', origin: 'bottom' });
+    ScrollReveal().reveal('.section-header', { delay: 150, distance: '30px', origin: 'top' });
+    ScrollReveal().reveal('.specialita-card', { interval: 80, distance: '30px', origin: 'bottom' });
+    ScrollReveal().reveal('.info-box', { delay: 200, distance: '30px', origin: 'bottom' });
+</script>
+</body>
+</html>
