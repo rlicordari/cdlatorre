@@ -344,11 +344,19 @@ footer ul li i { margin-right: 8px; color: var(--accent-cyan); width: 16px; }
 }
 
 /* --- 16. NAV DROPDOWN --- */
-.nav-dropdown { position: relative; padding-bottom: 14px; }
+.nav-dropdown { position: relative; }
+.nav-dropdown::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    width: 100%;
+    height: 12px;
+}
 .nav-dropdown .dropdown-menu {
     display: none;
     position: absolute;
-    top: 100%;
+    top: calc(100% + 10px);
     left: 50%;
     transform: translateX(-50%);
     background: var(--white);
