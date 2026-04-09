@@ -170,44 +170,34 @@
         <div class="divider"></div>
         <p style="margin-top:14px;">Ambienti moderni, confortevoli e attrezzati con tecnologia di ultima generazione.</p>
     </div>
-    <div class="gallery-slider">
-        <div class="gallery-track">
-            <div class="gallery-slide">
-                <img src="Immagini/ingresso.jpg" alt="Ingresso e Sala d'Attesa Centro Diagnostico Latorre">
-                <div class="gallery-caption">
-                    <h4>Ingresso e Sala d'Attesa</h4>
-                    <p>Un ambiente accogliente pensato per il comfort del paziente</p>
-                </div>
-            </div>
-            <div class="gallery-slide">
-                <img src="Immagini/sala%20eco.jpg" alt="Sala Ecografia Centro Diagnostico Latorre">
-                <div class="gallery-caption">
-                    <h4>Sala Ecografia</h4>
-                    <p>Apparecchiatura ecografica di ultima generazione per diagnosi precise</p>
-                </div>
-            </div>
-            <div class="gallery-slide">
-                <img src="Immagini/sala%20rx.jpg" alt="Sala Radiologia Digitale Centro Diagnostico Latorre">
-                <div class="gallery-caption">
-                    <h4>Sala Radiologia Digitale</h4>
-                    <p>Sistemi RX digitali a bassa dose per immagini di alta qualità</p>
-                </div>
-            </div>
-            <div class="gallery-slide">
-                <img src="Immagini/sala%20moc.jpg" alt="Sala MOC Densitometria Ossea Centro Diagnostico Latorre">
-                <div class="gallery-caption">
-                    <h4>Sala MOC — Densitometria Ossea</h4>
-                    <p>Mineralometria ossea computerizzata per la prevenzione dell'osteoporosi</p>
-                </div>
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <img src="Immagini/ingresso.jpg" alt="Ingresso e Sala d'Attesa Centro Diagnostico Latorre">
+            <div class="gallery-caption-grid">
+                <h4>Ingresso e Sala d'Attesa</h4>
+                <p>Un ambiente accogliente pensato per il comfort del paziente</p>
             </div>
         </div>
-        <button class="gallery-btn gallery-prev" aria-label="Precedente"><i class="fas fa-chevron-left"></i></button>
-        <button class="gallery-btn gallery-next" aria-label="Successiva"><i class="fas fa-chevron-right"></i></button>
-        <div class="gallery-dots">
-            <button class="gallery-dot active" aria-label="Slide 1"></button>
-            <button class="gallery-dot" aria-label="Slide 2"></button>
-            <button class="gallery-dot" aria-label="Slide 3"></button>
-            <button class="gallery-dot" aria-label="Slide 4"></button>
+        <div class="gallery-item">
+            <img src="Immagini/sala%20eco.jpg" alt="Sala Ecografia Centro Diagnostico Latorre">
+            <div class="gallery-caption-grid">
+                <h4>Sala Ecografia</h4>
+                <p>Apparecchiatura ecografica di ultima generazione per diagnosi precise</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="Immagini/sala%20rx.jpg" alt="Sala Radiologia Digitale Centro Diagnostico Latorre">
+            <div class="gallery-caption-grid">
+                <h4>Sala Radiologia Digitale</h4>
+                <p>Sistemi RX digitali a bassa dose per immagini di alta qualità</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="Immagini/sala%20moc.jpg" alt="Sala MOC Densitometria Ossea Centro Diagnostico Latorre">
+            <div class="gallery-caption-grid">
+                <h4>Sala MOC — Densitometria Ossea</h4>
+                <p>Mineralometria ossea computerizzata per la prevenzione dell'osteoporosi</p>
+            </div>
         </div>
     </div>
 </section>
@@ -275,7 +265,7 @@
                 <li><i class="fas fa-map-marker-alt"></i> Via Pietro Colletta 2 – Rosarno (RC) 89025</li>
                 <li><i class="fas fa-phone"></i> 0966 378308</li>
                 <li><i class="fas fa-envelope"></i> <a href="mailto:info@centrodiagnosticolatorre.it">info@centrodiagnosticolatorre.it</a></li>
-                <li><i class="fas fa-clock"></i> Lun–Ven 09:00–12:30 e 15:30–19:00</li>
+                <li><i class="fas fa-clock"></i> Lun–Ven 09:00–12:30 e 15:30–19:00 &nbsp;|&nbsp; Sab 09:00–12:30</li>
             </ul>
         </div>
     </div>
@@ -325,7 +315,7 @@
     ScrollReveal().reveal('.stats-strip .stat-item', { interval: 120, distance: '30px', origin: 'bottom' });
     ScrollReveal().reveal('.section-header', { delay: 150, distance: '30px', origin: 'top' });
     ScrollReveal().reveal('.service-card',  { interval: 120, distance: '40px', origin: 'bottom' });
-    ScrollReveal().reveal('.gallery-slider', { delay: 150, distance: '30px', origin: 'bottom' });
+    ScrollReveal().reveal('.gallery-item',   { interval: 100, distance: '30px', origin: 'bottom' });
     ScrollReveal().reveal('.why-card',      { interval: 100, distance: '30px', origin: 'left' });
 
     // Counter animazione numeri
@@ -353,26 +343,6 @@
     const statsEl = document.querySelector('.stats-strip');
     if (statsEl) observer.observe(statsEl);
 
-    // Gallery Slider
-    (function () {
-        const track  = document.querySelector('.gallery-track');
-        if (!track) return;
-        const slides = document.querySelectorAll('.gallery-slide');
-        const dots   = document.querySelectorAll('.gallery-dot');
-        let current  = 0, timer;
-
-        function goTo(n) {
-            current = (n + slides.length) % slides.length;
-            track.style.transform = 'translateX(-' + (current * 100) + '%)';
-            dots.forEach((d, i) => d.classList.toggle('active', i === current));
-        }
-        document.querySelector('.gallery-prev').addEventListener('click', () => { goTo(current - 1); reset(); });
-        document.querySelector('.gallery-next').addEventListener('click', () => { goTo(current + 1); reset(); });
-        dots.forEach((d, i) => d.addEventListener('click', () => { goTo(i); reset(); }));
-
-        function reset() { clearInterval(timer); timer = setInterval(() => goTo(current + 1), 4500); }
-        reset();
-    })();
 </script>
 </body>
 </html>
