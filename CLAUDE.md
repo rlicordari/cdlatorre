@@ -5,10 +5,10 @@
 **Nome:** Centro Diagnostico Latorre (CDL)
 **Tipo:** Sito vetrina istituzionale per poliambulatorio specialistico
 **Lingua:** Italiano (tutto il contenuto è in italiano)
-**Sede:** Via Pietro Colletta 4 – Rosarno (RC) 89025
+**Sede:** Via Pietro Colletta 2 – Rosarno (RC) 89025
 **Telefono:** 0966 378308
 **Email:** info@centrodiagnosticolatorre.it
-**Orari:** Lunedì–Venerdì 08:00–20:00, Sabato 08:00–13:00
+**Orari:** Lunedì–Venerdì 09:00–12:30 e 15:30–19:00, Sabato 09:00–12:30
 **WhatsApp:** wa.me/0966378308
 
 ---
