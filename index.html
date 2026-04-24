@@ -44,12 +44,13 @@
             background: var(--light-gray);
         }
 
-        /* --- GALLERY SLIDER (foto verticali smartphone) --- */
+        /* --- GALLERY: mobile-first carousel, desktop griglia fissa --- */
+
+        /* BASE (mobile): carosello portrait */
         .gallery-slider-wrap {
             position: relative;
             margin-top: 40px;
             overflow: hidden;
-            padding: 0 62px;
         }
         .gallery-track {
             display: flex;
@@ -59,19 +60,17 @@
         }
         .gallery-slide {
             flex: 0 0 auto;
-            width: 220px;
+            width: 80vw;
             border-radius: 14px;
             overflow: hidden;
             box-shadow: 0 8px 28px rgba(0,0,0,0.13);
             background: #0d1425;
         }
-        /* Contenitore immagine a proporzioni 9:16 — foto verticali sempre intere */
         .gallery-slide img {
             width: 100%;
             aspect-ratio: 9 / 16;
             object-fit: contain;
             display: block;
-            background: #0d1425;
         }
         .gallery-caption-grid {
             padding: 12px 16px 14px;
@@ -81,45 +80,57 @@
         }
         .gallery-caption-grid h4 { font-size: 0.88rem; font-weight: 700; margin: 0 0 3px; }
         .gallery-caption-grid p  { font-size: 0.76rem; margin: 0; opacity: 0.8; }
+
+        /* Bottoni freccia — base nascosti, visibili su tablet */
         .gallery-btn {
+            display: none;
             position: absolute;
-            top: 44%;
-            transform: translateY(-50%);
+            top: 44%; transform: translateY(-50%);
             width: 44px; height: 44px;
             background: var(--white);
             border: none; border-radius: 50%;
             box-shadow: 0 4px 18px rgba(0,0,0,0.15);
             cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--primary-blue);
-            font-size: 1rem;
+            align-items: center; justify-content: center;
+            color: var(--primary-blue); font-size: 1rem;
             z-index: 10;
             transition: background 0.2s, color 0.2s, transform 0.2s;
         }
         .gallery-btn:hover { background: var(--accent-cyan); color: var(--white); transform: translateY(-50%) scale(1.1); }
-        .gallery-btn.prev { left: 8px; }
-        .gallery-btn.next { right: 8px; }
+        .gallery-btn.prev { left: 6px; }
+        .gallery-btn.next { right: 6px; }
+
         .gallery-dots {
             display: flex; justify-content: center; gap: 8px;
             margin-top: 20px;
         }
         .gallery-dot {
-            width: 8px; height: 8px;
-            border-radius: 50%;
-            background: #c0cad5;
-            cursor: pointer;
+            width: 8px; height: 8px; border-radius: 50%;
+            background: #c0cad5; cursor: pointer; border: none;
             transition: background 0.3s, transform 0.3s;
-            border: none;
         }
         .gallery-dot.active { background: var(--accent-cyan); transform: scale(1.3); }
-        /* Mobile: carte più larghe, niente bottoni */
-        @media (max-width: 900px) {
-            .gallery-slider-wrap { padding: 0; }
-            .gallery-slide { width: 74vw; }
-            .gallery-btn { display: none; }
+
+        /* Tablet 601–900px: mostra 2 carte + frecce */
+        @media (min-width: 601px) and (max-width: 900px) {
+            .gallery-slider-wrap { padding: 0 54px; }
+            .gallery-slide { width: 46vw; }
+            .gallery-btn { display: flex; }
         }
-        @media (max-width: 480px) {
-            .gallery-slide { width: 82vw; }
+
+        /* Desktop ≥ 901px: griglia 4 colonne, no carosello */
+        @media (min-width: 901px) {
+            .gallery-slider-wrap { overflow: visible; padding: 0; }
+            .gallery-track {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+                transform: none !important;
+                transition: none !important;
+            }
+            .gallery-slide { width: auto; }
+            .gallery-btn  { display: none !important; }
+            .gallery-dots { display: none; }
         }
 
         /* --- PERCHÉ SCEGLIERCI --- */
@@ -401,17 +412,19 @@
     ScrollReveal().reveal('.gallery-item',   { interval: 100, distance: '30px', origin: 'bottom' });
     ScrollReveal().reveal('.why-card',      { interval: 100, distance: '30px', origin: 'left' });
 
-    // Gallery Slider — foto verticali, scorrimento automatico ogni 2s
+    // Gallery Slider — carousel su mobile/tablet, griglia su desktop
     (function() {
         const track    = document.getElementById('galleryTrack');
         const slides   = track ? track.querySelectorAll('.gallery-slide') : [];
         const dotsWrap = document.getElementById('galleryDots');
         if (!track || slides.length === 0) return;
 
-        const GAP   = 18;   // deve corrispondere al gap CSS
+        const GAP   = 18;
         let current = 0;
         const total = slides.length;
         let autoTimer;
+
+        const isDesktop = () => window.innerWidth >= 901;
 
         // Crea dots
         slides.forEach((_, i) => {
@@ -427,15 +440,13 @@
                 d.classList.toggle('active', i === current));
         }
 
-        function slideWidth() {
-            return (slides[0].getBoundingClientRect().width || slides[0].offsetWidth);
-        }
-
         function goTo(idx) {
+            if (isDesktop()) return; // su desktop: griglia CSS, niente transform
             if (idx >= total) idx = 0;
             if (idx < 0)      idx = total - 1;
             current = idx;
-            track.style.transform = `translateX(-${current * (slideWidth() + GAP)}px)`;
+            const w = slides[0].getBoundingClientRect().width || slides[0].offsetWidth;
+            track.style.transform = `translateX(-${current * (w + GAP)}px)`;
             updateDots();
         }
 
@@ -453,11 +464,22 @@
         });
 
         function startAuto() {
+            if (isDesktop()) return;
             autoTimer = setInterval(() => goTo(current + 1), 2000);
         }
         function resetAuto() { clearInterval(autoTimer); startAuto(); }
 
-        window.addEventListener('resize', () => goTo(current));
+        window.addEventListener('resize', () => {
+            if (isDesktop()) {
+                clearInterval(autoTimer);
+                autoTimer = null;
+                track.style.transform = ''; // lascia fare al CSS
+            } else {
+                goTo(current);
+                if (!autoTimer) startAuto();
+            }
+        });
+
         startAuto();
     })();
 
