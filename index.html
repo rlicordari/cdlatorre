@@ -133,6 +133,109 @@
             .gallery-dots { display: none; }
         }
 
+        /* Cursore pointer sulle foto per indicare che sono cliccabili */
+        .gallery-slide img { cursor: zoom-in; }
+
+        /* --- LIGHTBOX --- */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 9, 20, 0.96);
+            z-index: 9000;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .lightbox-overlay.open { display: flex; }
+
+        .lightbox-img-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            flex: 1;
+            padding: 60px 80px 10px;
+            box-sizing: border-box;
+        }
+        .lightbox-img-wrap img {
+            max-width: 100%;
+            max-height: calc(100vh - 130px);
+            object-fit: contain;
+            border-radius: 10px;
+            display: block;
+            user-select: none;
+        }
+
+        /* Frecce laterali */
+        .lb-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 52px; height: 52px;
+            background: rgba(255,255,255,0.12);
+            border: 1.5px solid rgba(255,255,255,0.22);
+            border-radius: 50%;
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s, transform 0.2s;
+            z-index: 10;
+            backdrop-filter: blur(4px);
+        }
+        .lb-btn:hover { background: var(--accent-cyan); border-color: var(--accent-cyan); transform: translateY(-50%) scale(1.1); }
+        .lb-btn.lb-prev { left: 16px; }
+        .lb-btn.lb-next { right: 16px; }
+
+        /* Pulsante chiudi */
+        .lb-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            width: 42px; height: 42px;
+            background: rgba(255,255,255,0.1);
+            border: 1.5px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s;
+            z-index: 10;
+        }
+        .lb-close:hover { background: #e74c3c; border-color: #e74c3c; }
+
+        /* Didascalia e contatore */
+        .lb-footer {
+            width: 100%;
+            padding: 10px 80px 20px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .lb-caption { color: #fff; font-size: 0.92rem; font-weight: 600; margin: 0 0 4px; }
+        .lb-caption-sub { color: rgba(255,255,255,0.6); font-size: 0.8rem; margin: 0; }
+        .lb-counter {
+            margin-top: 10px;
+            display: flex; justify-content: center; gap: 8px;
+        }
+        .lb-dot {
+            width: 7px; height: 7px; border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            border: none; cursor: pointer; padding: 0;
+            transition: background 0.25s, transform 0.25s;
+        }
+        .lb-dot.active { background: var(--accent-cyan); transform: scale(1.35); }
+
+        @media (max-width: 600px) {
+            .lightbox-img-wrap { padding: 56px 12px 8px; }
+            .lb-btn { width: 42px; height: 42px; font-size: 0.95rem; }
+            .lb-btn.lb-prev { left: 6px; }
+            .lb-btn.lb-next { right: 6px; }
+            .lb-footer { padding: 8px 12px 16px; }
+        }
+
         /* --- PERCHÉ SCEGLIERCI --- */
         .why-section {
             padding: 80px 5%;
@@ -368,6 +471,21 @@
     </div>
 </footer>
 
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizzazione foto">
+    <button class="lb-close" id="lbClose" aria-label="Chiudi"><i class="fas fa-times"></i></button>
+    <div class="lightbox-img-wrap">
+        <button class="lb-btn lb-prev" id="lbPrev" aria-label="Foto precedente"><i class="fas fa-chevron-left"></i></button>
+        <img src="" alt="" id="lbImg">
+        <button class="lb-btn lb-next" id="lbNext" aria-label="Foto successiva"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="lb-footer">
+        <p class="lb-caption" id="lbCaption"></p>
+        <p class="lb-caption-sub" id="lbCaptionSub"></p>
+        <div class="lb-counter" id="lbCounter"></div>
+    </div>
+</div>
+
 <!-- WHATSAPP -->
 <a href="https://wa.me/390966378308?text=Salve,%20vorrei%20informazioni%20sulle%20prenotazioni" class="whatsapp-float" target="_blank" aria-label="Contattaci su WhatsApp">
     <i class="fab fa-whatsapp"></i>
@@ -481,6 +599,94 @@
         });
 
         startAuto();
+    })();
+
+    // Lightbox
+    (function() {
+        const overlay  = document.getElementById('lightbox');
+        const lbImg    = document.getElementById('lbImg');
+        const lbCap    = document.getElementById('lbCaption');
+        const lbSub    = document.getElementById('lbCaptionSub');
+        const lbCtr    = document.getElementById('lbCounter');
+        const lbClose  = document.getElementById('lbClose');
+        const lbPrev   = document.getElementById('lbPrev');
+        const lbNext   = document.getElementById('lbNext');
+
+        // Raccoglie i dati delle foto dalle slide
+        const slides = Array.from(document.querySelectorAll('.gallery-slide'));
+        const photos = slides.map(s => ({
+            src:  s.querySelector('img').src,
+            alt:  s.querySelector('img').alt,
+            h4:   s.querySelector('.gallery-caption-grid h4') ? s.querySelector('.gallery-caption-grid h4').textContent : '',
+            p:    s.querySelector('.gallery-caption-grid p')  ? s.querySelector('.gallery-caption-grid p').textContent  : ''
+        }));
+
+        let current = 0;
+
+        // Crea dots contatore
+        photos.forEach((_, i) => {
+            const d = document.createElement('button');
+            d.className = 'lb-dot' + (i === 0 ? ' active' : '');
+            d.setAttribute('aria-label', 'Foto ' + (i + 1));
+            d.addEventListener('click', () => show(i));
+            lbCtr.appendChild(d);
+        });
+
+        function updateDots() {
+            lbCtr.querySelectorAll('.lb-dot').forEach((d, i) =>
+                d.classList.toggle('active', i === current));
+        }
+
+        function show(idx) {
+            if (idx >= photos.length) idx = 0;
+            if (idx < 0) idx = photos.length - 1;
+            current = idx;
+            const p = photos[current];
+            lbImg.src = p.src;
+            lbImg.alt = p.alt;
+            lbCap.textContent = p.h4;
+            lbSub.textContent = p.p;
+            updateDots();
+        }
+
+        function open(idx) {
+            show(idx);
+            overlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function close() {
+            overlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // Click su ogni immagine della gallery
+        slides.forEach((s, i) => {
+            s.querySelector('img').addEventListener('click', () => open(i));
+        });
+
+        lbClose.addEventListener('click', close);
+        lbPrev.addEventListener('click', () => show(current - 1));
+        lbNext.addEventListener('click', () => show(current + 1));
+
+        // Chiudi cliccando fuori dall'immagine
+        overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+
+        // Tastiera: frecce + Esc
+        document.addEventListener('keydown', e => {
+            if (!overlay.classList.contains('open')) return;
+            if (e.key === 'ArrowRight') show(current + 1);
+            if (e.key === 'ArrowLeft')  show(current - 1);
+            if (e.key === 'Escape')     close();
+        });
+
+        // Swipe touch nel lightbox
+        let tx = 0;
+        overlay.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+        overlay.addEventListener('touchend', e => {
+            const diff = tx - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) show(diff > 0 ? current + 1 : current - 1);
+        });
     })();
 
     // Counter animazione numeri
