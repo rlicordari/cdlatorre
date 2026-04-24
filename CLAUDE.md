@@ -236,3 +236,33 @@ Annotare qui le richieste future per non perderle:
 - Integrazione form con backend email (es. Formspree, Netlify Forms)
 - Privacy Policy e Cookie Policy complete
 - SEO meta tags completi su ogni pagina
+
+---
+
+## Lavoro in Sospeso — Feed Instagram (da completare nella prossima sessione)
+
+### Obiettivo
+Aggiungere una sezione "Seguici su Instagram" nella homepage (`index.html`) che mostri automaticamente gli ultimi post Instagram del centro. Il proprietario pubblica su Instagram dal telefono e il sito si aggiorna da solo entro 24h.
+
+### Soluzione scelta
+**Behold.so** (piano gratuito) — widget embed, nessun backend necessario.
+
+### Cosa manca
+Il proprietario deve:
+1. Registrarsi su **behold.so**
+2. Collegare l'account Instagram del centro
+3. Copiare il codice embed generato da Behold (simile a questo):
+   ```html
+   <div id="behold-widget-XXXXXXX"></div>
+   <script src="https://w.behold.so/widget.js" type="module"></script>
+   ```
+4. Incollare il codice nella chat — Claude lo integra nella homepage
+
+### Dove inserire la sezione in `index.html`
+Prima della sezione `<!-- MAPPA -->`, dopo la sezione `<!-- PERCHÉ SCEGLIERCI -->`.
+
+### Stile da usare
+- Titolo con `section-header` + `divider` come le altre sezioni
+- Sfondo `var(--light-gray)` per alternare con la sezione precedente (bianca)
+- Link al profilo Instagram con icona Font Awesome `fab fa-instagram`
+- ScrollReveal sulla sezione come le altre
