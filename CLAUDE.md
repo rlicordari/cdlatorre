@@ -19,7 +19,7 @@
 - Presentare il centro e i suoi servizi
 - Trasmettere professionalità, modernità e fiducia
 - Fornire le informazioni di contatto per prenotare telefonicamente o via WhatsApp
-- Informare su convenzioni, specialità disponibili e domande frequenti
+- Informare su specialità disponibili e domande frequenti
 
 Non aggiungere mai funzionalità di prenotazione online, backend, autenticazione o database a meno che non sia esplicitamente richiesto dal proprietario.
 
@@ -28,7 +28,7 @@ Non aggiungere mai funzionalità di prenotazione online, backend, autenticazione
 ## Servizi Offerti
 
 ### Diagnostica per Immagini (cuore dell'attività)
-- **Radiologia Digitale** — apparecchiatura di ultima generazione
+- **Radiologia Digitale** — apparecchiatura di ultima generazione. Esami disponibili: RX Torace, RX Colonna Vertebrale, RX Arti Superiori e Inferiori, RX Bacino e Articolazioni, RX Addome, RX Gamba, RX Braccio, RX Avambraccio, RX Colonna per Scoliosi.
 - **MOC (Mineralometria Ossea Computerizzata)** — densitometria ossea
 - **Ortopantografia** — radiografia panoramica dentale
 
@@ -68,13 +68,17 @@ Il CDL si distingue per l'utilizzo di **macchinari di ultima generazione**. Ques
 
 ```
 cdlatorre/
-├── index.html          # Homepage — hero, servizi, statistiche, perché noi
-├── chi-siamo.html      # Chi siamo — storia, missione, team, valori
-├── contatti.html       # Contatti — form, orari, mappa, WhatsApp
-├── convenzioni.html    # Convenzioni — fondi e assicurazioni convenzionate
-├── faq.html            # FAQ — domande frequenti in accordion
-├── style.css           # Unico foglio di stile globale
-└── logo.png            # Logo del centro
+├── index.html                    # Homepage — hero, servizi, statistiche, perché noi
+├── chi-siamo.html                # Chi siamo — storia, missione, team, valori
+├── contatti.html                 # Contatti — form, orari, mappa, WhatsApp
+├── convenzioni.html              # NASCOSTA — file mantenuto ma non raggiungibile dal sito
+├── faq.html                      # FAQ — domande frequenti in accordion
+├── radiologia.html               # Radiologia Digitale — esami RX disponibili
+├── moc.html                      # MOC — densitometria ossea
+├── ecografia.html                # Ecografia
+├── visite-specialistiche.html    # Visite Specialistiche
+├── style.css                     # Unico foglio di stile globale
+└── logo.png                      # Logo del centro
 ```
 
 ---
@@ -127,7 +131,7 @@ cdlatorre/
 
 **Header (sticky):**
 - Logo a sinistra
-- Menu navigazione: Home | Chi Siamo | Diagnostica | Convenzioni | F.A.Q. | Contatti
+- Menu navigazione: Home | Chi Siamo | Servizi (dropdown) | F.A.Q. | Contatti
 - Bottone CTA: **Prenota Ora** (link a contatti.html)
 - Hamburger menu (mobile, visibile sotto i 900px)
 
