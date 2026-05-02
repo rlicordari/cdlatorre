@@ -8,7 +8,7 @@
 **Sede:** Via Pietro Colletta 2 – Rosarno (RC) 89025
 **Telefono:** 0966 378308
 **Email:** info@centrodiagnosticolatorre.it
-**Orari:** Lunedì–Venerdì 09:00–12:30 e 15:30–19:00, Sabato 09:00–12:30
+**Orari:** Lunedì–Venerdì 08:30–12:30 e 15:30–19:00, Sabato 08:30–12:30
 **WhatsApp:** wa.me/0966378308
 
 ---
