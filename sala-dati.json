@@ -1,0 +1,99 @@
+{
+  "mese": "NOVEMBRE",
+  "anno": "2026",
+  "specialisti": [
+    {
+      "specialita": "Cardiologia",
+      "medico": "Dott. Roberto Licordari",
+      "date": "7"
+    },
+    {
+      "specialita": "Ortopedia",
+      "medico": "Dott. Alberto Giuffrida",
+      "date": "10"
+    },
+    {
+      "specialita": "Neurologia",
+      "medico": "Dott. Nome Cognome",
+      "date": "6 · 20"
+    },
+    {
+      "specialita": "Endocrinologia",
+      "medico": "Dott.ssa Nome Cognome",
+      "date": "5 · 12 · 19 · 26"
+    },
+    {
+      "specialita": "Senologia",
+      "medico": "Dott.ssa Nome Cognome",
+      "date": "10 · 24"
+    },
+    {
+      "specialita": "Dermatologia",
+      "medico": "Dott.ssa Nome Cognome",
+      "date": "7 · 14 · 21 · 28"
+    },
+    {
+      "specialita": "Reumatologia",
+      "medico": "Dott.ssa Nome Cognome",
+      "date": "3 · 17"
+    },
+    {
+      "specialita": "Ginecologia",
+      "medico": "Dott.ssa Nome Cognome",
+      "date": "3 · 10 · 17 · 24"
+    },
+    {
+      "specialita": "Oculistica",
+      "medico": "Dott. Nome Cognome",
+      "date": "13 · 27"
+    },
+    {
+      "specialita": "Pneumologia",
+      "medico": "Dott. Nome Cognome",
+      "date": "12 · 26"
+    },
+    {
+      "specialita": "Urologia",
+      "medico": "Dott. Nome Cognome",
+      "date": "9 · 23"
+    },
+    {
+      "specialita": "Medicina Estetica",
+      "medico": "Dott.ssa Nome Cognome",
+      "date": "14 · 28"
+    }
+  ],
+  "orari": [
+    {
+      "giorni": "Lunedì – Venerdì",
+      "ore": "08:30–12:30 · 15:30–19:00"
+    },
+    {
+      "giorni": "Sabato",
+      "ore": "08:30–12:30"
+    },
+    {
+      "giorni": "Domenica",
+      "ore": "Chiuso"
+    }
+  ],
+  "telefono": "0966 378308",
+  "whatsapp": "0966 378308",
+  "email": "info@centrodiagnosticolatorre.it",
+  "indirizzo": "Via Pietro Colletta 2, Rosarno (RC)",
+  "secondi_calendario": 12,
+  "secondi_altre_slide": 10,
+  "slide_attive": {
+    "benvenuto": true,
+    "mese": true,
+    "calendario": true,
+    "diagnostica": true,
+    "ecografie": true,
+    "radiologia_moc": true,
+    "pressione": true,
+    "ossa": true,
+    "nei": true,
+    "orari": true,
+    "servizi": true
+  }
+}
