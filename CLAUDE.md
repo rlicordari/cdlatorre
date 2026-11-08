@@ -78,8 +78,21 @@ cdlatorre/
 ├── ecografia.html                # Ecografia
 ├── visite-specialistiche.html    # Visite Specialistiche
 ├── style.css                     # Unico foglio di stile globale
-└── logo.png                      # Logo del centro
+├── logo.png                      # Logo del centro
+├── sala.html                     # Schermo sala d'attesa (TV) — pagina autonoma, vedi sotto
+└── sala-dati.json                # Dati dello schermo sala d'attesa (mese, specialisti, orari)
 ```
+
+---
+
+## Schermo Sala d'Attesa (`sala.html` + `sala-dati.json`)
+
+Pagina autonoma per le TV della sala d'attesa: loop 16:9 a schermo intero, non collegata al menu del sito e con stile proprio (colori CDL del materiale social, non `style.css`). Logo, QR e icone sono incorporati nel file.
+
+- **Dati:** la pagina legge `sala-dati.json` da `raw.githubusercontent.com` (repo `rlicordari/cdlatorre`, ramo `main`) e, in alternativa, dal sito; ricontrolla ogni minuto. Il blocco `window.DATI` dentro `sala.html` è solo il fallback.
+- **Modifica:** tasto E (o 5 tocchi nell'angolo in alto a destra) apre il pannello; "Salva sul sito" fa un commit di `sala-dati.json` tramite l'API GitHub con un token fine-grained del proprietario (Contents: Read and write, solo questo repo), conservato solo nel browser di chi modifica. Configurazione in `window.SALA_GITHUB`.
+- **Eccezione voluta** alle regole "niente backend/autenticazione": richiesta esplicitamente dal proprietario. Il sito è su GitHub Pages: niente PHP o script lato server.
+- Non modificare `sala-dati.json` a mano senza mantenere la struttura (`mese`, `anno`, `specialisti[]` con `specialita`/`medico`/`date`, `orari[]`, contatti, `secondi_*`, `slide_attive`).
 
 ---
 

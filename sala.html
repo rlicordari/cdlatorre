@@ -16,12 +16,13 @@
   PAGINA PUBBLICATA SUL SITO (es. /sala.html)
   • I dati vengono letti dal file "sala-dati.json" nella stessa
     cartella del sito e ricontrollati ogni minuto: le TV si
-    aggiornano da sole, senza ricaricare.
+    aggiornano da sole (entro pochi minuti dal salvataggio).
   • Per aggiornare: apri la pagina da qualsiasi computer o
     telefono, premi E (o tocca 5 volte l'angolo in alto a destra),
-    modifica, inserisci il PIN e clicca "Salva sul sito".
-    Serve il file "sala-salva.php" nella stessa cartella, con il
-    PIN impostato al suo interno.
+    modifica e clicca "Salva sul sito". La pagina salva
+    sala-dati.json nel repository GitHub del sito (vedi
+    SALA_GITHUB qui sotto) usando un token GitHub personale,
+    inserito una sola volta e conservato solo su quel dispositivo.
   • Se sala-dati.json non c'è, la pagina usa i dati qui sotto.
 
   FILE APERTO DAL COMPUTER (senza sito)
@@ -40,23 +41,80 @@ window.DATI = {
   "mese": "NOVEMBRE",
   "anno": "2026",
   "specialisti": [
-    { "specialita": "Cardiologia",       "medico": "Dott. Nome Cognome",    "date": "2 · 9 · 16 · 23 · 30" },
-    { "specialita": "Ortopedia",         "medico": "Dott. Nome Cognome",    "date": "4 · 11 · 18 · 25" },
-    { "specialita": "Neurologia",        "medico": "Dott. Nome Cognome",    "date": "6 · 20" },
-    { "specialita": "Endocrinologia",    "medico": "Dott.ssa Nome Cognome", "date": "5 · 12 · 19 · 26" },
-    { "specialita": "Senologia",         "medico": "Dott.ssa Nome Cognome", "date": "10 · 24" },
-    { "specialita": "Dermatologia",      "medico": "Dott.ssa Nome Cognome", "date": "7 · 14 · 21 · 28" },
-    { "specialita": "Reumatologia",      "medico": "Dott.ssa Nome Cognome", "date": "3 · 17" },
-    { "specialita": "Ginecologia",       "medico": "Dott.ssa Nome Cognome", "date": "3 · 10 · 17 · 24" },
-    { "specialita": "Oculistica",        "medico": "Dott. Nome Cognome",    "date": "13 · 27" },
-    { "specialita": "Pneumologia",       "medico": "Dott. Nome Cognome",    "date": "12 · 26" },
-    { "specialita": "Urologia",          "medico": "Dott. Nome Cognome",    "date": "9 · 23" },
-    { "specialita": "Medicina Estetica", "medico": "Dott.ssa Nome Cognome", "date": "14 · 28" }
+    {
+      "specialita": "Cardiologia",
+      "medico": "Dott. Roberto Licordari",
+      "date": "7"
+    },
+    {
+      "specialita": "Ortopedia",
+      "medico": "Dott. Alberto Giuffrida",
+      "date": "10"
+    },
+    {
+      "specialita": "Neurologia",
+      "medico": "Dott. Nome Cognome",
+      "date": "6 · 20"
+    },
+    {
+      "specialita": "Endocrinologia",
+      "medico": "Dott.ssa Nome Cognome",
+      "date": "5 · 12 · 19 · 26"
+    },
+    {
+      "specialita": "Senologia",
+      "medico": "Dott.ssa Nome Cognome",
+      "date": "10 · 24"
+    },
+    {
+      "specialita": "Dermatologia",
+      "medico": "Dott.ssa Nome Cognome",
+      "date": "7 · 14 · 21 · 28"
+    },
+    {
+      "specialita": "Reumatologia",
+      "medico": "Dott.ssa Nome Cognome",
+      "date": "3 · 17"
+    },
+    {
+      "specialita": "Ginecologia",
+      "medico": "Dott.ssa Nome Cognome",
+      "date": "3 · 10 · 17 · 24"
+    },
+    {
+      "specialita": "Oculistica",
+      "medico": "Dott. Nome Cognome",
+      "date": "13 · 27"
+    },
+    {
+      "specialita": "Pneumologia",
+      "medico": "Dott. Nome Cognome",
+      "date": "12 · 26"
+    },
+    {
+      "specialita": "Urologia",
+      "medico": "Dott. Nome Cognome",
+      "date": "9 · 23"
+    },
+    {
+      "specialita": "Medicina Estetica",
+      "medico": "Dott.ssa Nome Cognome",
+      "date": "14 · 28"
+    }
   ],
   "orari": [
-    { "giorni": "Lunedì – Venerdì", "ore": "08:30–12:30 · 15:30–19:00" },
-    { "giorni": "Sabato",           "ore": "08:30–12:30" },
-    { "giorni": "Domenica",         "ore": "Chiuso" }
+    {
+      "giorni": "Lunedì – Venerdì",
+      "ore": "08:30–12:30 · 15:30–19:00"
+    },
+    {
+      "giorni": "Sabato",
+      "ore": "08:30–12:30"
+    },
+    {
+      "giorni": "Domenica",
+      "ore": "Chiuso"
+    }
   ],
   "telefono": "0966 378308",
   "whatsapp": "0966 378308",
@@ -65,12 +123,23 @@ window.DATI = {
   "secondi_calendario": 12,
   "secondi_altre_slide": 10,
   "slide_attive": {
-    "benvenuto": true, "mese": true, "calendario": true, "diagnostica": true,
-    "ecografie": true, "radiologia_moc": true, "pressione": true, "ossa": true,
-    "nei": true, "orari": true, "servizi": true
+    "benvenuto": true,
+    "mese": true,
+    "calendario": true,
+    "diagnostica": true,
+    "ecografie": true,
+    "radiologia_moc": true,
+    "pressione": true,
+    "ossa": true,
+    "nei": true,
+    "orari": true,
+    "servizi": true
   }
 };
 /*FINE-DATI*/
+
+/* Dove la pagina salva i dati (repository GitHub che pubblica il sito) */
+window.SALA_GITHUB = { owner: "rlicordari", repo: "cdlatorre", branch: "main", path: "sala-dati.json" };
 </script>
 <style>
   :root { --navy:#263860; --sky:#29ABE2; --skyd:#1A7DB3; --tint:#EAF5FC; --white:#fff; }
@@ -170,9 +239,13 @@ if (!ONLINE) { try { const s = localStorage.getItem(KEY); if (s) D = JSON.parse(
 async function pullData(first) {
   if (!ONLINE) return;
   try {
-    const r = await fetch(JSON_URL + '?t=' + Date.now(), { cache: 'no-store' });
-    if (!r.ok) return;
-    const txt = await r.text();
+    const G = window.SALA_GITHUB, srcs = [];
+    // 1) copia nel repository GitHub (si aggiorna subito dopo il salvataggio)  2) file pubblicato sul sito
+    if (G && G.owner) srcs.push(`https://raw.githubusercontent.com/${G.owner}/${G.repo}/${G.branch || 'main'}/${G.path || 'sala-dati.json'}?t=${Date.now()}`);
+    srcs.push(JSON_URL + '?t=' + Date.now());
+    let txt = null;
+    for (const u of srcs) { try { const r = await fetch(u, { cache: 'no-store' }); if (r.ok) { const t = await r.text(); JSON.parse(t); txt = t; break; } } catch (e) {} }
+    if (txt === null) return;
     if (txt === lastJSON) return;
     const nd = Object.assign(JSON.parse(JSON.stringify(FILE_DATI)), JSON.parse(txt));
     lastJSON = txt;
@@ -398,9 +471,10 @@ function banners() {
   if (edRecovered) edb.insertAdjacentHTML('afterbegin', `<div style="background:#e8f6ec;border:1px solid #9fd3ae;border-radius:8px;padding:12px 14px;line-height:1.4;margin-top:10px">
     Ho ritrovato le modifiche salvate in precedenza in questo browser e le ho caricate qui sotto. Controllale, inserisci il PIN e clicca <b>Salva sul sito</b>.</div>`);
   if (ONLINE) edb.insertAdjacentHTML('afterbegin', `<div style="background:#eef5fc;border:1px solid #bcd6ef;border-radius:8px;padding:12px 14px;line-height:1.4">
-      <b>Salvataggio sul sito.</b> Modifica i dati, inserisci il PIN e clicca <b>Salva sul sito</b>: tutte le TV si aggiornano entro un minuto.
-      <div class="row r2" style="margin-top:10px;margin-bottom:0"><div><label>PIN</label><input type="password" id="ed-pin" value="${esc(edPin)}" autocomplete="current-password"></div>
-      <label style="display:flex;gap:8px;align-items:center;margin:18px 0 0;font-size:14px;color:#1d2b4a"><input type="checkbox" id="ed-pin-rem" ${edRem ? 'checked' : ''}> Ricorda PIN su questo dispositivo</label></div></div>`);
+      <b>Salvataggio sul sito.</b> Modifica i dati e clicca <b>Salva sul sito</b>: tutte le TV si aggiornano entro pochi minuti.
+      <div class="row r2" style="margin-top:10px;margin-bottom:0"><div><label>Token GitHub (solo la prima volta su questo dispositivo)</label><input type="password" id="ed-pin" value="${esc(edPin)}" autocomplete="off" placeholder="github_pat_…"></div>
+      <label style="display:flex;gap:8px;align-items:center;margin:18px 0 0;font-size:14px;color:#1d2b4a"><input type="checkbox" id="ed-pin-rem" ${edRem ? 'checked' : ''}> Ricorda su questo dispositivo</label></div>
+      <div class="hint">Il token resta solo in questo browser: non viene scritto nel sito.</div></div>`);
 }
 edb.addEventListener('input', e => { if (e.target.id === 'ed-pin') edPin = e.target.value; });
 edb.addEventListener('change', e => { if (e.target.id === 'ed-pin-rem') edRem = e.target.checked; });
@@ -411,27 +485,58 @@ function openEd() {
     if (edPin === null) { try { edPin = localStorage.getItem(PINKEY) || ''; } catch (e) { edPin = ''; } edRem = !!edPin; }
   }
   drawEd(); ed.classList.add('open'); document.body.classList.remove('hidecursor'); clearTimeout(timer); msg.textContent = '';
+  if (ONLINE && edPin && !edRecovered) latestFromGitHub(edPin).then(d => {
+    if (!d || !ed.classList.contains('open') || JSON.stringify(d) === JSON.stringify(W)) return;
+    readEd(); if (JSON.stringify(W) !== JSON.stringify(D)) return;      // l'utente ha già iniziato a modificare
+    W = Object.assign(JSON.parse(JSON.stringify(FILE_DATI)), d); drawEd(); msg.style.color = ''; msg.textContent = 'Caricata l\'ultima versione salvata';
+  });
+}
+async function latestFromGitHub(token) {
+  const G = window.SALA_GITHUB; if (!G || !G.owner) return null;
+  try {
+    const r = await fetch(`https://api.github.com/repos/${G.owner}/${G.repo}/contents/${encodeURIComponent(G.path || 'sala-dati.json')}?ref=${encodeURIComponent(G.branch || 'main')}&t=${Date.now()}`,
+      { headers: { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json' }, cache: 'no-store' });
+    if (!r.ok) return null;
+    const j = await r.json(), bin = atob(j.content.replace(/\n/g, ''));
+    return JSON.parse(new TextDecoder().decode(Uint8Array.from(bin, c => c.charCodeAt(0))));
+  } catch (e) { return null; }
 }
 function closeEd() { ed.classList.remove('open'); show(idx); }
 document.getElementById('ed-close').onclick = closeEd;
-const PINKEY = 'cdl-sala-attesa-pin';
+const PINKEY = 'cdl-sala-attesa-ghtoken';
+const b64utf8 = str => { const b = new TextEncoder().encode(str); let bin = ''; for (let i = 0; i < b.length; i += 0x8000) bin += String.fromCharCode.apply(null, b.subarray(i, i + 0x8000)); return btoa(bin); };
 async function saveOnline() {
-  const pinEl = document.getElementById('ed-pin'), pin = pinEl ? pinEl.value.trim() : '';
-  if (!pin) { msg.style.color = '#b42318'; msg.textContent = 'Inserisci il PIN'; pinEl?.focus(); return; }
+  const G = window.SALA_GITHUB || {};
+  const el = document.getElementById('ed-pin'), token = el ? el.value.trim() : '';
+  const fail = t => { msg.style.color = '#b42318'; msg.textContent = t; };
+  if (!G.owner || !G.repo) return fail('Configurazione GitHub mancante (SALA_GITHUB). Usa "Scarica sala-dati.json".');
+  if (!token) { fail('Inserisci il token GitHub'); el?.focus(); return; }
   msg.style.color = ''; msg.textContent = 'Salvataggio…';
-  let r, j = null;
-  try {
-    r = await fetch('sala-salva.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ pin, dati: D }), cache: 'no-store' });
-    try { j = await r.json(); } catch (e) {}
-  } catch (e) {}
-  if (j && j.ok) {
-    try { if (document.getElementById('ed-pin-rem')?.checked) localStorage.setItem(PINKEY, pin); else localStorage.removeItem(PINKEY); localStorage.removeItem(KEY); } catch (e) {}
-    lastJSON = ''; edRecovered = false; msg.style.color = '#1a7d3a'; msg.textContent = 'Salvato sul sito ✓ (' + j.salvato + ') – le TV si aggiornano entro un minuto';
-    return;
+  const url = `https://api.github.com/repos/${G.owner}/${G.repo}/contents/${encodeURIComponent(G.path || 'sala-dati.json')}`;
+  const H = { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' };
+  const body = JSON.stringify(D, null, 2) + '\n';
+  for (let attempt = 0; attempt < 2; attempt++) {
+    let sha, r;
+    try {
+      r = await fetch(url + '?ref=' + encodeURIComponent(G.branch || 'main') + '&t=' + Date.now(), { headers: H, cache: 'no-store' });
+      if (r.status === 401) return fail('Token non valido o scaduto: creane uno nuovo su GitHub.');
+      if (r.ok) sha = (await r.json()).sha;
+      else if (r.status !== 404) return fail('GitHub non risponde come previsto (errore ' + r.status + '). Riprova o usa "Scarica sala-dati.json".');
+      r = await fetch(url, { method: 'PUT', headers: { ...H, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: `Sala d'attesa: aggiorna dati ${D.mese || ''} ${D.anno || ''}`.trim(), content: b64utf8(body), branch: G.branch || 'main', ...(sha ? { sha } : {}) }) });
+    } catch (e) { return fail('Connessione a GitHub non riuscita. Controlla la rete e riprova.'); }
+    if (r.ok) {
+      try { if (document.getElementById('ed-pin-rem')?.checked) localStorage.setItem(PINKEY, token); else localStorage.removeItem(PINKEY); localStorage.removeItem(KEY); } catch (e) {}
+      lastJSON = ''; edRecovered = false; msg.style.color = '#1a7d3a';
+      msg.textContent = 'Salvato ✓ ' + new Date().toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' }) + ' – le TV si aggiornano entro pochi minuti';
+      return;
+    }
+    if (r.status === 409 || r.status === 422) continue;            // file cambiato nel frattempo: riprova con lo sha nuovo
+    if (r.status === 401) return fail('Token non valido o scaduto: creane uno nuovo su GitHub.');
+    if (r.status === 403 || r.status === 404) return fail('Il token non ha il permesso di scrittura su ' + G.owner + '/' + G.repo + ' (serve "Contents: Read and write").');
+    return fail('Salvataggio non riuscito (errore ' + r.status + ').');
   }
-  msg.style.color = '#b42318';
-  if (j && j.errore) { msg.textContent = j.errore; return; }
-  msg.textContent = 'Salvataggio diretto non disponibile (manca sala-salva.php o l\'hosting non supporta PHP). Usa "Scarica sala-dati.json".';
+  fail('Salvataggio non riuscito: il file è stato modificato nello stesso momento. Riprova.');
 }
 const dlBlob = (text, name, type) => { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text], { type })); a.download = name; a.click(); };
 document.getElementById('ed-save').onclick = () => {
