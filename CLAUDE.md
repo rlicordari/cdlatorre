@@ -80,7 +80,8 @@ cdlatorre/
 ├── style.css                     # Unico foglio di stile globale
 ├── logo.png                      # Logo del centro
 ├── sala.html                     # Schermo sala d'attesa (TV) — pagina autonoma, vedi sotto
-└── sala-dati.json                # Dati dello schermo sala d'attesa (mese, specialisti, orari)
+├── sala-dati.json                # Dati dello schermo sala d'attesa (mese, specialisti, schede medici, orari)
+└── sala-foto/                    # Foto scontornate degli specialisti per la sala d'attesa (.png + .webp)
 ```
 
 ---
@@ -92,7 +93,8 @@ Pagina autonoma per le TV della sala d'attesa: loop 16:9 a schermo intero, non c
 - **Dati:** la pagina legge `sala-dati.json` da `raw.githubusercontent.com` (repo `rlicordari/cdlatorre`, ramo `main`) e, in alternativa, dal sito; ricontrolla ogni minuto. Il blocco `window.DATI` dentro `sala.html` è solo il fallback.
 - **Modifica:** tasto E (o 5 tocchi nell'angolo in alto a destra) apre il pannello; "Salva sul sito" fa un commit di `sala-dati.json` tramite l'API GitHub con un token fine-grained del proprietario (Contents: Read and write, solo questo repo), conservato solo nel browser di chi modifica. Configurazione in `window.SALA_GITHUB`.
 - **Eccezione voluta** alle regole "niente backend/autenticazione": richiesta esplicitamente dal proprietario. Il sito è su GitHub Pages: niente PHP o script lato server.
-- Non modificare `sala-dati.json` a mano senza mantenere la struttura (`mese`, `anno`, `specialisti[]` con `specialita`/`medico`/`date`, `orari[]`, contatti, `secondi_*`, `slide_attive`).
+- **Schede specialisti:** `medici[]` in `sala-dati.json` (`titolo`, `nome`, `specialita`, `foto`, `prestazioni[]`, `attivo`): una schermata per scheda attiva, distribuite in tre gruppi nel loop (dopo il calendario, dopo Radiologia/MOC, dopo la prevenzione nei). Niente giorni di presenza nelle schede: restano nel calendario riepilogativo. Le foto stanno in `sala-foto/` come `nome.png` + `nome.webp` (la pagina usa il WebP e ricade sul PNG), scontornate, tagliate sopra le scritte dei post social e con il bordo inferiore allineato al fondo dello schermo.
+- Non modificare `sala-dati.json` a mano senza mantenere la struttura (`mese`, `anno`, `specialisti[]` con `specialita`/`medico`/`date`, `medici[]`, `orari[]`, contatti, `secondi_*`, `slide_attive`).
 
 ---
 

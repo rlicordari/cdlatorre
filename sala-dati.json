@@ -95,5 +95,202 @@
     "nei": true,
     "orari": true,
     "servizi": true
-  }
+  },
+  "medici": [
+    {
+      "titolo": "Dott.",
+      "nome": "Roberto Licordari",
+      "specialita": "Cardiologia",
+      "foto": "sala-foto/licordari.png",
+      "attivo": true,
+      "prestazioni": [
+        "Visita cardiologica",
+        "Elettrocardiogramma (ECG)",
+        "Ecocardiogramma color-doppler",
+        "Holter ECG 24 ore",
+        "Holter pressorio 24 ore",
+        "Ecocolordoppler vascolare",
+        "Valutazione del rischio cardiovascolare"
+      ],
+      "tema": "chiaro"
+    },
+    {
+      "titolo": "Dott.",
+      "nome": "Antongiulio Bruschetta",
+      "specialita": "Ortopedia",
+      "foto": "sala-foto/bruschetta.png",
+      "attivo": true,
+      "prestazioni": [
+        "Visita ortopedica",
+        "Patologie di spalla, gomito e mano",
+        "Patologie di anca, ginocchio e piede",
+        "Dolore e patologie della colonna",
+        "Traumatologia e lesioni sportive",
+        "Infiltrazioni articolari"
+      ],
+      "tema": "scuro"
+    },
+    {
+      "titolo": "Dott.",
+      "nome": "Alberto Giuffrida",
+      "specialita": "Ortopedia",
+      "foto": "sala-foto/giuffrida.png",
+      "attivo": true,
+      "prestazioni": [
+        "Visita ortopedica",
+        "Patologie articolari e muscolo-tendinee",
+        "Dolore e patologie della colonna",
+        "Traumatologia e lesioni sportive",
+        "Valutazione posturale",
+        "Infiltrazioni articolari"
+      ],
+      "tema": "scuro"
+    },
+    {
+      "titolo": "Dott.ssa",
+      "nome": "Manuela Giallanza",
+      "specialita": "Reumatologia",
+      "foto": "sala-foto/giallanza.png",
+      "attivo": true,
+      "prestazioni": [
+        "Visita reumatologica",
+        "Artrite reumatoide e artriti",
+        "Lupus e connettiviti",
+        "Spondiloartriti e artrite psoriasica",
+        "Fibromialgia",
+        "Gotta e osteoporosi"
+      ],
+      "tema": "chiaro"
+    },
+    {
+      "titolo": "Prof.",
+      "nome": "Stefano Palomba",
+      "specialita": "Ginecologia",
+      "foto": "sala-foto/palomba.png",
+      "attivo": true,
+      "prestazioni": [
+        "Visita ginecologica",
+        "Ecografia ginecologica",
+        "Pap test e HPV test",
+        "Colposcopia",
+        "Ecografia ostetrica e controlli in gravidanza",
+        "Contraccezione e menopausa"
+      ],
+      "tema": "scuro"
+    },
+    {
+      "titolo": "Dott.",
+      "nome": "Andrea Cutrupi",
+      "specialita": "Chirurgia Vascolare",
+      "foto": "sala-foto/cutrupi.png",
+      "attivo": true,
+      "prestazioni": [
+        "Visita chirurgica vascolare",
+        "Ecocolordoppler arterioso e venoso",
+        "Varici e insufficienza venosa",
+        "Arteriopatia degli arti inferiori",
+        "Screening dell'aneurisma aortico",
+        "Piede diabetico"
+      ],
+      "tema": "scuro"
+    },
+    {
+      "titolo": "Dott.",
+      "nome": "Marco Salvaggio",
+      "specialita": "Urologia ed Andrologia",
+      "foto": "sala-foto/salvaggio.png",
+      "attivo": true,
+      "prestazioni": [
+        "Visita urologica e andrologica",
+        "Ecografia prostatica e urologica",
+        "Ipertrofia prostatica e prevenzione",
+        "Calcolosi renale",
+        "Disfunzione erettile",
+        "Infertilità maschile"
+      ],
+      "tema": "scuro"
+    },
+    {
+      "titolo": "Dott.ssa",
+      "nome": "Claudia Panzera",
+      "specialita": "Allergologia",
+      "foto": "sala-foto/panzera.png",
+      "attivo": true,
+      "prestazioni": [
+        "Visita allergologica",
+        "Prick test per inalanti e alimenti",
+        "Patch test",
+        "Spirometria",
+        "Allergie alimentari e ai farmaci",
+        "Orticaria e angioedema",
+        "Immunoterapia specifica"
+      ],
+      "tema": "chiaro"
+    },
+    {
+      "titolo": "Dott.ssa",
+      "nome": "Camilla Catalano",
+      "specialita": "Biologa Nutrizionista",
+      "foto": "sala-foto/catalano.png",
+      "attivo": true,
+      "prestazioni": [
+        "Valutazione nutrizionale",
+        "Piani alimentari personalizzati",
+        "Analisi della composizione corporea",
+        "Sovrappeso e patologie metaboliche",
+        "Nutrizione in gravidanza e allattamento",
+        "Nutrizione per lo sport"
+      ],
+      "tema": "scuro"
+    },
+    {
+      "titolo": "Dott.",
+      "nome": "Elvis Kallaverja",
+      "specialita": "Chirurgia Maxillo-Facciale",
+      "foto": "sala-foto/kallaverja.png",
+      "attivo": true,
+      "prestazioni": [
+        "Visita maxillo-facciale",
+        "Disturbi dell'articolazione temporo-mandibolare",
+        "Denti del giudizio e chirurgia orale",
+        "Lesioni del cavo orale",
+        "Asimmetrie e malformazioni del volto",
+        "Traumatologia facciale"
+      ],
+      "tema": "scuro"
+    },
+    {
+      "titolo": "Dott.",
+      "nome": "Marco Gambino",
+      "specialita": "Chirurgia Pediatrica",
+      "foto": "sala-foto/gambino.png",
+      "attivo": true,
+      "prestazioni": [
+        "Visita chirurgica pediatrica",
+        "Ernia inguinale e ombelicale",
+        "Fimosi",
+        "Criptorchidismo",
+        "Idrocele",
+        "Patologie urologiche in età pediatrica"
+      ],
+      "tema": "scuro"
+    },
+    {
+      "titolo": "Dott.ssa",
+      "nome": "Giuseppina Dodaro",
+      "specialita": "Medicina Estetica",
+      "foto": "sala-foto/dodaro.png",
+      "attivo": true,
+      "prestazioni": [
+        "Visita di medicina estetica",
+        "Filler all'acido ialuronico",
+        "Tossina botulinica",
+        "Biorivitalizzazione",
+        "Peeling chimici",
+        "Trattamenti per gli inestetismi del corpo"
+      ],
+      "tema": "chiaro"
+    }
+  ],
+  "secondi_medico": 10
 }
