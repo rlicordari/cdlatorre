@@ -76,7 +76,8 @@ cdlatorre/
 ├── radiologia.html               # Radiologia Digitale — esami RX disponibili
 ├── moc.html                      # MOC — densitometria ossea
 ├── ecografia.html                # Ecografia
-├── visite-specialistiche.html    # Visite Specialistiche
+├── visite-specialistiche.html    # Visite Specialistiche — riquadri per specialità, con link alle pagine dei medici
+├── specialista-<nome-cognome>.html  # Una pagina per ogni specialista (vedi "Pagine specialisti")
 ├── style.css                     # Unico foglio di stile globale
 ├── logo.png                      # Logo del centro
 ├── sala.html                     # Schermo sala d'attesa (TV) — pagina autonoma, vedi sotto
@@ -95,6 +96,15 @@ Pagina autonoma per le TV della sala d'attesa: loop 16:9 a schermo intero, non c
 - **Eccezione voluta** alle regole "niente backend/autenticazione": richiesta esplicitamente dal proprietario. Il sito è su GitHub Pages: niente PHP o script lato server.
 - **Schede specialisti:** `medici[]` in `sala-dati.json` (`titolo`, `nome`, `specialita`, `foto`, `prestazioni[]`, `attivo`): una schermata per scheda attiva, distribuite in tre gruppi nel loop (dopo il calendario, dopo Radiologia/MOC, dopo la prevenzione nei). Niente giorni di presenza nelle schede: restano nel calendario riepilogativo. Le foto stanno in `sala-foto/` come `nome.png` + `nome.webp` (la pagina usa il WebP e ricade sul PNG), scontornate, tagliate sopra le scritte dei post social e con il bordo inferiore allineato al fondo dello schermo.
 - Non modificare `sala-dati.json` a mano senza mantenere la struttura (`mese`, `anno`, `specialisti[]` con `specialita`/`medico`/`date`, `medici[]`, `orari[]`, contatti, `secondi_*`, `slide_attive`).
+
+---
+
+## Pagine Specialisti (`specialista-*.html`)
+
+- Una pagina statica per ogni medico presente in `medici[]` di `sala-dati.json`: hero con nome e specialità, foto scontornata (da `sala-foto/`) su cerchio ciano, descrizione della specialità, pulsanti telefono e WhatsApp (messaggio precompilato con il nome del medico), griglia "Prestazioni", griglia "I Nostri Specialisti" con link alle altre pagine, CTA e footer identici al resto del sito.
+- Le prestazioni sono scritte nella pagina ma uno script inline le riallinea a `sala-dati.json` all'apertura: modificandole dal pannello della sala d'attesa cambiano anche sul sito.
+- In `visite-specialistiche.html` ogni riquadro di specialità con medici mostra i loro nomi (con miniatura) come link alle pagine; se il medico è uno solo tutto il riquadro è cliccabile. Riquadri aggiunti per le specialità dei medici che prima non comparivano: Chirurgia Vascolare, Allergologia, Nutrizione, Chirurgia Maxillo-Facciale, Chirurgia Pediatrica.
+- Nome file: `specialista-` + nome e cognome in minuscolo con trattini. Per un nuovo medico: aggiungere la scheda in `sala-dati.json` (e la foto in `sala-foto/`), poi creare la pagina con la stessa struttura e il link nel riquadro della sua specialità.
 
 ---
 

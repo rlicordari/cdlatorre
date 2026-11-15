@@ -54,6 +54,18 @@
         .specialita-card h3 { color: var(--primary-blue); font-size: 1.05rem; margin-bottom: 10px; }
         .specialita-card p  { color: var(--text-light); font-size: 0.87rem; line-height: 1.6; }
 
+
+        .specialita-card { display: flex; flex-direction: column; }
+        .spec-docs { margin-top: auto; padding-top: 18px; display: flex; flex-direction: column; gap: 8px; }
+        .spec-doc { display: flex; align-items: center; gap: 12px; text-align: left; padding: 8px 12px 8px 8px; border-radius: 50px;
+            background: rgba(0,156,223,0.08); color: var(--primary-blue); font-weight: 600; font-size: 0.84rem; line-height: 1.3; }
+        .spec-doc span { flex: 1; }
+        .spec-doc i { color: var(--accent-cyan); font-size: 0.75rem; transition: transform 0.3s; }
+        .spec-doc:hover { background: var(--accent-cyan); color: var(--white); }
+        .spec-doc:hover i { color: var(--white); transform: translateX(3px); }
+        .spec-doc-foto { width: 38px; height: 38px; min-width: 38px; border-radius: 50%; overflow: hidden; background: linear-gradient(135deg, var(--accent-cyan), #0076b0); }
+        .spec-doc-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 8%; }
+
         .info-box {
             max-width: 900px;
             margin: 60px auto 0;
@@ -139,15 +151,17 @@
         <div class="divider"></div>
     </div>
     <div class="specialita-grid">
-        <div class="specialita-card">
+        <div class="specialita-card con-medico">
             <div class="spec-icon"><i class="fas fa-heart"></i></div>
             <h3>Cardiologia</h3>
             <p>Visita cardiologica, elettrocardiogramma, ecocardiogramma, Holter cardiaco e pressorio.</p>
+            <div class="spec-docs"><a href="specialista-roberto-licordari.html" class="spec-doc"><picture class="spec-doc-foto"><source srcset="sala-foto/licordari.webp" type="image/webp"><img src="sala-foto/licordari.png" alt="Dott. Roberto Licordari" loading="lazy"></picture><span>Dott. Roberto Licordari</span><i class="fas fa-chevron-right"></i></a></div>
         </div>
-        <div class="specialita-card">
+        <div class="specialita-card con-medico">
             <div class="spec-icon"><i class="fas fa-bone"></i></div>
             <h3>Ortopedia</h3>
             <p>Patologie del sistema muscolo-scheletrico, rachide, articolazioni e traumatologia.</p>
+            <div class="spec-docs"><a href="specialista-antongiulio-bruschetta.html" class="spec-doc"><picture class="spec-doc-foto"><source srcset="sala-foto/bruschetta.webp" type="image/webp"><img src="sala-foto/bruschetta.png" alt="Dott. Antongiulio Bruschetta" loading="lazy"></picture><span>Dott. Antongiulio Bruschetta</span><i class="fas fa-chevron-right"></i></a><a href="specialista-alberto-giuffrida.html" class="spec-doc"><picture class="spec-doc-foto"><source srcset="sala-foto/giuffrida.webp" type="image/webp"><img src="sala-foto/giuffrida.png" alt="Dott. Alberto Giuffrida" loading="lazy"></picture><span>Dott. Alberto Giuffrida</span><i class="fas fa-chevron-right"></i></a></div>
         </div>
         <div class="specialita-card">
             <div class="spec-icon"><i class="fas fa-brain"></i></div>
@@ -169,35 +183,70 @@
             <h3>Dermatologia</h3>
             <p>Diagnosi e trattamento di patologie cutanee, dermatoscopia dei nei e mappatura dei melanociti.</p>
         </div>
-        <div class="specialita-card">
+        <div class="specialita-card con-medico">
             <div class="spec-icon"><i class="fas fa-hand-fist"></i></div>
             <h3>Reumatologia</h3>
             <p>Artrite reumatoide, lupus, connettiviti, fibromialgia e patologie infiammatorie articolari.</p>
+            <div class="spec-docs"><a href="specialista-manuela-giallanza.html" class="spec-doc"><picture class="spec-doc-foto"><source srcset="sala-foto/giallanza.webp" type="image/webp"><img src="sala-foto/giallanza.png" alt="Dott.ssa Manuela Giallanza" loading="lazy"></picture><span>Dott.ssa Manuela Giallanza</span><i class="fas fa-chevron-right"></i></a></div>
         </div>
-        <div class="specialita-card">
+        <div class="specialita-card con-medico">
             <div class="spec-icon"><i class="fas fa-venus"></i></div>
             <h3>Ginecologia</h3>
             <p>Visita ginecologica, Pap test, colposcopia, ecografia ostetrica e follow-up in gravidanza.</p>
+            <div class="spec-docs"><a href="specialista-stefano-palomba.html" class="spec-doc"><picture class="spec-doc-foto"><source srcset="sala-foto/palomba.webp" type="image/webp"><img src="sala-foto/palomba.png" alt="Prof. Stefano Palomba" loading="lazy"></picture><span>Prof. Stefano Palomba</span><i class="fas fa-chevron-right"></i></a></div>
         </div>
         <div class="specialita-card">
             <div class="spec-icon"><i class="fas fa-eye"></i></div>
             <h3>Oculistica</h3>
             <p>Esame del visus, tonometria, fundus oculi e valutazione del segmento anteriore e posteriore.</p>
         </div>
-        <div class="specialita-card">
+        <div class="specialita-card con-medico">
             <div class="spec-icon"><i class="fas fa-lungs"></i></div>
             <h3>Pneumologia</h3>
             <p>Patologie respiratorie croniche e acute, asma, BPCO, spirometria e gestione delle allergie respiratorie.</p>
+            <div class="spec-docs"><a href="specialista-giuseppe-cama.html" class="spec-doc"><picture class="spec-doc-foto"><source srcset="sala-foto/cama.webp" type="image/webp"><img src="sala-foto/cama.png" alt="Dott. Giuseppe Cama" loading="lazy"></picture><span>Dott. Giuseppe Cama</span><i class="fas fa-chevron-right"></i></a></div>
         </div>
-        <div class="specialita-card">
+        <div class="specialita-card con-medico">
             <div class="spec-icon"><i class="fas fa-filter"></i></div>
             <h3>Urologia</h3>
             <p>Patologie delle vie urinarie, ipertrofia prostatica, calcolosi renale e disfunzioni sessuali maschili.</p>
+            <div class="spec-docs"><a href="specialista-marco-salvaggio.html" class="spec-doc"><picture class="spec-doc-foto"><source srcset="sala-foto/salvaggio.webp" type="image/webp"><img src="sala-foto/salvaggio.png" alt="Dott. Marco Salvaggio" loading="lazy"></picture><span>Dott. Marco Salvaggio</span><i class="fas fa-chevron-right"></i></a></div>
         </div>
-        <div class="specialita-card">
+        <div class="specialita-card con-medico">
             <div class="spec-icon"><i class="fas fa-spa"></i></div>
             <h3>Medicina Estetica</h3>
             <p>Trattamenti estetici medici per il ringiovanimento cutaneo, trattamento delle rughe e rimodellamento corporeo.</p>
+            <div class="spec-docs"><a href="specialista-giuseppina-dodaro.html" class="spec-doc"><picture class="spec-doc-foto"><source srcset="sala-foto/dodaro.webp" type="image/webp"><img src="sala-foto/dodaro.png" alt="Dott.ssa Giuseppina Dodaro" loading="lazy"></picture><span>Dott.ssa Giuseppina Dodaro</span><i class="fas fa-chevron-right"></i></a></div>
+        </div>
+        <div class="specialita-card con-medico">
+            <div class="spec-icon"><i class="fas fa-heart-pulse"></i></div>
+            <h3>Chirurgia Vascolare</h3>
+            <p>Varici, insufficienza venosa, arteriopatie degli arti inferiori ed ecocolordoppler arterioso e venoso.</p>
+            <div class="spec-docs"><a href="specialista-andrea-cutrupi.html" class="spec-doc"><picture class="spec-doc-foto"><source srcset="sala-foto/cutrupi.webp" type="image/webp"><img src="sala-foto/cutrupi.png" alt="Dott. Andrea Cutrupi" loading="lazy"></picture><span>Dott. Andrea Cutrupi</span><i class="fas fa-chevron-right"></i></a></div>
+        </div>
+        <div class="specialita-card con-medico">
+            <div class="spec-icon"><i class="fas fa-head-side-cough"></i></div>
+            <h3>Allergologia</h3>
+            <p>Allergie respiratorie, alimentari e ai farmaci, test cutanei e immunoterapia specifica.</p>
+            <div class="spec-docs"><a href="specialista-claudia-panzera.html" class="spec-doc"><picture class="spec-doc-foto"><source srcset="sala-foto/panzera.webp" type="image/webp"><img src="sala-foto/panzera.png" alt="Dott.ssa Claudia Panzera" loading="lazy"></picture><span>Dott.ssa Claudia Panzera</span><i class="fas fa-chevron-right"></i></a></div>
+        </div>
+        <div class="specialita-card con-medico">
+            <div class="spec-icon"><i class="fas fa-apple-whole"></i></div>
+            <h3>Nutrizione</h3>
+            <p>Valutazione nutrizionale, piani alimentari personalizzati e composizione corporea.</p>
+            <div class="spec-docs"><a href="specialista-camilla-catalano.html" class="spec-doc"><picture class="spec-doc-foto"><source srcset="sala-foto/catalano.webp" type="image/webp"><img src="sala-foto/catalano.png" alt="Dott.ssa Camilla Catalano" loading="lazy"></picture><span>Dott.ssa Camilla Catalano</span><i class="fas fa-chevron-right"></i></a></div>
+        </div>
+        <div class="specialita-card con-medico">
+            <div class="spec-icon"><i class="fas fa-tooth"></i></div>
+            <h3>Chirurgia Maxillo-Facciale</h3>
+            <p>Articolazione temporo-mandibolare, chirurgia orale e patologie del volto e del cavo orale.</p>
+            <div class="spec-docs"><a href="specialista-elvis-kallaverja.html" class="spec-doc"><picture class="spec-doc-foto"><source srcset="sala-foto/kallaverja.webp" type="image/webp"><img src="sala-foto/kallaverja.png" alt="Dott. Elvis Kallaverja" loading="lazy"></picture><span>Dott. Elvis Kallaverja</span><i class="fas fa-chevron-right"></i></a></div>
+        </div>
+        <div class="specialita-card con-medico">
+            <div class="spec-icon"><i class="fas fa-baby"></i></div>
+            <h3>Chirurgia Pediatrica</h3>
+            <p>Ernie, fimosi, criptorchidismo e patologie chirurgiche dal neonato all&#x27;adolescente.</p>
+            <div class="spec-docs"><a href="specialista-marco-gambino.html" class="spec-doc"><picture class="spec-doc-foto"><source srcset="sala-foto/gambino.webp" type="image/webp"><img src="sala-foto/gambino.png" alt="Dott. Marco Gambino" loading="lazy"></picture><span>Dott. Marco Gambino</span><i class="fas fa-chevron-right"></i></a></div>
         </div>
     </div>
 
@@ -274,6 +323,15 @@
     ScrollReveal().reveal('.section-header', { delay: 150, distance: '30px', origin: 'top' });
     ScrollReveal().reveal('.specialita-card', { interval: 80, distance: '30px', origin: 'bottom' });
     ScrollReveal().reveal('.info-box', { delay: 200, distance: '30px', origin: 'bottom' });
+</script>
+
+<script>
+    // un solo specialista nel riquadro: tutto il riquadro porta alla sua pagina
+    document.querySelectorAll('.specialita-card.con-medico').forEach(function (c) {
+        var links = c.querySelectorAll('.spec-doc'); if (links.length !== 1) return;
+        c.style.cursor = 'pointer';
+        c.addEventListener('click', function (e) { if (!e.target.closest('a')) location.href = links[0].getAttribute('href'); });
+    });
 </script>
 </body>
 </html>
