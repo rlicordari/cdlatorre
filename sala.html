@@ -129,16 +129,15 @@ window.DATI = {
     "diagnostica": true,
     "ecografie": true,
     "radiologia_moc": true,
-    "pressione": true,
-    "ossa": true,
-    "nei": true,
+    "pressione": false,
+    "ossa": false,
+    "nei": false,
     "orari": true,
     "servizi": true,
     "medici": true
   },
   "medici": [
     {
-      "id": "licordari",
       "titolo": "Dott.",
       "nome": "Roberto Licordari",
       "specialita": "Cardiologia",
@@ -156,7 +155,6 @@ window.DATI = {
       "tema": "chiaro"
     },
     {
-      "id": "bruschetta",
       "titolo": "Dott.",
       "nome": "Antongiulio Bruschetta",
       "specialita": "Ortopedia",
@@ -173,7 +171,6 @@ window.DATI = {
       "tema": "scuro"
     },
     {
-      "id": "giuffrida",
       "titolo": "Dott.",
       "nome": "Alberto Giuffrida",
       "specialita": "Ortopedia",
@@ -190,7 +187,6 @@ window.DATI = {
       "tema": "scuro"
     },
     {
-      "id": "giallanza",
       "titolo": "Dott.ssa",
       "nome": "Manuela Giallanza",
       "specialita": "Reumatologia",
@@ -207,7 +203,6 @@ window.DATI = {
       "tema": "chiaro"
     },
     {
-      "id": "palomba",
       "titolo": "Prof.",
       "nome": "Stefano Palomba",
       "specialita": "Ginecologia",
@@ -224,7 +219,6 @@ window.DATI = {
       "tema": "scuro"
     },
     {
-      "id": "cutrupi",
       "titolo": "Dott.",
       "nome": "Andrea Cutrupi",
       "specialita": "Chirurgia Vascolare",
@@ -241,7 +235,6 @@ window.DATI = {
       "tema": "scuro"
     },
     {
-      "id": "salvaggio",
       "titolo": "Dott.",
       "nome": "Marco Salvaggio",
       "specialita": "Urologia ed Andrologia",
@@ -258,7 +251,6 @@ window.DATI = {
       "tema": "scuro"
     },
     {
-      "id": "panzera",
       "titolo": "Dott.ssa",
       "nome": "Claudia Panzera",
       "specialita": "Allergologia",
@@ -276,7 +268,6 @@ window.DATI = {
       "tema": "chiaro"
     },
     {
-      "id": "catalano",
       "titolo": "Dott.ssa",
       "nome": "Camilla Catalano",
       "specialita": "Biologa Nutrizionista",
@@ -293,7 +284,6 @@ window.DATI = {
       "tema": "scuro"
     },
     {
-      "id": "kallaverja",
       "titolo": "Dott.",
       "nome": "Elvis Kallaverja",
       "specialita": "Chirurgia Maxillo-Facciale",
@@ -310,7 +300,6 @@ window.DATI = {
       "tema": "scuro"
     },
     {
-      "id": "gambino",
       "titolo": "Dott.",
       "nome": "Marco Gambino",
       "specialita": "Chirurgia Pediatrica",
@@ -327,7 +316,6 @@ window.DATI = {
       "tema": "scuro"
     },
     {
-      "id": "dodaro",
       "titolo": "Dott.ssa",
       "nome": "Giuseppina Dodaro",
       "specialita": "Medicina Estetica",
@@ -344,7 +332,32 @@ window.DATI = {
       "tema": "chiaro"
     }
   ],
-  "secondi_medico": 10
+  "secondi_medico": 10,
+  "ordine": [
+    "benvenuto",
+    "diagnostica",
+    "ecografie",
+    "radiologia_moc",
+    "med:antongiulio-bruschetta",
+    "med:manuela-giallanza",
+    "med:stefano-palomba",
+    "med:andrea-cutrupi",
+    "med:roberto-licordari",
+    "med:marco-salvaggio",
+    "med:alberto-giuffrida",
+    "med:claudia-panzera",
+    "med:camilla-catalano",
+    "med:elvis-kallaverja",
+    "med:marco-gambino",
+    "med:giuseppina-dodaro",
+    "mese",
+    "calendario",
+    "pressione",
+    "ossa",
+    "nei",
+    "orari",
+    "servizi"
+  ]
 };
 /*FINE-DATI*/
 
@@ -443,13 +456,16 @@ window.SALA_GITHUB = { owner: "rlicordari", repo: "cdlatorre", branch: "main", p
   #ed .r-prest { grid-template-columns: 1fr 34px 34px; margin-bottom:6px; }
   #ed .medcard.focus { border-color:var(--sky); box-shadow:0 0 0 3px rgba(41,171,226,.25); }
   #ed .r-med2 { grid-template-columns: 1fr auto 34px; align-items:start; }
-  #ed .ordrow { display:grid; grid-template-columns: 22px 22px 1fr 34px 34px; gap:8px; align-items:center; padding:6px 8px; margin-bottom:4px; border:1px solid #dfe6ef; border-radius:8px; background:#fff; }
+  #ed .ordrow { display:grid; grid-template-columns: 22px 22px 1fr 34px 34px 34px; gap:8px; align-items:center; padding:6px 8px; margin-bottom:4px; border:1px solid #dfe6ef; border-radius:8px; background:#fff; }
   #ed .ordrow.med { background:#f4f9fd; }
   #ed .ordrow.off .lab { opacity:.45; text-decoration:line-through; }
   #ed .ordrow.drag { opacity:.4; } #ed .ordrow.over { border-color:var(--sky); box-shadow:0 -3px 0 var(--sky); }
   #ed .ordrow .grip { cursor:grab; color:#8a9ab3; font-weight:700; letter-spacing:-2px; user-select:none; }
   #ed .ordrow .lab { font-size:14px; } #ed .ordrow .sub { color:#5b6b85; font-size:13px; }
   #ed .ordrow .sm { height:30px; }
+  #ed .ordrow .sm.del:hover { background:#fde3e1; color:#b42318; }
+  #ed .gone { margin:8px 0 4px; padding:8px 10px; border:1px dashed #c9d4e3; border-radius:8px; font-size:13px; color:#5b6b85; display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+  #ed .gone button { padding:6px 10px; font-size:13px; }
   #ed textarea { width:100%; min-height:118px; padding:8px 10px; border:1px solid #c9d4e3; border-radius:8px; font:14px/1.4 Arial; color:#1d2b4a; resize:vertical; }
   #ed .inline { display:flex; gap:6px; align-items:center; font-size:13px; color:#1d2b4a; margin:0; white-space:nowrap; }
   #ed .r2 { grid-template-columns: 1fr 1fr; }
@@ -642,7 +658,7 @@ function buildSlides() {
       final.push({ s: +D.secondi_medico || sec, cls: m.tema === 'chiaro' ? 'white med chiaro' : 'navy med', html: medicoHTML(m), med: i });
       continue;
     }
-    if (A[k] === false || (k === 'mese' && A.calendario === false)) continue;
+    if (A[k] === false || (k === 'mese' && (A.calendario === false || (D.rimosse || []).includes('calendario')))) continue;
     final.push(...(B[k] || []));
   }
   return final;
@@ -650,9 +666,11 @@ function buildSlides() {
 const FIXED = ['benvenuto', 'mese', 'calendario', 'diagnostica', 'ecografie', 'radiologia_moc', 'pressione', 'ossa', 'nei', 'orari', 'servizi'];
 const slug = t => String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const medId = m => m.id || slug(m.nome) || 'senza-nome';
+const PROTETTA = 'benvenuto';   // la prima schermata non si può eliminare
 function normOrder(d) {
   const meds = (d.medici || []).map(m => 'med:' + medId(m));
-  const valid = new Set([...FIXED, ...meds]);
+  const gone = new Set((d.rimosse || []).filter(k => k !== PROTETTA));
+  const valid = new Set([...FIXED.filter(k => !gone.has(k)), ...meds]);
   let base;
   if (Array.isArray(d.ordine) && d.ordine.length) base = d.ordine;
   else {   // ordine predefinito: specialisti divisi in tre gruppi
@@ -662,7 +680,7 @@ function normOrder(d) {
   }
   const res = [], seen = new Set();
   for (const k of base) if (valid.has(k) && !seen.has(k)) { res.push(k); seen.add(k); }
-  for (const k of [...FIXED, ...meds]) if (!seen.has(k)) { res.push(k); seen.add(k); }
+  for (const k of [...FIXED, ...meds]) if (valid.has(k) && !seen.has(k)) { res.push(k); seen.add(k); }
   return res;
 }
 function photoHTML(src, cls) {
@@ -742,13 +760,15 @@ function ordList() {
     return `<div class="ordrow ${cls} ${vis ? '' : 'off'}" draggable="true" data-k="${esc(k)}">
       <span class="grip" title="Trascina">⋮⋮</span><input type="checkbox" data-ov="${esc(k)}" ${vis ? 'checked' : ''} title="Mostra">
       <span class="lab">${n + 1}. ${lab}</span>
-      <button class="sm" data-a="oup" data-n="${n}" title="Sposta su">↑</button><button class="sm" data-a="odown" data-n="${n}" title="Sposta giù">↓</button></div>`;
-  }).join('');
+      <button class="sm" data-a="oup" data-n="${n}" title="Sposta su">↑</button><button class="sm" data-a="odown" data-n="${n}" title="Sposta giù">↓</button>
+      ${k === PROTETTA ? '<span></span>' : `<button class="sm del" data-a="odel" data-k="${esc(k)}" title="Elimina schermata">✕</button>`}</div>`;
+  }).join('') + ((W.rimosse || []).length ? `<div class="gone"><span>Schermate eliminate:</span> ${(W.rimosse || []).map(k =>
+      `<button data-a="orest" data-k="${esc(k)}" title="Ripristina in fondo al loop">↺ ${esc((NOMI[k] || k).replace(/ \(.*\)$/, ''))}</button>`).join(' ')}</div>` : '');
 }
 function drawEd() {
   edb.innerHTML = `
     <h3>Ordine e visibilità delle schermate</h3>
-    <div class="hint" style="margin:-4px 0 8px">Trascina le righe o usa ↑↓ per cambiare l'ordine del loop; togli la spunta per nascondere una schermata.</div>
+    <div class="hint" style="margin:-4px 0 8px">Trascina le righe o usa ↑↓ per cambiare l'ordine; togli la spunta per nasconderla, ✕ per eliminarla (le schermate fisse si possono ripristinare).</div>
     <div id="ordlist">${ordList()}</div>` + `
     <h3>Mese</h3>
     <div class="row r2"><div><label>Mese</label>${inp('mese', W.mese)}</div><div><label>Anno</label>${inp('anno', W.anno)}</div></div>
@@ -812,6 +832,15 @@ edb.addEventListener('click', e => {
   if (b.dataset.a === 'delor') W.orari.splice(i, 1);
   const ML = W.medici = W.medici || [];
   const n = +b.dataset.n, O = W.ordine = normOrder(W);
+  if (b.dataset.a === 'odel') {
+    const k = b.dataset.k;
+    if (k.startsWith('med:')) {
+      const ii = ML0().findIndex(m => medId(m) === k.slice(4));
+      if (ii >= 0 && confirmDel(ML0()[ii])) { ML0().splice(ii, 1); W.ordine = O.filter(x => x !== k); }
+    } else if (k !== PROTETTA) { W.rimosse = [...new Set([...(W.rimosse || []), k])]; W.ordine = O.filter(x => x !== k); }
+    drawEd(); return;
+  }
+  if (b.dataset.a === 'orest') { W.rimosse = (W.rimosse || []).filter(x => x !== b.dataset.k); W.ordine = O.filter(x => x !== b.dataset.k).concat(b.dataset.k); drawEd(); return; }
   if (b.dataset.a === 'oup' && n > 0) [O[n - 1], O[n]] = [O[n], O[n - 1]];
   if (b.dataset.a === 'odown' && n < O.length - 1) [O[n + 1], O[n]] = [O[n], O[n + 1]];
   const j = +b.dataset.j, PL = ML[i] && (ML[i].prestazioni = ML[i].prestazioni || []);
@@ -824,7 +853,8 @@ edb.addEventListener('click', e => {
   if (b.dataset.a === 'meddown' && i < ML.length - 1) [ML[i + 1], ML[i]] = [ML[i], ML[i + 1]];
   drawEd();
 });
-function confirmDel(m) { return !m || !m.nome || window.confirm('Eliminare la scheda di ' + m.nome + '? (Per nasconderla basta togliere "Mostra")'); }
+function ML0() { return W.medici = W.medici || []; }
+function confirmDel(m) { return !m || !m.nome || window.confirm('Eliminare la scheda di ' + m.nome + '? Verrà cancellata. Per nasconderla soltanto, togli la spunta nell’elenco.'); }
 let edRecovered = false, edPin = null, edRem = null;
 function banners() {
   if (edRecovered) edb.insertAdjacentHTML('afterbegin', `<div style="background:#e8f6ec;border:1px solid #9fd3ae;border-radius:8px;padding:12px 14px;line-height:1.4;margin-top:10px">
