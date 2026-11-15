@@ -115,6 +115,7 @@ Pagina autonoma per le TV della sala d'attesa: loop 16:9 a schermo intero, non c
 - Titoli delle pagine specialista nel formato "Visita [branca] a Rosarno (RC) – [Medico] | Centro Diagnostico Latorre"; ogni pagina ha sezioni "Quando prenotare", "Come si svolge" e "Domande Frequenti".
 - Homepage: sotto "I Nostri Servizi" il blocco "Visite specialistiche a Rosarno" con i link alle specialità (tra i commenti `SPECIALITA-LINK`). `visite-specialistiche.html` ha nell'introduzione i link testuali alle pagine dei medici.
 - `sala.html` ha `noindex, nofollow`: è lo schermo TV, non deve comparire su Google.
+- **Google Search Console:** il file `google3ef18b25f11bfcea.html` nella radice e il meta tag `google-site-verification` nell'`<head>` di `index.html` servono a mantenere la proprietà verificata. Non rimuoverli.
 
 ---
 
