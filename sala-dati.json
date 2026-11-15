@@ -90,11 +90,12 @@
     "diagnostica": true,
     "ecografie": true,
     "radiologia_moc": true,
-    "pressione": true,
+    "pressione": false,
     "ossa": true,
-    "nei": true,
+    "nei": false,
     "orari": true,
-    "servizi": true
+    "servizi": true,
+    "medici": true
   },
   "medici": [
     {
