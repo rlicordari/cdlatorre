@@ -289,6 +289,20 @@
         "Trattamenti per gli inestetismi del corpo"
       ],
       "tema": "chiaro"
+    },
+    {
+      "id": "cama",
+      "titolo": "Dott.",
+      "nome": "Giuseppe Cama",
+      "specialita": "Pneumologia",
+      "foto": "sala-foto/cama.png",
+      "attivo": true,
+      "prestazioni": [
+        "Visita pneumologica",
+        "Spirometria",
+        "Polisonnografia"
+      ],
+      "tema": "scuro"
     }
   ],
   "secondi_medico": 10,
@@ -309,6 +323,7 @@
     "med:elvis-kallaverja",
     "med:marco-gambino",
     "med:giuseppina-dodaro",
+    "med:cama",
     "mese",
     "calendario",
     "orari",
