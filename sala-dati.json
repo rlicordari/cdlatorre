@@ -99,6 +99,7 @@
   },
   "medici": [
     {
+      "id": "licordari",
       "titolo": "Dott.",
       "nome": "Roberto Licordari",
       "specialita": "Cardiologia",
@@ -116,6 +117,7 @@
       "tema": "chiaro"
     },
     {
+      "id": "bruschetta",
       "titolo": "Dott.",
       "nome": "Antongiulio Bruschetta",
       "specialita": "Ortopedia",
@@ -132,6 +134,7 @@
       "tema": "scuro"
     },
     {
+      "id": "giuffrida",
       "titolo": "Dott.",
       "nome": "Alberto Giuffrida",
       "specialita": "Ortopedia",
@@ -148,6 +151,7 @@
       "tema": "scuro"
     },
     {
+      "id": "giallanza",
       "titolo": "Dott.ssa",
       "nome": "Manuela Giallanza",
       "specialita": "Reumatologia",
@@ -164,6 +168,7 @@
       "tema": "chiaro"
     },
     {
+      "id": "palomba",
       "titolo": "Prof.",
       "nome": "Stefano Palomba",
       "specialita": "Ginecologia",
@@ -180,6 +185,7 @@
       "tema": "scuro"
     },
     {
+      "id": "cutrupi",
       "titolo": "Dott.",
       "nome": "Andrea Cutrupi",
       "specialita": "Chirurgia Vascolare",
@@ -196,6 +202,7 @@
       "tema": "scuro"
     },
     {
+      "id": "salvaggio",
       "titolo": "Dott.",
       "nome": "Marco Salvaggio",
       "specialita": "Urologia ed Andrologia",
@@ -212,6 +219,7 @@
       "tema": "scuro"
     },
     {
+      "id": "panzera",
       "titolo": "Dott.ssa",
       "nome": "Claudia Panzera",
       "specialita": "Allergologia",
@@ -229,6 +237,7 @@
       "tema": "chiaro"
     },
     {
+      "id": "catalano",
       "titolo": "Dott.ssa",
       "nome": "Camilla Catalano",
       "specialita": "Biologa Nutrizionista",
@@ -245,6 +254,7 @@
       "tema": "scuro"
     },
     {
+      "id": "kallaverja",
       "titolo": "Dott.",
       "nome": "Elvis Kallaverja",
       "specialita": "Chirurgia Maxillo-Facciale",
@@ -261,6 +271,7 @@
       "tema": "scuro"
     },
     {
+      "id": "gambino",
       "titolo": "Dott.",
       "nome": "Marco Gambino",
       "specialita": "Chirurgia Pediatrica",
@@ -277,6 +288,7 @@
       "tema": "scuro"
     },
     {
+      "id": "dodaro",
       "titolo": "Dott.ssa",
       "nome": "Giuseppina Dodaro",
       "specialita": "Medicina Estetica",

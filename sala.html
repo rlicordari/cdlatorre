@@ -125,7 +125,7 @@ window.DATI = {
   "slide_attive": {
     "benvenuto": true,
     "mese": true,
-    "calendario": true,
+    "calendario": false,
     "diagnostica": true,
     "ecografie": true,
     "radiologia_moc": true,
@@ -133,10 +133,12 @@ window.DATI = {
     "ossa": true,
     "nei": true,
     "orari": true,
-    "servizi": true
+    "servizi": true,
+    "medici": true
   },
   "medici": [
     {
+      "id": "licordari",
       "titolo": "Dott.",
       "nome": "Roberto Licordari",
       "specialita": "Cardiologia",
@@ -154,6 +156,7 @@ window.DATI = {
       "tema": "chiaro"
     },
     {
+      "id": "bruschetta",
       "titolo": "Dott.",
       "nome": "Antongiulio Bruschetta",
       "specialita": "Ortopedia",
@@ -170,6 +173,7 @@ window.DATI = {
       "tema": "scuro"
     },
     {
+      "id": "giuffrida",
       "titolo": "Dott.",
       "nome": "Alberto Giuffrida",
       "specialita": "Ortopedia",
@@ -186,6 +190,7 @@ window.DATI = {
       "tema": "scuro"
     },
     {
+      "id": "giallanza",
       "titolo": "Dott.ssa",
       "nome": "Manuela Giallanza",
       "specialita": "Reumatologia",
@@ -202,6 +207,7 @@ window.DATI = {
       "tema": "chiaro"
     },
     {
+      "id": "palomba",
       "titolo": "Prof.",
       "nome": "Stefano Palomba",
       "specialita": "Ginecologia",
@@ -218,6 +224,7 @@ window.DATI = {
       "tema": "scuro"
     },
     {
+      "id": "cutrupi",
       "titolo": "Dott.",
       "nome": "Andrea Cutrupi",
       "specialita": "Chirurgia Vascolare",
@@ -234,6 +241,7 @@ window.DATI = {
       "tema": "scuro"
     },
     {
+      "id": "salvaggio",
       "titolo": "Dott.",
       "nome": "Marco Salvaggio",
       "specialita": "Urologia ed Andrologia",
@@ -250,6 +258,7 @@ window.DATI = {
       "tema": "scuro"
     },
     {
+      "id": "panzera",
       "titolo": "Dott.ssa",
       "nome": "Claudia Panzera",
       "specialita": "Allergologia",
@@ -267,6 +276,7 @@ window.DATI = {
       "tema": "chiaro"
     },
     {
+      "id": "catalano",
       "titolo": "Dott.ssa",
       "nome": "Camilla Catalano",
       "specialita": "Biologa Nutrizionista",
@@ -283,6 +293,7 @@ window.DATI = {
       "tema": "scuro"
     },
     {
+      "id": "kallaverja",
       "titolo": "Dott.",
       "nome": "Elvis Kallaverja",
       "specialita": "Chirurgia Maxillo-Facciale",
@@ -299,6 +310,7 @@ window.DATI = {
       "tema": "scuro"
     },
     {
+      "id": "gambino",
       "titolo": "Dott.",
       "nome": "Marco Gambino",
       "specialita": "Chirurgia Pediatrica",
@@ -315,6 +327,7 @@ window.DATI = {
       "tema": "scuro"
     },
     {
+      "id": "dodaro",
       "titolo": "Dott.ssa",
       "nome": "Giuseppina Dodaro",
       "specialita": "Medicina Estetica",
@@ -429,7 +442,14 @@ window.SALA_GITHUB = { owner: "rlicordari", repo: "cdlatorre", branch: "main", p
   #ed .r-med { grid-template-columns: 90px 1.3fr 1fr; }
   #ed .r-prest { grid-template-columns: 1fr 34px 34px; margin-bottom:6px; }
   #ed .medcard.focus { border-color:var(--sky); box-shadow:0 0 0 3px rgba(41,171,226,.25); }
-  #ed .r-med2 { grid-template-columns: 1fr auto 34px 34px 34px; align-items:start; }
+  #ed .r-med2 { grid-template-columns: 1fr auto 34px; align-items:start; }
+  #ed .ordrow { display:grid; grid-template-columns: 22px 22px 1fr 34px 34px; gap:8px; align-items:center; padding:6px 8px; margin-bottom:4px; border:1px solid #dfe6ef; border-radius:8px; background:#fff; }
+  #ed .ordrow.med { background:#f4f9fd; }
+  #ed .ordrow.off .lab { opacity:.45; text-decoration:line-through; }
+  #ed .ordrow.drag { opacity:.4; } #ed .ordrow.over { border-color:var(--sky); box-shadow:0 -3px 0 var(--sky); }
+  #ed .ordrow .grip { cursor:grab; color:#8a9ab3; font-weight:700; letter-spacing:-2px; user-select:none; }
+  #ed .ordrow .lab { font-size:14px; } #ed .ordrow .sub { color:#5b6b85; font-size:13px; }
+  #ed .ordrow .sm { height:30px; }
   #ed textarea { width:100%; min-height:118px; padding:8px 10px; border:1px solid #c9d4e3; border-radius:8px; font:14px/1.4 Arial; color:#1d2b4a; resize:vertical; }
   #ed .inline { display:flex; gap:6px; align-items:center; font-size:13px; color:#1d2b4a; margin:0; white-space:nowrap; }
   #ed .r2 { grid-template-columns: 1fr 1fr; }
@@ -493,8 +513,9 @@ const logo = (navyBg, w = 307, l = 96, t = 58) => `<img class="logo" style="widt
 const head = (navyBg, kicker, title) => `${logo(navyBg)}<div class="kicker">${kicker}</div><div class="title">${title}</div>`;
 
 function buildSlides() {
-  const A = D.slide_attive || {}, out = [], sec = +D.secondi_altre_slide || 10, secCal = +D.secondi_calendario || 12;
-  const on = k => A[k] !== false;
+  const A = D.slide_attive || {}, sec = +D.secondi_altre_slide || 10, secCal = +D.secondi_calendario || 12;
+  const B = {}; let out;
+  const on = k => (out = B[k] = B[k] || [], true);   // costruisce tutti i blocchi; ordine e visibilità più sotto
 
   if (on('benvenuto')) {
     const hot = new Set([2, 9, 11, 18, 20, 25, 30]);
@@ -513,7 +534,6 @@ function buildSlides() {
       <div class="abs" style="left:96px;top:658px;font-size:107px;opacity:.55">${esc(D.anno)}</div>
       <div class="abs" style="left:96px;top:893px;font-size:40px;font-weight:700;color:var(--sky)">Oltre 18 specialisti in un unico centro</div>` });
 
-  const slots = [];   // punti del loop in cui inserire le schede specialisti
   if (on('calendario')) {
     const L = D.specialisti || [], pages = Math.max(1, Math.ceil(L.length / 6));
     for (let p = 0; p < pages; p++) {
@@ -529,7 +549,6 @@ function buildSlides() {
         <div class="foot">${IC.phone}<span>Prenota al <b>${esc(D.telefono)}</b>&nbsp;&nbsp;·&nbsp;&nbsp;anche su WhatsApp</span></div>` });
     }
   }
-  if (on('calendario')) slots.push(out.length);
   if (on('diagnostica')) {
     const c = [['xray', 'Radiologia digitale', 'Immagini di alta qualità a bassa dose, con sensori digitali di ultima generazione.'],
                ['echo', 'Ecografia', 'Non invasiva e indolore, senza radiazioni. Adatta a tutte le età, anche ai bambini.'],
@@ -562,7 +581,6 @@ function buildSlides() {
         ${col('bone', 'MOC · DEXA', ['Colonna lombare e femore', 'Total body: composizione corporea', 'Diagnosi e controllo dell’osteoporosi', 'Esame rapido: 10–20 minuti'])}
       </div>` });
   }
-  slots.push(out.length);
   if (on('pressione')) out.push({ s: sec + 1, cls: 'navy', html: `
       ${logo(true)}<div class="kicker">Prevenzione cardiovascolare</div>
       <div class="abs" style="left:92px;top:245px;font-size:93px;font-weight:700;line-height:.98">Conosci la tua<br>pressione?</div>
@@ -592,7 +610,6 @@ function buildSlides() {
       </div>
       <div class="abs" style="left:96px;top:850px;height:106px;display:flex;align-items:center;font-size:36px"><span><b style="color:var(--sky)">Hai notato un cambiamento?</b>&nbsp; In sede: visita dermatologica, dermatoscopia e mappatura dei nei.</span></div>` });
 
-  slots.push(out.length);
   if (on('orari')) out.push({ s: sec + 2, cls: 'white', html: `
       ${head(false, 'Informazioni', 'Orari e prenotazioni')}
       <div class="content" style="display:grid;grid-template-columns:710px 576px 1fr;gap:38px">
@@ -616,14 +633,37 @@ function buildSlides() {
            ['access', 'Struttura accessibile', 'ingresso senza barriere, ascensore e servizi attrezzati'], ['card', 'Pagamenti', 'contanti, bancomat e carte di credito']].map(([i, t, d]) => `
         <div class="card glass" style="padding:0 48px;display:flex;align-items:center;gap:43px">${ico(i, 125, 'var(--sky)', '#fff')}<div><div style="font-size:43px;font-weight:700">${t}</div><div style="font-size:31px;opacity:.85;margin-top:10px;line-height:1.25">${d}</div></div></div>`).join('')}
       </div>` });
-  // schede specialisti, distribuite nel loop
-  const MED = on('medici') ? (D.medici || []).map((m, i) => ({ ...m, _i: i })).filter(m => m.attivo !== false && (m.nome || '').trim()) : [];
-  if (MED.length) {
-    const ss = [...new Set(slots)].sort((a, b) => a - b), k = ss.length || 1, per = Math.ceil(MED.length / k);
-    const medSlides = MED.map(m => ({ s: +D.secondi_medico || sec, cls: m.tema === 'chiaro' ? 'white med chiaro' : 'navy med', html: medicoHTML(m), med: m._i }));
-    for (let g = k - 1; g >= 0; g--) out.splice(ss.length ? ss[g] : out.length, 0, ...medSlides.slice(g * per, g * per + per));
+  // assemblaggio secondo l'ordine scelto nel pannello
+  const final = [];
+  for (const k of normOrder(D)) {
+    if (k.startsWith('med:')) {
+      const i = (D.medici || []).findIndex(m => medId(m) === k.slice(4)), m = (D.medici || [])[i];
+      if (A.medici === false || !m || m.attivo === false || !(m.nome || '').trim()) continue;
+      final.push({ s: +D.secondi_medico || sec, cls: m.tema === 'chiaro' ? 'white med chiaro' : 'navy med', html: medicoHTML(m), med: i });
+      continue;
+    }
+    if (A[k] === false || (k === 'mese' && A.calendario === false)) continue;
+    final.push(...(B[k] || []));
   }
-  return out;
+  return final;
+}
+const FIXED = ['benvenuto', 'mese', 'calendario', 'diagnostica', 'ecografie', 'radiologia_moc', 'pressione', 'ossa', 'nei', 'orari', 'servizi'];
+const slug = t => String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const medId = m => m.id || slug(m.nome) || 'senza-nome';
+function normOrder(d) {
+  const meds = (d.medici || []).map(m => 'med:' + medId(m));
+  const valid = new Set([...FIXED, ...meds]);
+  let base;
+  if (Array.isArray(d.ordine) && d.ordine.length) base = d.ordine;
+  else {   // ordine predefinito: specialisti divisi in tre gruppi
+    const g = Math.ceil(meds.length / 3);
+    base = ['benvenuto', 'mese', 'calendario', ...meds.slice(0, g), 'diagnostica', 'ecografie', 'radiologia_moc', ...meds.slice(g, 2 * g),
+            'pressione', 'ossa', 'nei', ...meds.slice(2 * g), 'orari', 'servizi'];
+  }
+  const res = [], seen = new Set();
+  for (const k of base) if (valid.has(k) && !seen.has(k)) { res.push(k); seen.add(k); }
+  for (const k of [...FIXED, ...meds]) if (!seen.has(k)) { res.push(k); seen.add(k); }
+  return res;
 }
 function photoHTML(src, cls) {
   if (!src) return '';
@@ -685,10 +725,31 @@ addEventListener('keydown', e => {
 // ---------- pannello di modifica ----------
 const ed = document.getElementById('ed'), edb = document.getElementById('ed-body'), msg = document.getElementById('ed-msg');
 let W = null;
-const NOMI = { benvenuto: 'Benvenuto', mese: 'Mese', calendario: 'Calendario specialisti', medici: 'Schede specialisti', diagnostica: 'Diagnostica', ecografie: 'Ecografie', radiologia_moc: 'Radiologia e MOC', pressione: 'Prevenzione: pressione', ossa: 'Prevenzione: ossa', nei: 'Prevenzione: nei', orari: 'Orari e prenotazioni', servizi: 'Buono a sapersi' };
+const NOMI = { benvenuto: 'Benvenuto', mese: 'Copertina del mese (si nasconde col calendario)', calendario: 'Calendario specialisti', medici: 'Schede specialisti', diagnostica: 'Diagnostica', ecografie: 'Ecografie', radiologia_moc: 'Radiologia e MOC', pressione: 'Prevenzione: pressione', ossa: 'Prevenzione: ossa', nei: 'Prevenzione: nei', orari: 'Orari e prenotazioni', servizi: 'Buono a sapersi' };
 function inp(path, val, type = 'text') { return `<input type="${type}" data-p="${path}" value="${esc(val)}">`; }
+function ordList() {
+  W.ordine = normOrder(W);
+  const nCal = Math.max(1, Math.ceil((W.specialisti || []).length / 6));
+  return W.ordine.map((k, n) => {
+    let lab, vis, cls = '';
+    if (k.startsWith('med:')) {
+      const m = (W.medici || []).find(x => medId(x) === k.slice(4)) || {};
+      lab = `<b>${esc([m.titolo, m.nome].filter(Boolean).join(' ') || 'Nuovo specialista')}</b> <span class="sub">${esc(m.specialita || '')}</span>`; vis = m.attivo !== false; cls = 'med';
+    } else {
+      lab = esc(NOMI[k] || k) + (k === 'calendario' ? ` <span class="sub">(${nCal} schermat${nCal > 1 ? 'e' : 'a'})</span>` : '');
+      vis = W.slide_attive?.[k] !== false;
+    }
+    return `<div class="ordrow ${cls} ${vis ? '' : 'off'}" draggable="true" data-k="${esc(k)}">
+      <span class="grip" title="Trascina">⋮⋮</span><input type="checkbox" data-ov="${esc(k)}" ${vis ? 'checked' : ''} title="Mostra">
+      <span class="lab">${n + 1}. ${lab}</span>
+      <button class="sm" data-a="oup" data-n="${n}" title="Sposta su">↑</button><button class="sm" data-a="odown" data-n="${n}" title="Sposta giù">↓</button></div>`;
+  }).join('');
+}
 function drawEd() {
   edb.innerHTML = `
+    <h3>Ordine e visibilità delle schermate</h3>
+    <div class="hint" style="margin:-4px 0 8px">Trascina le righe o usa ↑↓ per cambiare l'ordine del loop; togli la spunta per nascondere una schermata.</div>
+    <div id="ordlist">${ordList()}</div>` + `
     <h3>Mese</h3>
     <div class="row r2"><div><label>Mese</label>${inp('mese', W.mese)}</div><div><label>Anno</label>${inp('anno', W.anno)}</div></div>
     <h3>Specialisti (${W.specialisti.length}) · 6 per schermata</h3>
@@ -707,9 +768,8 @@ function drawEd() {
         ${(m.prestazioni || []).map((x, j) => `<div class="row r-prest">${inp(`medici.${i}.prestazioni.${j}`, x)}<button class="sm" data-a="pup" data-i="${i}" data-j="${j}" title="Sposta su">↑</button><button class="sm" data-a="pdel" data-i="${i}" data-j="${j}" title="Elimina riga">✕</button></div>`).join('')}
         <button data-a="padd" data-i="${i}" style="margin:2px 0 10px">+ Aggiungi prestazione</button>
         <div class="row r-med2"><div><label>Foto (file nella cartella sala-foto del sito)</label>${inp(`medici.${i}.foto`, m.foto)}</div>
-          <span style="display:flex;gap:12px;margin-top:16px"><label class="inline"><input type="checkbox" data-p="medici.${i}.attivo" ${m.attivo !== false ? 'checked' : ''}> Mostra</label>
-          <label class="inline"><input type="checkbox" data-p="medici.${i}.tema" data-tema="1" ${m.tema === 'chiaro' ? 'checked' : ''}> Sfondo chiaro</label></span>
-          <button class="sm" style="margin-top:16px" data-a="medup" data-i="${i}" title="Sposta su">↑</button><button class="sm" style="margin-top:16px" data-a="meddown" data-i="${i}" title="Sposta giù">↓</button><button class="sm" style="margin-top:16px" data-a="meddel" data-i="${i}" title="Elimina">✕</button></div>
+          <span style="display:flex;gap:12px;margin-top:16px"><label class="inline"><input type="checkbox" data-p="medici.${i}.tema" data-tema="1" ${m.tema === 'chiaro' ? 'checked' : ''}> Sfondo chiaro</label></span>
+          <button class="sm" style="margin-top:16px" data-a="meddel" data-i="${i}" title="Elimina scheda">✕</button></div>
       </div></div>`).join('')}
     <button data-a="medadd">+ Aggiungi scheda</button>
     <h3>Orari</h3>
@@ -720,9 +780,7 @@ function drawEd() {
     <div class="row r2"><div><label>Email</label>${inp('email', W.email)}</div><div><label>Indirizzo</label>${inp('indirizzo', W.indirizzo)}</div></div>
     <h3>Tempi</h3>
     <div class="row r2"><div><label>Secondi per schermata calendario</label>${inp('secondi_calendario', W.secondi_calendario, 'number')}</div><div><label>Secondi per le altre schermate</label>${inp('secondi_altre_slide', W.secondi_altre_slide, 'number')}</div></div>
-    <div class="row r2"><div><label>Secondi per scheda specialista</label>${inp('secondi_medico', W.secondi_medico ?? 10, 'number')}</div><div></div></div>
-    <h3>Schermate attive</h3>
-    <div class="checks">${Object.keys(NOMI).map(k => `<label><input type="checkbox" data-c="${k}" ${W.slide_attive?.[k] !== false ? 'checked' : ''}> ${NOMI[k]}</label>`).join('')}</div>`;
+    <div class="row r2"><div><label>Secondi per scheda specialista</label>${inp('secondi_medico', W.secondi_medico ?? 10, 'number')}</div><div></div></div>`;
   banners();
 }
 function readEd() {
@@ -736,6 +794,11 @@ function readEd() {
     else o[k] = el.type === 'number' ? Math.max(3, +el.value || 10) : el.value;
   });
   W.slide_attive = W.slide_attive || {};
+  edb.querySelectorAll('input[data-ov]').forEach(el => {
+    const k = el.dataset.ov;
+    if (k.startsWith('med:')) { const m = (W.medici || []).find(x => medId(x) === k.slice(4)); if (m) m.attivo = el.checked; }
+    else W.slide_attive[k] = el.checked;
+  });
   edb.querySelectorAll('input[data-c]').forEach(el => W.slide_attive[el.dataset.c] = el.checked);
 }
 edb.addEventListener('click', e => {
@@ -748,12 +811,15 @@ edb.addEventListener('click', e => {
   if (b.dataset.a === 'addor') W.orari.push({ giorni: '', ore: '' });
   if (b.dataset.a === 'delor') W.orari.splice(i, 1);
   const ML = W.medici = W.medici || [];
+  const n = +b.dataset.n, O = W.ordine = normOrder(W);
+  if (b.dataset.a === 'oup' && n > 0) [O[n - 1], O[n]] = [O[n], O[n - 1]];
+  if (b.dataset.a === 'odown' && n < O.length - 1) [O[n + 1], O[n]] = [O[n], O[n + 1]];
   const j = +b.dataset.j, PL = ML[i] && (ML[i].prestazioni = ML[i].prestazioni || []);
   if (b.dataset.a === 'padd') { PL.push(''); drawEd(); const f = edb.querySelector(`input[data-p="medici.${i}.prestazioni.${PL.length - 1}"]`); f?.focus(); return; }
   if (b.dataset.a === 'pdel') PL.splice(j, 1);
   if (b.dataset.a === 'pup' && j > 0) [PL[j - 1], PL[j]] = [PL[j], PL[j - 1]];
-  if (b.dataset.a === 'medadd') ML.push({ titolo: 'Dott.', nome: '', specialita: '', foto: '', prestazioni: [], attivo: true, tema: 'scuro' });
-  if (b.dataset.a === 'meddel' && confirmDel(ML[i])) ML.splice(i, 1);
+  if (b.dataset.a === 'medadd') { const id = 'm' + Date.now().toString(36); ML.push({ id, titolo: 'Dott.', nome: '', specialita: '', foto: '', prestazioni: [], attivo: true, tema: 'scuro' }); O.push('med:' + id); }
+  if (b.dataset.a === 'meddel' && confirmDel(ML[i])) { const k = 'med:' + medId(ML[i]); ML.splice(i, 1); W.ordine = O.filter(x => x !== k); }
   if (b.dataset.a === 'medup' && i > 0) [ML[i - 1], ML[i]] = [ML[i], ML[i - 1]];
   if (b.dataset.a === 'meddown' && i < ML.length - 1) [ML[i + 1], ML[i]] = [ML[i], ML[i + 1]];
   drawEd();
@@ -770,6 +836,18 @@ function banners() {
       <div class="hint">Il token resta solo in questo browser: non viene scritto nel sito.</div></div>`);
 }
 edb.addEventListener('input', e => { if (e.target.id === 'ed-pin') edPin = e.target.value; });
+edb.addEventListener('change', e => { if (e.target.dataset && e.target.dataset.ov) e.target.closest('.ordrow').classList.toggle('off', !e.target.checked); });
+// trascinamento delle righe dell'ordine
+let dragK = null;
+edb.addEventListener('dragstart', e => { const r = e.target.closest && e.target.closest('.ordrow'); if (!r) return; dragK = r.dataset.k; r.classList.add('drag'); e.dataTransfer.effectAllowed = 'move'; try { e.dataTransfer.setData('text/plain', dragK); } catch (x) {} });
+edb.addEventListener('dragover', e => { const r = e.target.closest && e.target.closest('.ordrow'); if (!r || !dragK) return; e.preventDefault(); edb.querySelectorAll('.ordrow.over').forEach(x => x.classList.remove('over')); r.classList.add('over'); });
+edb.addEventListener('dragend', () => { dragK = null; edb.querySelectorAll('.ordrow').forEach(x => x.classList.remove('drag', 'over')); });
+edb.addEventListener('drop', e => {
+  const r = e.target.closest && e.target.closest('.ordrow'); if (!r || !dragK) return; e.preventDefault();
+  readEd(); const O = W.ordine = normOrder(W), from = O.indexOf(dragK), tk = r.dataset.k;
+  if (from < 0 || tk === dragK || !O.includes(tk)) return;
+  O.splice(from, 1); O.splice(O.indexOf(tk), 0, dragK); dragK = null; drawEd();   // inserisce prima della riga di arrivo
+});
 edb.addEventListener('change', e => { if (e.target.id === 'ed-pin-rem') edRem = e.target.checked; });
 function openEd() {
   W = JSON.parse(JSON.stringify(D)); edRecovered = false;
