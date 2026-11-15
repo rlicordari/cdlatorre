@@ -303,6 +303,22 @@
         "Polisonnografia"
       ],
       "tema": "chiaro"
+    },
+    {
+      "id": "ambrogio",
+      "titolo": "Dott.",
+      "nome": "Simone Antonio Ambrogio",
+      "specialita": "Oftalmologia",
+      "foto": "sala-foto/ambrogio.png",
+      "attivo": true,
+      "tema": "scuro",
+      "prestazioni": [
+        "Visita oculistica completa",
+        "Esame della vista (visus)",
+        "Tonometria (pressione oculare)",
+        "Esame del fondo oculare",
+        "Valutazione del segmento anteriore e posteriore"
+      ]
     }
   ],
   "secondi_medico": 10,
@@ -324,6 +340,7 @@
     "med:marco-gambino",
     "med:giuseppina-dodaro",
     "med:cama",
+    "med:ambrogio",
     "mese",
     "calendario",
     "orari",
