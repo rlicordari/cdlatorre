@@ -108,10 +108,8 @@
         "Visita cardiologica",
         "Elettrocardiogramma (ECG)",
         "Ecocardiogramma color-doppler",
-        "Holter ECG 24 ore",
-        "Holter pressorio 24 ore",
         "Ecocolordoppler vascolare",
-        "Valutazione del rischio cardiovascolare"
+        "EcoDoppler Transcranico - Bubble Test"
       ],
       "tema": "chiaro"
     },
@@ -313,10 +311,12 @@
     "med:giuseppina-dodaro",
     "mese",
     "calendario",
-    "pressione",
-    "ossa",
-    "nei",
     "orari",
     "servizi"
+  ],
+  "rimosse": [
+    "nei",
+    "ossa",
+    "pressione"
   ]
 }
