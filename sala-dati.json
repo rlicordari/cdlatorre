@@ -86,13 +86,13 @@
   "slide_attive": {
     "benvenuto": true,
     "mese": true,
-    "calendario": true,
+    "calendario": false,
     "diagnostica": true,
     "ecografie": true,
     "radiologia_moc": true,
-    "pressione": false,
+    "pressione": true,
     "ossa": true,
-    "nei": false,
+    "nei": true,
     "orari": true,
     "servizi": true,
     "medici": true
