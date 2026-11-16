@@ -350,5 +350,19 @@
     "nei",
     "ossa",
     "pressione"
-  ]
+  ],
+  "foto_diagnostica": {
+    "diagnostica": {
+      "src": "https://images.unsplash.com/photo-1616012480717-fd9867059ca0?w=1920&q=80&auto=format&fit=crop",
+      "pos": "centro"
+    },
+    "ecografie": {
+      "src": "https://images.unsplash.com/photo-1691933880096-4046bc9e2fa0?w=1920&q=80&auto=format&fit=crop",
+      "pos": "centro"
+    },
+    "radiologia_moc": {
+      "src": "https://images.unsplash.com/photo-1714929818299-914d3114bcec?w=1920&q=80&auto=format&fit=crop",
+      "pos": "centro"
+    }
+  }
 }
