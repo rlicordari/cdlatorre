@@ -342,7 +342,23 @@ window.DATI = {
         "Spirometria",
         "Polisonnografia"
       ],
-      "tema": "scuro"
+      "tema": "chiaro"
+    },
+    {
+      "id": "ambrogio",
+      "titolo": "Dott.",
+      "nome": "Simone Antonio Ambrogio",
+      "specialita": "Oftalmologia",
+      "foto": "sala-foto/ambrogio.png",
+      "attivo": true,
+      "tema": "scuro",
+      "prestazioni": [
+        "Visita oculistica completa",
+        "Esame della vista (visus)",
+        "Tonometria (pressione oculare)",
+        "Esame del fondo oculare",
+        "Valutazione del segmento anteriore e posteriore"
+      ]
     }
   ],
   "secondi_medico": 10,
@@ -364,6 +380,7 @@ window.DATI = {
     "med:marco-gambino",
     "med:giuseppina-dodaro",
     "med:cama",
+    "med:ambrogio",
     "mese",
     "calendario",
     "orari",
@@ -401,6 +418,26 @@ window.SALA_GITHUB = { owner: "rlicordari", repo: "cdlatorre", branch: "main", p
   .card { border-radius:24px; }
   .tint { background:var(--tint); }
   .glass { background:rgba(255,255,255,.1); }
+
+
+  /* diagnostica: foto vere, niente box */
+  .dg .ph { position:absolute; top:0; bottom:0; width:880px; overflow:hidden; background:#0d1526; }
+  .dg .ph img { width:100%; height:100%; object-fit:cover; display:block; }
+  .dg.dx .ph { right:0; } .dg.sx .ph { left:0; }
+  .dg.dx .ph::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg, var(--navy) 0%, rgba(38,56,96,.55) 14%, rgba(38,56,96,0) 34%); }
+  .dg.sx .ph::after { content:""; position:absolute; inset:0; background:linear-gradient(270deg, var(--navy) 0%, rgba(38,56,96,.55) 14%, rgba(38,56,96,0) 34%); }
+  .dg.full .ph { inset:0; width:auto; }
+  .dg.full .ph::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg, rgba(24,36,66,.97) 0%, rgba(24,36,66,.9) 42%, rgba(24,36,66,.25) 72%, rgba(24,36,66,0) 100%); }
+  .dg .txt { position:absolute; top:200px; bottom:50px; display:flex; flex-direction:column; justify-content:center; z-index:2; }
+  .dg.dx .txt { left:96px; width:900px; } .dg.full .txt { left:96px; width:1000px; } .dg.sx .txt { left:1000px; right:96px; }
+  .dg .dlogo { position:absolute; top:58px; width:307px; z-index:2; }
+  .dg.dx .dlogo, .dg.full .dlogo { left:96px; } .dg.sx .dlogo { left:1000px; }
+  .dg .k { font-size:31px; font-weight:700; letter-spacing:8px; text-transform:uppercase; color:var(--sky); }
+  .dg h1 { font-size:132px; line-height:.98; font-weight:700; margin:24px 0 0; letter-spacing:-1px; }
+  .dg h2 { font-size:66px; line-height:1.05; font-weight:700; color:var(--sky); margin-top:14px; }
+  .dg .lead { font-size:44px; line-height:1.28; margin-top:36px; opacity:.92; }
+  .dg .tags { margin-top:44px; font-size:41px; line-height:1.7; font-weight:700; }
+  .dg .tags span { white-space:nowrap; } .dg .tags i { font-style:normal; color:var(--sky); padding:0 18px; font-weight:400; }
 
   /* calendario */
   .cal { display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(2,1fr); gap:34px; top:360px; bottom:125px; }
@@ -492,6 +529,12 @@ window.SALA_GITHUB = { owner: "rlicordari", repo: "cdlatorre", branch: "main", p
   #ed .hint { font-size:13px; color:#5b6b85; margin-top:6px; }
   #ed .checks { display:grid; grid-template-columns:1fr 1fr; gap:6px 14px; }
   #ed .checks label { font-size:14px; color:#1d2b4a; display:flex; gap:8px; align-items:center; margin:0; }
+  #ed .fgrid { display:grid; grid-template-columns:repeat(auto-fill, minmax(104px,1fr)); gap:8px; margin:6px 0 10px; }
+  #ed .fgrid button { padding:0; height:72px; border-radius:8px; overflow:hidden; background:#0d1526; border:3px solid transparent; position:relative; }
+  #ed .fgrid button img { width:100%; height:100%; object-fit:cover; display:block; }
+  #ed .fgrid button.sel { border-color:var(--sky); box-shadow:0 0 0 2px rgba(41,171,226,.35); }
+  #ed .fgrid button span { position:absolute; left:4px; bottom:3px; font-size:11px; color:#fff; background:rgba(0,0,0,.55); padding:1px 5px; border-radius:4px; }
+  #ed select { padding:9px 10px; border:1px solid #c9d4e3; border-radius:8px; font:15px Arial; color:#1d2b4a; width:100%; background:#fff; }
   #ed .msg { color:#1a7d3a; font-weight:700; align-self:center; }
 </style>
 </head>
@@ -563,8 +606,7 @@ function buildSlides() {
       ${logo(true, 346, 96, 77)}
       <div class="kicker" style="top:326px">Calendario visite specialistiche</div>
       <div class="abs" style="left:86px;top:380px;height:280px;display:flex;align-items:center;font-size:227px;font-weight:700;white-space:nowrap;letter-spacing:-2px">${esc(D.mese)}</div>
-      <div class="abs" style="left:96px;top:658px;font-size:107px;opacity:.55">${esc(D.anno)}</div>
-      <div class="abs" style="left:96px;top:893px;font-size:40px;font-weight:700;color:var(--sky)">Oltre 18 specialisti in un unico centro</div>` });
+      <div class="abs" style="left:96px;top:658px;font-size:107px;opacity:.55">${esc(D.anno)}</div>` });
 
   if (on('calendario')) {
     const L = D.specialisti || [], pages = Math.max(1, Math.ceil(L.length / 6));
@@ -581,38 +623,24 @@ function buildSlides() {
         <div class="foot">${IC.phone}<span>Prenota al <b>${esc(D.telefono)}</b>&nbsp;&nbsp;·&nbsp;&nbsp;anche su WhatsApp</span></div>` });
     }
   }
-  if (on('diagnostica')) {
-    const c = [['xray', 'Radiologia digitale', 'Immagini di alta qualità a bassa dose, con sensori digitali di ultima generazione.'],
-               ['echo', 'Ecografia', 'Non invasiva e indolore, senza radiazioni. Adatta a tutte le età, anche ai bambini.'],
-               ['bone', 'MOC · Densitometria', 'L’esame di riferimento per la diagnosi e il monitoraggio dell’osteoporosi.']];
-    out.push({ s: sec, cls: 'white', html: `${head(false, 'In sede', 'Diagnostica per immagini')}
-      <div class="content" style="display:grid;grid-template-columns:repeat(3,1fr);gap:38px;bottom:300px">
-        ${c.map(([i, t, d]) => `<div class="card tint" style="padding:48px">${ico(i, 125, 'var(--navy)', '#fff')}
-          <div style="font-size:43px;font-weight:700;margin:44px 0 18px">${t}</div><div style="font-size:31px;line-height:1.3">${d}</div></div>`).join('')}
-      </div>
-      <div class="abs card" style="left:96px;right:96px;top:864px;height:101px;background:var(--navy);display:flex;align-items:center;gap:30px;padding:0 43px;font-size:37px;color:#fff">
-        <span style="width:53px;height:53px;color:#fff;display:flex">${IC.file}</span><span><b style="color:var(--sky)">Referto disponibile in giornata</b>&nbsp; per la maggior parte degli esami</span></div>` });
-  }
-  if (on('ecografie')) {
-    const it = ['Addominale', 'Tiroidea', 'Muscolo-tendinea', 'Mammaria', 'Ginecologica e ostetrica', 'Prostatica', 'Ecodoppler vascolare', 'Linfonodale'];
-    out.push({ s: sec, cls: 'navy', html: `${head(true, 'Diagnostica', 'Ecografie ed Ecodoppler')}
-      <div class="content" style="display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,197px);gap:34px">
-        ${it.map(t => `<div class="card glass" style="padding:38px;display:flex;flex-direction:column;justify-content:space-between"><span style="width:48px;height:48px;color:var(--sky);display:flex">${IC.echo}</span><div style="font-size:33px;font-weight:700;line-height:1.15">${t}</div></div>`).join('')}
-      </div>
-      <div class="abs" style="left:96px;top:885px;display:flex;gap:80px;font-size:35px;font-weight:700;color:var(--sky)">
-        ${['Non invasiva e indolore', 'Senza radiazioni', 'Per tutte le età'].map(t => `<span style="display:flex;align-items:center;gap:18px"><span style="width:46px;height:46px;display:flex">${IC.check}</span>${t}</span>`).join('')}
-      </div>` });
-  }
-  if (on('radiologia_moc')) {
-    const col = (i, t, L) => `<div class="card tint" style="padding:48px 53px">
-        <div style="display:flex;align-items:center;gap:30px;margin-bottom:40px">${ico(i, 110, 'var(--navy)', '#fff')}<div style="font-size:45px;font-weight:700">${t}</div></div>
-        <ul class="list">${L.map(x => `<li>${x}</li>`).join('')}</ul></div>`;
-    out.push({ s: sec + 1, cls: 'white', html: `${head(false, 'Diagnostica', 'Radiologia digitale e MOC')}
-      <div class="content" style="display:grid;grid-template-columns:1fr 1fr;gap:38px">
-        ${col('xray', 'Radiografie (RX)', ['Torace', 'Colonna vertebrale e scoliosi', 'Arti superiori e inferiori', 'Bacino e articolazioni', 'Addome'])}
-        ${col('bone', 'MOC · DEXA', ['Colonna lombare e femore', 'Total body: composizione corporea', 'Diagnosi e controllo dell’osteoporosi', 'Esame rapido: 10–20 minuti'])}
-      </div>` });
-  }
+  const tags = L => `<div class="tags">${L.map(t => `<span>${esc(t)}</span>`).join('<i>/</i> ')}</div>`;
+  const dg = (k, lato, h) => {
+    const f = fotoDiag(k);
+    return `<div class="ph"><img src="${esc(f.src)}" style="object-position:${esc(f.pos)}" alt="" onerror="if(this.dataset.alt&&this.src.indexOf(this.dataset.alt)<0){this.src=this.dataset.alt}" data-alt="${esc(f.alt)}"></div>
+      <img class="dlogo" src="${LOGO_W}" alt="Centro Diagnostico Latorre"><div class="txt">${h}</div>`;
+  };
+  if (on('diagnostica')) out.push({ s: sec, cls: 'navy dg dx', html: dg('diagnostica', 'dx', `
+      <div class="k">Diagnostica per immagini</div><h1>Radiologia<br>digitale</h1>
+      <div class="lead">Immagini nitide con una dose di radiazioni ridotta, grazie ai sensori digitali di ultima generazione.</div>
+      ${tags(['Torace', 'Colonna vertebrale', 'Scoliosi', 'Arti superiori e inferiori', 'Bacino e articolazioni', 'Addome'])}`) });
+  if (on('ecografie')) out.push({ s: sec, cls: 'navy dg full', html: dg('ecografie', 'full', `
+      <div class="k">Diagnostica per immagini</div><h1>Ecografia<br>ed Ecodoppler</h1>
+      <div class="lead">Non invasiva, indolore e senza radiazioni.<br>Adatta a tutte le età.</div>
+      ${tags(['Addome', 'Tiroide', 'Muscoli e tendini', 'Mammella', 'Ginecologica e ostetrica', 'Prostata', 'Ecodoppler vascolare', 'Linfonodi'])}`) });
+  if (on('radiologia_moc')) out.push({ s: sec, cls: 'navy dg sx', html: dg('radiologia_moc', 'sx', `
+      <div class="k">Diagnostica per immagini</div><h1>MOC</h1><h2>Densitometria ossea</h2>
+      <div class="lead">L’esame di riferimento per la diagnosi e il controllo dell’osteoporosi. Rapido e indolore.</div>
+      ${tags(['Colonna lombare', 'Femore', 'Total body', 'Composizione corporea'])}`) });
   if (on('pressione')) out.push({ s: sec + 1, cls: 'navy', html: `
       ${logo(true)}<div class="kicker">Prevenzione cardiovascolare</div>
       <div class="abs" style="left:92px;top:245px;font-size:93px;font-weight:700;line-height:.98">Conosci la tua<br>pressione?</div>
@@ -660,8 +688,8 @@ function buildSlides() {
 
   if (on('servizi')) out.push({ s: sec, cls: 'navy', html: `
       ${head(true, 'Buono a sapersi', 'Pensiamo noi a tutto il resto')}
-      <div class="content" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:34px 38px">
-        ${[['file', 'Referti in giornata', 'per la maggior parte degli esami diagnostici'], ['shield', 'Convenzioni', 'con fondi sanitari integrativi e assicurazioni private'],
+      <div class="content" style="display:grid;grid-template-columns:1fr;grid-template-rows:repeat(3,1fr);gap:30px">
+        ${[['shield', 'Convenzioni', 'con fondi sanitari integrativi e assicurazioni private'],
            ['access', 'Struttura accessibile', 'ingresso senza barriere, ascensore e servizi attrezzati'], ['card', 'Pagamenti', 'contanti, bancomat e carte di credito']].map(([i, t, d]) => `
         <div class="card glass" style="padding:0 48px;display:flex;align-items:center;gap:43px">${ico(i, 125, 'var(--sky)', '#fff')}<div><div style="font-size:43px;font-weight:700">${t}</div><div style="font-size:31px;opacity:.85;margin-top:10px;line-height:1.25">${d}</div></div></div>`).join('')}
       </div>` });
@@ -678,6 +706,21 @@ function buildSlides() {
     final.push(...(B[k] || []));
   }
   return final;
+}
+
+// ---------- foto delle slide di diagnostica (immagini da Unsplash, licenza libera) ----------
+const US = id => `https://images.unsplash.com/photo-${id}?w=1920&q=80&auto=format&fit=crop`;
+const FOTO_CDL = { diagnostica: 'Immagini/rx.jpg', ecografie: 'Immagini/eco.jpg', radiologia_moc: 'Immagini/moc.jpg' };
+const CAND = {
+  diagnostica: ['1616012480717-fd9867059ca0', '1778612506355-b35daed59ea9', '1631651363531-fd29aec4cb5c', '1564725075388-cc8338732289', '1516069677018-378515003435', '1763198302249-db661c45bf7d', '1769204978162-55d6fdb408ce', '1760872703636-f8d643a2b510', '1631563019701-efcf403bc5fe', '1758691463087-43ac1462410f'],
+  ecografie: ['1691933880096-4046bc9e2fa0', '1691933880037-ce9d151ab922', '1691933880082-8ca234497bf4', '1691933880113-3c0d20a48451', '1691935071222-c008a4ccc2ca', '1691935052741-c8ce0a1ef543', '1772122028843-9139d23af4fb', '1706065264583-55f1a8549769'],
+  radiologia_moc: ['1763198302745-57cb94135f11', '1763198302535-265c44183bcb', '1763198302249-db661c45bf7d', '1743767587874-b6887c888ea1', '1542565940-d3cddfaf51ee', '1649073586751-695a1f9f76de', '1714929818299-914d3114bcec', '1655210910337-8217d699c963', '1508387150737-7ce104ed3b0a']
+};
+const POS = { centro: '50% 50%', sinistra: '15% 50%', destra: '85% 50%', alto: '50% 15%', basso: '50% 85%' };
+function fotoDiag(k) {
+  const F = (D.foto_diagnostica || {})[k] || {};
+  const src = F.src || US(CAND[k][0]);
+  return { src, pos: POS[F.pos] || POS.centro, alt: FOTO_CDL[k] };
 }
 const FIXED = ['benvenuto', 'mese', 'calendario', 'diagnostica', 'ecografie', 'radiologia_moc', 'pressione', 'ossa', 'nei', 'orari', 'servizi'];
 const slug = t => String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -759,7 +802,7 @@ addEventListener('keydown', e => {
 // ---------- pannello di modifica ----------
 const ed = document.getElementById('ed'), edb = document.getElementById('ed-body'), msg = document.getElementById('ed-msg');
 let W = null;
-const NOMI = { benvenuto: 'Benvenuto', mese: 'Copertina del mese (si nasconde col calendario)', calendario: 'Calendario specialisti', medici: 'Schede specialisti', diagnostica: 'Diagnostica', ecografie: 'Ecografie', radiologia_moc: 'Radiologia e MOC', pressione: 'Prevenzione: pressione', ossa: 'Prevenzione: ossa', nei: 'Prevenzione: nei', orari: 'Orari e prenotazioni', servizi: 'Buono a sapersi' };
+const NOMI = { benvenuto: 'Benvenuto', mese: 'Copertina del mese (si nasconde col calendario)', calendario: 'Calendario specialisti', medici: 'Schede specialisti', diagnostica: 'Radiologia digitale', ecografie: 'Ecografia ed Ecodoppler', radiologia_moc: 'MOC · Densitometria', pressione: 'Prevenzione: pressione', ossa: 'Prevenzione: ossa', nei: 'Prevenzione: nei', orari: 'Orari e prenotazioni', servizi: 'Buono a sapersi' };
 function inp(path, val, type = 'text') { return `<input type="${type}" data-p="${path}" value="${esc(val)}">`; }
 function ordList() {
   W.ordine = normOrder(W);
@@ -782,10 +825,21 @@ function ordList() {
       `<button data-a="orest" data-k="${esc(k)}" title="Ripristina in fondo al loop">↺ ${esc((NOMI[k] || k).replace(/ \(.*\)$/, ''))}</button>`).join(' ')}</div>` : '');
 }
 function drawEd() {
+  W.foto_diagnostica = W.foto_diagnostica || {};
+  ['diagnostica', 'ecografie', 'radiologia_moc'].forEach(k => W.foto_diagnostica[k] = W.foto_diagnostica[k] || {});
+  const sT = edb.scrollTop;
   edb.innerHTML = `
     <h3>Ordine e visibilità delle schermate</h3>
     <div class="hint" style="margin:-4px 0 8px">Trascina le righe o usa ↑↓ per cambiare l'ordine; togli la spunta per nasconderla, ✕ per eliminarla (le schermate fisse si possono ripristinare).</div>
     <div id="ordlist">${ordList()}</div>` + `
+    <h3>Foto delle slide di diagnostica</h3>
+    <div class="hint" style="margin:-4px 0 8px">Tocca una foto per sceglierla (immagini Unsplash a licenza libera). Se una foto non si carica compare quella del centro. Puoi anche incollare il link di un'altra immagine.</div>
+    ${['diagnostica', 'ecografie', 'radiologia_moc'].map(k => { const F = W.foto_diagnostica[k], cur = F.src || US(CAND[k][0]);
+      const opts = [...CAND[k].map((id, n) => [US(id), String(n + 1)]), [FOTO_CDL[k], 'CDL']];
+      return `<label style="margin-top:12px;font-weight:700;color:#1d2b4a">${esc(NOMI[k])}</label>
+      <div class="fgrid">${opts.map(([u, l]) => `<button data-a="fsel" data-k="${k}" data-u="${esc(u)}" class="${u === cur ? 'sel' : ''}" title="Usa questa foto"><img loading="lazy" src="${esc(u.replace('w=1920', 'w=320'))}" alt=""><span>${l}</span></button>`).join('')}</div>
+      <div class="row" style="grid-template-columns:1fr 170px"><div><label>Link immagine</label>${inp(`foto_diagnostica.${k}.src`, cur)}</div>
+        <div><label>Inquadratura</label><select data-p="foto_diagnostica.${k}.pos">${Object.keys(POS).map(o => `<option ${o === (F.pos || 'centro') ? 'selected' : ''}>${o}</option>`).join('')}</select></div></div>`; }).join('')}
     <h3>Mese</h3>
     <div class="row r2"><div><label>Mese</label>${inp('mese', W.mese)}</div><div><label>Anno</label>${inp('anno', W.anno)}</div></div>
     <h3>Specialisti (${W.specialisti.length}) · 6 per schermata</h3>
@@ -817,10 +871,10 @@ function drawEd() {
     <h3>Tempi</h3>
     <div class="row r2"><div><label>Secondi per schermata calendario</label>${inp('secondi_calendario', W.secondi_calendario, 'number')}</div><div><label>Secondi per le altre schermate</label>${inp('secondi_altre_slide', W.secondi_altre_slide, 'number')}</div></div>
     <div class="row r2"><div><label>Secondi per scheda specialista</label>${inp('secondi_medico', W.secondi_medico ?? 10, 'number')}</div><div></div></div>`;
-  banners();
+  banners(); edb.scrollTop = sT;
 }
 function readEd() {
-  edb.querySelectorAll('input[data-p], textarea[data-p]').forEach(el => {
+  edb.querySelectorAll('input[data-p], textarea[data-p], select[data-p]').forEach(el => {
     const p = el.dataset.p.split('.'); let o = W;
     for (let i = 0; i < p.length - 1; i++) o = o[p[i]];
     const k = p.at(-1);
@@ -840,6 +894,7 @@ function readEd() {
 edb.addEventListener('click', e => {
   const b = e.target.closest('button'); if (!b) return;
   readEd(); const i = +b.dataset.i, L = W.specialisti;
+  if (b.dataset.a === 'fsel') { W.foto_diagnostica[b.dataset.k].src = b.dataset.u; drawEd(); return; }
   if (b.dataset.a === 'add') L.push({ specialita: '', medico: 'Dott. ', date: '' });
   if (b.dataset.a === 'del') L.splice(i, 1);
   if (b.dataset.a === 'up' && i > 0) [L[i - 1], L[i]] = [L[i], L[i - 1]];
