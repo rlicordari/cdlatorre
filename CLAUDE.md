@@ -43,6 +43,9 @@ Non aggiungere mai funzionalità di prenotazione online, backend, autenticazione
 - Medicina Estetica
 - (e altre branche della medicina moderna)
 
+### Convenzioni con fondi e assicurazioni
+Gli accordi con fondi sanitari e assicurazioni non sono ancora finalizzati: nessuna pagina (sito e sala d'attesa) deve citare convenzioni o fondi convenzionati finché il proprietario non lo chiede.
+
 ### Punto chiave sul posizionamento
 Il CDL si distingue per l'utilizzo di **macchinari di ultima generazione**. Questo aspetto va enfatizzato nei testi quando si parla di tecnologia e diagnostica. Non usare frasi generiche — preferire toni concreti e autorevoli.
 
@@ -71,7 +74,7 @@ cdlatorre/
 ├── index.html                    # Homepage — hero, servizi, statistiche, perché noi
 ├── chi-siamo.html                # Chi siamo — storia, missione, team, valori
 ├── contatti.html                 # Contatti — form, orari, mappa, WhatsApp
-├── convenzioni.html              # NASCOSTA — file mantenuto ma non raggiungibile dal sito
+├── convenzioni.html              # NASCOSTA — file mantenuto ma non raggiungibile dal sito (noindex)
 ├── faq.html                      # FAQ — domande frequenti in accordion
 ├── radiologia.html               # Radiologia Digitale — esami RX disponibili
 ├── moc.html                      # MOC — densitometria ossea

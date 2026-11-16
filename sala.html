@@ -688,9 +688,8 @@ function buildSlides() {
 
   if (on('servizi')) out.push({ s: sec, cls: 'navy', html: `
       ${head(true, 'Buono a sapersi', 'Pensiamo noi a tutto il resto')}
-      <div class="content" style="display:grid;grid-template-columns:1fr;grid-template-rows:repeat(3,1fr);gap:30px">
-        ${[['shield', 'Convenzioni', 'con fondi sanitari integrativi e assicurazioni private'],
-           ['access', 'Struttura accessibile', 'ingresso senza barriere, ascensore e servizi attrezzati'], ['card', 'Pagamenti', 'contanti, bancomat e carte di credito']].map(([i, t, d]) => `
+      <div class="content" style="display:grid;grid-template-columns:1fr;grid-template-rows:repeat(2,1fr);gap:38px;bottom:200px">
+        ${[['access', 'Struttura accessibile', 'ingresso senza barriere, ascensore e servizi attrezzati'], ['card', 'Pagamenti', 'contanti, bancomat e carte di credito']].map(([i, t, d]) => `
         <div class="card glass" style="padding:0 48px;display:flex;align-items:center;gap:43px">${ico(i, 125, 'var(--sky)', '#fff')}<div><div style="font-size:43px;font-weight:700">${t}</div><div style="font-size:31px;opacity:.85;margin-top:10px;line-height:1.25">${d}</div></div></div>`).join('')}
       </div>` });
   // assemblaggio secondo l'ordine scelto nel pannello
