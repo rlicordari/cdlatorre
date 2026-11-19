@@ -115,6 +115,7 @@ Pagina autonoma per le TV della sala d'attesa: loop 16:9 a schermo intero, non c
 ## SEO
 
 - `sitemap.xml` (tutte le pagine pubbliche, comprese le `specialista-*.html`) e `robots.txt` che la indica. Aggiungendo una pagina, aggiungerla alla sitemap.
+- Ogni pagina pubblica ha `<link rel="canonical">` verso il proprio indirizzo `https://centrodiagnosticolatorre.it/<pagina>.html` (homepage: `/`): GitHub Pages serve la stessa pagina anche senza `.html` e Google altrimenti la segnala come duplicata. Aggiungendo una pagina, mettere il canonical.
 - Dati strutturati JSON-LD: `MedicalClinic` (id `#centro`, indirizzo, orari, specialità, servizi, medici) in `index.html` e `visite-specialistiche.html`; `Physician` + `BreadcrumbList` + `FAQPage` in ogni pagina specialista.
 - Titoli delle pagine specialista nel formato "Visita [branca] a Rosarno (RC) – [Medico] | Centro Diagnostico Latorre"; ogni pagina ha sezioni "Quando prenotare", "Come si svolge" e "Domande Frequenti".
 - Homepage: sotto "I Nostri Servizi" il blocco "Visite specialistiche a Rosarno" con i link alle specialità (tra i commenti `SPECIALITA-LINK`). `visite-specialistiche.html` ha nell'introduzione i link testuali alle pagine dei medici.
